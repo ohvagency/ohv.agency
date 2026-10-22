@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -6,118 +7,216 @@
   <title>OHV AGENCY</title>
   <style>
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
-      background: #f5f2ec;
-      color: #242424;
+      background: #fff;
+      color: #111;
       font-family: Arial, sans-serif;
     }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* 상단 고정 메뉴 */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
     nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px 6%;
+      gap: 32px;
     }
-    .logo { font-size: 30px; font-weight: 900; }
+
     nav a {
-      color: inherit;
-      text-decoration: none;
-      margin-left: 18px;
       font-size: 12px;
+      letter-spacing: 1px;
     }
+
+    nav a:hover { opacity: 0.45; }
+
+    /* 메인 */
     .hero {
-      min-height: 75vh;
+      min-height: 100vh;
+      padding: 130px 5% 45px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8%;
+      align-items: center;
+      position: relative;
+      text-align: center;
     }
-    h1 {
-      font-size: clamp(55px, 11vw, 150px);
+
+    .hero h1 {
+      font-size: clamp(54px, 9vw, 140px);
+      font-weight: 500;
       letter-spacing: -0.07em;
-      line-height: 0.95;
-      margin: 0 0 30px;
+      margin: 0;
     }
-    h2 { font-size: 36px; }
-    p { line-height: 1.8; }
-    section { padding: 90px 8%; }
-    .tag { font-size: 12px; letter-spacing: 2px; }
+
+    .subtitle {
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-top: 18px;
+    }
+
+    .tagline {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      margin-top: 30px;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 35px;
+      right: 5%;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    /* 아래 섹션 */
+    section {
+      padding: 120px 8%;
+      min-height: 60vh;
+      scroll-margin-top: 80px;
+    }
+
+    section h2 {
+      font-size: clamp(32px, 5vw, 64px);
+      font-weight: 400;
+    }
+
+    section p {
+      line-height: 1.9;
+      max-width: 650px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
     .services {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 24px;
+      max-width: 900px;
     }
-    .item {
-      border-top: 1px solid #888;
+
+    .service {
+      border-top: 1px solid #111;
       padding: 20px 0;
     }
-    .work {
-      background: #e3e1dc;
-      min-height: 300px;
+
+    footer {
+      padding: 40px 5%;
+      border-top: 1px solid #eee;
+      font-size: 12px;
     }
-    .contact { background: #dce4d9; }
-    footer { padding: 30px 8%; font-size: 12px; }
-    @media (max-width: 600px) {
-      nav { flex-wrap: wrap; gap: 16px; }
-      nav a { margin: 0 12px 0 0; }
+
+    @media (max-width: 650px) {
+      header {
+        height: 70px;
+        padding: 0 5%;
+      }
+
+      .logo { font-size: 24px; }
+
+      nav { gap: 12px; }
+
+      nav a {
+        font-size: 9px;
+        letter-spacing: 0;
+      }
+
+      .hero h1 { font-size: 14vw; }
+
+      .subtitle { font-size: 9px; }
+
       .services { grid-template-columns: 1fr; }
+
+      section { padding: 90px 6%; }
     }
   </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">ohv.</div>
-    <div>
+
+  <header>
+    <a href="#home" class="logo">ohv.</a>
+    <nav>
       <a href="#about">ABOUT</a>
       <a href="#services">SERVICES</a>
       <a href="#work">WORK</a>
       <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="home">
+      <h1>OHV AGENCY</h1>
+      <div class="subtitle">
+        CREATIVE MARKETING & DESIGN STUDIO
+      </div>
+      <div class="tagline">We make you say OH!</div>
+      <div class="scroll">SCROLL TO EXPLORE ↓</div>
     </div>
-  </nav>
 
-  <div class="hero">
-    <p class="tag">CREATIVE MARKETING & DESIGN STUDIO</p>
-    <h1>WE MAKE<br>YOU SAY OH!</h1>
-    <p>Branding · Design · Marketing</p>
-  </div>
+    <section id="about">
+      <div class="section-label">01 / ABOUT</div>
+      <h2>Oh, hello.</h2>
+      <p>
+        OHV는 브랜드의 매력을 발견하고,
+        새로운 시선으로 해석하며,
+        감각적인 비주얼과 마케팅으로 구현합니다.
+      </p>
+    </section>
 
-  <section id="about">
-    <p class="tag">01 / ABOUT</p>
-    <h2>Oh, hello.</h2>
-    <p>
-      OHV는 브랜드의 매력을 발견하고,
-      새로운 시선과 감각적인 비주얼,
-      마케팅으로 브랜드의 가능성을 확장합니다.
-    </p>
-  </section>
+    <section id="services">
+      <div class="section-label">02 / SERVICES</div>
+      <h2>What we do.</h2>
+      <div class="services">
+        <div class="service">Branding & BX Design</div>
+        <div class="service">Creative Direction</div>
+        <div class="service">SNS & Content</div>
+        <div class="service">Influencer Marketing</div>
+        <div class="service">Lookbook & Campaign</div>
+        <div class="service">Pop-up & Experience</div>
+      </div>
+    </section>
 
-  <section id="services">
-    <p class="tag">02 / SERVICES</p>
-    <h2>What we do.</h2>
-    <div class="services">
-      <div class="item">Branding & BX Design</div>
-      <div class="item">Creative Direction</div>
-      <div class="item">SNS & Content</div>
-      <div class="item">Influencer Marketing</div>
-      <div class="item">Lookbook & Campaign</div>
-      <div class="item">Pop-up & Experience</div>
-    </div>
-  </section>
+    <section id="work">
+      <div class="section-label">03 / WORK</div>
+      <h2>Selected works.</h2>
+      <p>Our projects are coming soon.</p>
+    </section>
 
-  <section id="work" class="work">
-    <p class="tag">03 / WORK</p>
-    <h2>Selected works.</h2>
-    <p>Our projects are coming soon.</p>
-  </section>
+    <section id="contact">
+      <div class="section-label">04 / CONTACT</div>
+      <h2>Let's work together.</h2>
+      <p>Project inquiry form — Coming soon.</p>
+    </section>
+  </main>
 
-  <section id="contact" class="contact">
-    <p class="tag">04 / CONTACT</p>
-    <h2>Let's make something.</h2>
-    <p>Have a project in mind? We'd love to hear about it.</p>
-    <p>Project inquiry form — Coming soon.</p>
-  </section>
+  <footer>© OHV AGENCY. ALL RIGHTS RESERVED.</footer>
 
-  <footer>© OHV AGENCY</footer>
 </body>
 </html>
