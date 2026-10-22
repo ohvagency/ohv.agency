@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CONTACT — OHV AGENCY</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#111;font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #eee;padding:22px 5%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:28px;font-weight:800;letter-spacing:-2px}nav{display:flex;gap:28px}nav a{font-size:12px;letter-spacing:1px}nav a:hover,.active{opacity:.5}
+main{max-width:1120px;margin:auto;padding:100px 6% 110px}.eyebrow{font-size:11px;color:#777;letter-spacing:2px}h1{font-size:clamp(58px,9vw,112px);font-weight:400;letter-spacing:-.065em;margin:20px 0 12px}.intro{font:italic 18px Georgia,serif;color:#666;margin-bottom:75px}
+form{max-width:760px}.field{margin-bottom:32px}label{display:block;font-size:13px;margin-bottom:11px}.optional{color:#888;font-size:11px}input,select,textarea{display:block;width:100%;padding:14px 2px;border:0;border-bottom:1px solid #bbb;border-radius:0;background:#fff;color:#111;font:15px Arial,"Malgun Gothic",sans-serif;outline:0}input:focus,select:focus,textarea:focus{border-bottom-color:#111}textarea{min-height:135px;resize:vertical}.hint{font-size:12px;color:#777;line-height:1.7;margin:18px 0 28px}.submit{border:1px solid #111;background:#111;color:#fff;padding:17px 36px;font-size:12px;letter-spacing:1.5px;cursor:pointer}.submit:hover{background:#fff;color:#111}.status{font-size:13px;margin-top:18px;line-height:1.6}
+.info{border-top:1px solid #ddd;margin-top:120px;padding-top:38px;font-size:14px;line-height:2.2}.info a{text-decoration:underline;text-underline-offset:3px}footer{border-top:1px solid #eee;padding:30px 5%;display:flex;justify-content:space-between;gap:15px;font-size:12px}footer a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:700px){header{padding:20px 5%;align-items:flex-start;gap:16px}.logo{font-size:23px}nav{flex-wrap:wrap;justify-content:flex-end;gap:12px}nav a{font-size:10px}main{padding:70px 6% 80px}.intro{margin-bottom:50px}.info{margin-top:80px}}
+</style>
+</head>
+<body>
+<header><a class="logo" href="index.html">ohv.</a><nav><a href="about.html">ABOUT</a><a href="services.html">SERVICES</a><a href="work.html">WORK</a><a class="active" href="contact.html">CONTACT</a></nav></header>
+<main>
+<div class="eyebrow">04 / GET IN TOUCH</div><h1>Contact.</h1><p class="intro">Let's make something together.</p>
+<form id="contact-form">
+<div class="field"><label for="brand">01. 브랜드명 / 회사명 *</label><input id="brand" name="브랜드명/회사명" required placeholder="브랜드 또는 회사명을 입력해 주세요"></div>
+<div class="field"><label for="person">02. 담당자명 *</label><input id="person" name="담당자명" required placeholder="성함을 입력해 주세요"></div>
+<div class="field"><label for="email">03. 이메일 *</label><input id="email" type="email" name="email" required placeholder="회신받을 이메일을 입력해 주세요"></div>
+<div class="field"><label for="service">04. 문의 분야 *</label><select id="service" name="문의 분야" required><option value="" selected disabled>선택해 주세요</option><option>Branding</option><option>Marketing Strategy</option><option>Lookbook & Campaign</option><option>Content</option><option>Influencer Marketing</option><option>Pop-up & Experience</option><option>Multiple Services / Other</option></select></div>
+<div class="field"><label for="budget">05. 예상 예산 <span class="optional">(선택)</span></label><select id="budget" name="예상 예산"><option>미정 / 협의</option><option>100만 원 미만</option><option>100~300만 원</option><option>300~500만 원</option><option>500~1,000만 원</option><option>1,000만 원 이상</option></select></div>
+<div class="field"><label for="schedule">06. 희망 일정 <span class="optional">(선택)</span></label><input id="schedule" name="희망 일정" placeholder="예: 2026년 12월 중 / 일정 협의"></div>
+<div class="field"><label for="message">07. 프로젝트 상세 내용 *</label><textarea id="message" name="프로젝트 상세 내용" required placeholder="프로젝트 목적, 요청 업무, 참고사항 등을 자유롭게 작성해 주세요."></textarea></div>
+<p class="hint">제출한 정보는 프로젝트 문의 확인 및 회신을 위해 사용됩니다. 민감한 개인정보는 작성하지 말아 주세요.</p>
+<button class="submit" type="submit">SEND INQUIRY ↗</button><p class="status" id="status" role="status" aria-live="polite"></p>
+</form>
+<section class="info"><div>Contact: <a href="mailto:ohv.agency@gmail.com">ohv.agency@gmail.com</a></div><div>Graphic Designer Gio, Marketer Sunny</div><div>Edit Magazine <a href="https://www.instagram.com/nicemechew.mag/" target="_blank" rel="noopener noreferrer">@nicemechew.mag</a></div><div>Based in South Korea.</div></section>
+</main>
+<footer><span>© OHV AGENCY. ALL RIGHTS RESERVED.</span><a href="https://www.instagram.com/ohv.agency/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></footer>
+<script>
+const FORM_ENDPOINT = ""; // Formspree에서 발급받은 https://formspree.io/f/xxxxxxx 주소를 따옴표 안에 입력
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+  if (!FORM_ENDPOINT) {
+    status.textContent = "문의 폼 연결 준비 중입니다. 현재는 ohv.agency@gmail.com으로 이메일을 보내주세요.";
+    return;
+  }
+  const button = form.querySelector("button[type=submit]");
+  button.disabled = true;
+  status.textContent = "문의 내용을 전송 중입니다...";
+  try {
+    const response = await fetch(FORM_ENDPOINT, {
+      method: "POST", body: new FormData(form), headers: { "Accept": "application/json" }
+    });
+    if (!response.ok) throw new Error("submission failed");
+    form.reset();
+    status.textContent = "문의가 접수되었습니다. 감사합니다!";
+  } catch (error) {
+    status.textContent = "전송에 실패했습니다. 잠시 후 다시 시도하거나 이메일로 직접 문의해 주세요.";
+  } finally {
+    button.disabled = false;
+  }
+});
+</script>
+</body></html>
