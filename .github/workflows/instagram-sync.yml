@@ -24,7 +24,7 @@ jobs:
           python-version: '3.12'
       - name: Sync Instagram feed
         env:
-          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN_NMC }}
         run: python sync_instagram.py
       - name: Commit feed updates
         run: |
