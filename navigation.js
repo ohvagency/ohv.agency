@@ -1,54 +1,45 @@
 
-/* OHV - WORK DROPDOWN */
+/* OHV 공통 네비게이션 불러오기 */
 
-document.addEventListener('DOMContentLoaded', function () {
-  const menu = document.querySelector('.nav-work');
-  if (!menu) return;
+document.addEventListener('DOMContentLoaded', async function () {
+  const container = document.getElementById('site-navigation');
+  if (!container) return;
 
-  const trigger = menu.querySelector('.work-trigger');
-  const dropdown = menu.querySelector('.work-dropdown');
+  try {
+    const response = await fetch('navigation.html');
+    if (!response.ok) throw new Error('Navigation load failed');
 
-  function setOpen(open) {
-    menu.classList.toggle('is-open', open);
-    trigger.setAttribute('aria-expanded', String(open));
+    container.innerHTML = await response.text();
+
+    const menu = container.querySelector('.nav-work');
+    const trigger = menu.querySelector('.work-trigger');
+
+    function setOpen(open) {
+      menu.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    }
+
+    trigger.addEventListener('click', function (event) {
+      event.stopPropagation();
+      setOpen(!menu.classList.contains('is-open'));
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!menu.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+
+    menu.addEventListener('focusout', function (event) {
+      if (!menu.contains(event.relatedTarget)) setOpen(false);
+    });
+
+  } catch (error) {
+    console.error('OHV navigation error:', error);
   }
-
-  trigger.addEventListener('click', function (event) {
-    event.stopPropagation();
-
-    const isOpen = menu.classList.contains('is-open');
-    setOpen(!isOpen);
-  });
-
-  document.addEventListener('click', function (event) {
-    if (!menu.contains(event.target)) {
-      setOpen(false);
-    }
-  });
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      setOpen(false);
-      trigger.focus();
-    }
-  });
-
-  menu.addEventListener('focusout', function (event) {
-    if (!menu.contains(event.relatedTarget)) {
-      setOpen(false);
-    }
-  });
-
-  menu.addEventListener('mouseenter', function () {
-    if (window.matchMedia('(hover: hover)').matches) {
-      trigger.setAttribute('aria-expanded', 'true');
-    }
-  });
-
-  menu.addEventListener('mouseleave', function () {
-    if (window.matchMedia('(hover: hover)').matches &&
-        !menu.classList.contains('is-open')) {
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-  });
 });
