@@ -26,7 +26,22 @@
     .topline { border-top: 1px solid #111; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; letter-spacing: 1px; }
     .topline a { text-decoration: underline; text-underline-offset: 4px; }
     .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-    .post { display: block; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: #f2f2f2; }
+/* 매거진 게시물 4:5 비율 */
+.post {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #f2f2f2;
+}
+
+.post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease, opacity .3s ease;
+}
     .post img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease, opacity .3s ease; }
     .post:hover img { transform: scale(1.035); opacity: .83; }
     .post:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
