@@ -1,5 +1,52 @@
 
-/* OHV - WORK DROPDOWN MENU */
+/* OHV 공통 네비게이션 */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+.site-header .logo {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: #111;
+  text-decoration: none;
+}
+
+.site-header .site-nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.site-header .site-nav > a,
+.site-header .work-trigger {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #111;
+  text-decoration: none;
+}
+
+.site-header .site-nav a:hover,
+.site-header .work-trigger:hover {
+  opacity: 0.45;
+}
+
+/* WORK 드롭다운 */
 
 .nav-work {
   position: relative;
@@ -8,30 +55,11 @@
 }
 
 .work-trigger {
-  display: flex;
-  align-items: center;
-  gap: 5px;
   padding: 0;
-  border: none;
-  background: transparent;
-  color: #111;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 1px;
+  border: 0;
+  background: none;
   cursor: pointer;
 }
-
-.work-trigger:hover {
-  opacity: 0.45;
-}
-
-.work-trigger .chevron {
-  font-size: 12px;
-  transition: transform 0.2s ease;
-}
-
-/* Dropdown */
 
 .work-dropdown {
   position: absolute;
@@ -39,42 +67,34 @@
   right: -18px;
   width: 240px;
   padding-top: 16px;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(-5px);
-  transition: opacity 0.2s ease,
-              transform 0.2s ease,
-              visibility 0.2s;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 200;
 }
 
 .dropdown-inner {
   padding: 12px 18px;
-  background: #fff;
+  background: white;
   border: 1px solid #eee;
   box-shadow: 0 8px 24px rgba(0,0,0,0.04);
 }
 
-.work-dropdown a {
+.site-header .work-dropdown a {
   display: block;
   padding: 15px 0;
   font-size: 11px;
   letter-spacing: 0.3px;
   line-height: 1.5;
   color: #111;
+  text-decoration: none;
 }
 
 .work-dropdown a + a {
   border-top: 1px solid #eee;
 }
-
-.work-dropdown a:hover {
-  opacity: 0.45;
-}
-
-/* Open */
 
 @media (hover: hover) {
   .nav-work:hover .work-dropdown {
@@ -85,25 +105,33 @@
   }
 }
 
-.nav-work:focus-within .work-dropdown,
-.nav-work.is-open .work-dropdown {
+.nav-work.is-open .work-dropdown,
+.nav-work:focus-within .work-dropdown {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
 }
 
-.nav-work.is-open .chevron {
-  transform: rotate(180deg);
-}
-
-/* Mobile */
+/* 모바일 */
 
 @media (max-width: 650px) {
-  .work-trigger {
+  .site-header {
+    height: 70px;
+  }
+
+  .site-header .logo {
+    font-size: 24px;
+  }
+
+  .site-header .site-nav {
+    gap: 12px;
+  }
+
+  .site-header .site-nav > a,
+  .site-header .work-trigger {
     font-size: 9px;
     letter-spacing: 0;
-    gap: 3px;
   }
 
   .work-dropdown {
@@ -111,7 +139,7 @@
     width: 205px;
   }
 
-  .work-dropdown a {
+  .site-header .work-dropdown a {
     font-size: 10px;
   }
 }
