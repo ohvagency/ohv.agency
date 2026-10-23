@@ -14,10 +14,27 @@ IMAGE_DIR = Path('images/instagram')
 IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
 
+
 def request_json(url):
-    request = urllib.request.Request(url, headers={'Authorization': f'Bearer {TOKEN}'})
-    with urllib.request.urlopen(request, timeout=45) as response:
-        return json.load(response)
+    request = urllib.request.Request(
+        url,
+        headers={'Authorization': f'Bearer {TOKEN}'}
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=45) as response:
+            return json.load(response)
+
+    except urllib.error.HTTPError as error:
+        details = error.read().decode(
+            'utf-8', errors='replace'
+        )
+
+        print("Instagram API 오류:")
+        print(details)
+
+        raise
+
 
 
 def image_for(post, old):
