@@ -1,0 +1,117 @@
+
+/* OHV - WORK DROPDOWN MENU */
+
+.nav-work {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.work-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #111;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.work-trigger:hover {
+  opacity: 0.45;
+}
+
+.work-trigger .chevron {
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+/* Dropdown */
+
+.work-dropdown {
+  position: absolute;
+  top: 100%;
+  right: -18px;
+  width: 240px;
+  padding-top: 16px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-5px);
+  transition: opacity 0.2s ease,
+              transform 0.2s ease,
+              visibility 0.2s;
+  z-index: 200;
+}
+
+.dropdown-inner {
+  padding: 12px 18px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.work-dropdown a {
+  display: block;
+  padding: 15px 0;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  color: #111;
+}
+
+.work-dropdown a + a {
+  border-top: 1px solid #eee;
+}
+
+.work-dropdown a:hover {
+  opacity: 0.45;
+}
+
+/* Open */
+
+@media (hover: hover) {
+  .nav-work:hover .work-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+.nav-work:focus-within .work-dropdown,
+.nav-work.is-open .work-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-work.is-open .chevron {
+  transform: rotate(180deg);
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .work-trigger {
+    font-size: 9px;
+    letter-spacing: 0;
+    gap: 3px;
+  }
+
+  .work-dropdown {
+    right: -38px;
+    width: 205px;
+  }
+
+  .work-dropdown a {
+    font-size: 10px;
+  }
+}
