@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="navigation.css">
 <title>SERVICES — OHV AGENCY</title>
 <style>
 :root{--ink:#111;--muted:#777;--line:#dedede;--paper:#fff}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}header{height:80px;position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;padding:0 5%}.logo{font-size:29px;font-weight:800;letter-spacing:-2px}nav{display:flex;gap:30px}nav a{font-size:12px;letter-spacing:.07em}nav a:hover{opacity:.45}nav .active{text-decoration:underline;text-underline-offset:6px}main{max-width:1420px;margin:auto;padding:110px 7% 125px}.eyebrow,.meta{font-size:11px;letter-spacing:.13em;color:var(--muted)}h1{font-size:clamp(62px,10vw,145px);font-weight:400;letter-spacing:-.075em;line-height:1.05;margin:28px 0 18px}.intro{font:italic 19px Georgia,serif;color:#666;margin:0 0 110px}.group{margin:0 0 95px}.group-heading{margin-bottom:0}.group-heading h2{font-size:clamp(30px,4.2vw,52px);font-weight:400;letter-spacing:-.04em;margin:0}.group-heading small{color:var(--muted);font-size:11px;white-space:nowrap}
@@ -23,7 +24,47 @@ body, button, input, textarea, select {
 </style>
 </head>
 <body>
-<header><a class="logo" href="index.html">ohv.</a><nav><a href="about.html">ABOUT</a><a href="services.html" class="active">SERVICES</a><a href="work.html">WORK</a><a href="contact.html">CONTACT</a></nav></header>
+<header><a class="logo" href="index.html">ohv.</a>
+
+<!-- 상단 네비게이션 -->
+<nav>
+  <a href="about.html">ABOUT</a>
+  <a href="services.html">SERVICES</a>
+
+  <div class="nav-work">
+    <button
+      type="button"
+      class="work-trigger"
+      aria-expanded="false"
+      aria-controls="work-dropdown"
+    >
+      WORK
+    </button>
+
+    <div class="work-dropdown" id="work-dropdown">
+      <div class="dropdown-inner">
+
+        <!-- STUDIO WORK : 추후 공개
+        <a href="studio-work.html">
+          STUDIO WORK
+        </a>
+        -->
+
+        <a href="experience.html">
+          SELECTED EXPERIENCE
+        </a>
+
+        <a href="magazine.html">
+          MAGAZINE
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <a href="contact.html">CONTACT</a>
+</nav>
+</header>
 <main>
 <div class="eyebrow">02 / Our Services.</div>
 <div id="service-groups"></div>
@@ -84,4 +125,5 @@ document.querySelectorAll('.group-toggle').forEach(button=>{
   });
 });
 </script>
+  <script src="navigation.js"></script>
 </body></html>
