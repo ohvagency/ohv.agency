@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="navigation.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <title>MAGAZINE — OHV AGENCY</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: #111; font-family: 'Pretendard', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    main { max-width: 1440px; min-height: 100vh; margin: auto; padding: 165px 6% 120px; }
+    .eyebrow { font-size: 11px; letter-spacing: 2px; color: #777; }
+    h1 { font-size: clamp(45px, 7vw, 105px); font-weight: 400; letter-spacing: -.065em; margin: 24px 0 12px; }
+    .description { max-width: 620px; font-size: 15px; line-height: 1.8; margin: 0 0 55px; color: #555; word-break: keep-all; }
+    .topline { border-top: 1px solid #111; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; letter-spacing: 1px; }
+    .topline a { text-decoration: underline; text-underline-offset: 4px; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .post { display: block; position: relative; overflow: hidden; aspect-ratio: 1 / 1; background: #f2f2f2; }
+    .post img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease, opacity .3s ease; }
+    .post:hover img { transform: scale(1.035); opacity: .83; }
+    .post:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
+    .empty { padding: 40px 0; color: #777; font-size: 13px; }
+    .loadmore { display: block; margin: 55px auto 0; padding: 12px 32px; border: 1px solid #111; background: #fff; color: #111; font-size: 12px; letter-spacing: 1.5px; cursor: pointer; }
+    .loadmore:hover { background: #111; color: #fff; }
+    .loadmore[hidden] { display: none; }
+    footer { padding: 35px 5%; border-top: 1px solid #eee; font-size: 12px; }
+    @media (max-width: 650px) { main { padding: 140px 6% 80px; } .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; } .description { font-size: 13px; } }
+    @media (prefers-reduced-motion: reduce) { .post img { transition: none; } }
+  </style>
+</head>
+<body>
+  <div id="site-navigation"></div>
+  <main>
+    <div class="eyebrow">03 / MAGAZINE</div>
+    <h1>NICE MEET CHU</h1>
+    <p class="description">패션과 취향, 일상의 작은 발견을 소개하는 나이스미츄매거진.</p>
+    <div class="topline"><span>ALL STORIES</span><a href="https://www.instagram.com/nicemechew.mag/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a></div>
+    <div class="gallery" id="gallery" aria-live="polite"></div>
+    <p class="empty" id="feed-status" role="status">게시물을 불러오는 중입니다...</p>
+    <button class="loadmore" id="load-more" type="button" hidden>MORE ↓</button>
+  </main>
+  <footer>© OHV AGENCY. ALL RIGHTS RESERVED.</footer>
+  <script src="navigation.js"></script>
+  <script>
+    const PAGE_SIZE = 12;
+    let posts = [];
+    let displayed = 0;
+    const gallery = document.getElementById('gallery');
+    const more = document.getElementById('load-more');
+    const status = document.getElementById('feed-status');
+
+    function renderMore() {
+      const batch = posts.slice(displayed, displayed + PAGE_SIZE);
+      for (const item of batch) {
+        const link = document.createElement('a');
+        link.className = 'post';
+        link.href = item.permalink;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.setAttribute('aria-label', (item.caption || 'Instagram 게시물').slice(0, 100));
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = (item.caption || '나이스미츄매거진 게시물').slice(0, 120);
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        link.append(img);
+        gallery.append(link);
+      }
+      displayed += batch.length;
+      more.hidden = displayed >= posts.length;
+    }
+
+    more.addEventListener('click', renderMore);
+
+    fetch('instagram-feed.json', { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('Feed not ready');
+        return response.json();
+      })
+      .then(data => {
+        if (!Array.isArray(data)) throw new Error('Invalid feed');
+        posts = data.filter(p => p.image && p.permalink)
+          .sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
+        status.textContent = posts.length ? '' : '게시물 준비 중입니다.';
+        renderMore();
+      })
+      .catch(() => {
+        status.textContent = '매거진 게시물을 준비 중입니다. Instagram에서 먼저 만나보세요.';
+      });
+  </script>
+</body>
+</html>
