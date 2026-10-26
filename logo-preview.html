@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>OHV Logo Preview</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      color: #111;
+      font-family: Arial, sans-serif;
+    }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 5% 80px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .intro {
+      margin: 0 0 40px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      padding: 20px;
+    }
+
+    .label {
+      margin-bottom: 14px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: #777;
+    }
+
+    .preview {
+      background: #efefef;
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .preview img {
+      max-width: 100%;
+      max-height: 90px;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .filename {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #999;
+      word-break: break-all;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wrap {
+        padding: 40px 5% 60px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .preview {
+        min-height: 140px;
+      }
+
+      .preview img {
+        max-height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>OHV Logo Preview</h1>
+    <p class="intro">
+      업로드한 로고 8개를 한 화면에서 비교하는 미리보기 페이지입니다.<br>
+      아래 파일명만 실제 업로드한 로고 파일명에 맞게 수정하면 됩니다.
+    </p>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="label">LOGO 01</div>
+        <div class="preview">
+          <img src="images/logos/logo-01.png" alt="OHV logo 01">
+        </div>
+        <div class="filename">images/logos/logo-01.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 02</div>
+        <div class="preview">
+          <img src="images/logos/logo-02.png" alt="OHV logo 02">
+        </div>
+        <div class="filename">images/logos/logo-02.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 03</div>
+        <div class="preview">
+          <img src="images/logos/logo-03.png" alt="OHV logo 03">
+        </div>
+        <div class="filename">images/logos/logo-03.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 04</div>
+        <div class="preview">
+          <img src="images/logos/logo-04.png" alt="OHV logo 04">
+        </div>
+        <div class="filename">images/logos/logo-04.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 05</div>
+        <div class="preview">
+          <img src="images/logos/logo-05.png" alt="OHV logo 05">
+        </div>
+        <div class="filename">images/logos/logo-05.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 06</div>
+        <div class="preview">
+          <img src="images/logos/logo-06.png" alt="OHV logo 06">
+        </div>
+        <div class="filename">images/logos/logo-06.png</div>
+      </div>
+
+      <div class="card">
+        <div class="label">LOGO 07</div>
+        <div class="preview">
+          <img src="images/logos/logo-07.png" alt="OHV logo 07">
+        </div>
+        <div class="filename">images/logos/logo-07.png</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
