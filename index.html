@@ -1,86 +1,136 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- OHV 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="navigation.css">
-  <title>OHV AGENCY</title>
-  <style>
-    * { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+  <!-- =====================================
+       01. OHV 파비콘
+
+       브라우저 탭에 표시되는 작은 로고
+       ===================================== -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- OHV 공통 폰트 -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- OHV 공통 네비게이션 디자인 -->
+  <link rel="stylesheet" href="navigation.css">
+
+  <!-- 브라우저 탭 제목 -->
+  <title>OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       02. 기본 설정
+       ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       background: #fff;
       color: #111;
       font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    /* 상단 고정 메뉴 */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      z-index: 100;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -2px;
+    button,
+    input,
+    textarea,
+    select {
+      font-family: 'Pretendard', sans-serif;
     }
 
-    nav {
-      display: flex;
-      gap: 32px;
-    }
 
-    nav a {
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
+    /* =====================================
+       03. 메인 화면 전체 영역
 
-    nav a:hover { opacity: 0.45; }
+       min-height : 화면 높이 전체 사용
+       padding    : 상단 / 좌우 / 하단 여백
 
-    /* 메인 */
+       상단 네비게이션은 navigation.css에서 관리
+       ===================================== */
+
     .hero {
       min-height: 100vh;
+      min-height: 100svh;
+
       padding: 130px 5% 45px;
+
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       position: relative;
       text-align: center;
     }
 
-    .hero h1 {
-      font-size: clamp(54px, 9vw, 140px);
-      font-weight: 500;
-      letter-spacing: -0.07em;
-      margin: 0;
+
+    /* =====================================
+       04. 메인 OHV AGENCY 이미지 로고
+
+       ✏️ 가장 중요한 수정 부분!
+
+       기존 텍스트 OHV AGENCY 대신
+       index_logo.png 이미지를 표시합니다.
+
+       width : 이미지 표시 너비
+       height: auto : 원본 이미지 비율 유지
+
+       920px → PC에서 이미지 최대 너비
+       ===================================== */
+
+    .hero-logo {
+      display: block;
+      width: min(78vw, 920px);
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
     }
+
+
+    /* =====================================
+       05. 메인 로고 아래 서브 문구
+
+       Creative · Visual Design · Marketing
+
+       font-size    : 글씨 크기
+       margin-top   : 로고와 문구 사이 간격
+       letter-spacing : 글자 간격
+       ===================================== */
 
     .subtitle {
       font-size: 12px;
+      font-weight: 400;
       letter-spacing: 3px;
       margin-top: 18px;
+      line-height: 1.6;
     }
+
+
+    /* =====================================
+       06. 추가 문구 스타일
+
+       현재는 사용하지 않지만
+       추후 추가 문구에 사용할 수 있습니다.
+       ===================================== */
 
     .tagline {
       font-family: Georgia, serif;
@@ -88,6 +138,13 @@
       font-size: 18px;
       margin-top: 30px;
     }
+
+
+    /* =====================================
+       07. 스크롤 안내 문구
+
+       현재 HTML에서는 숨김 처리되어 있습니다.
+       ===================================== */
 
     .scroll {
       position: absolute;
@@ -97,7 +154,15 @@
       letter-spacing: 1px;
     }
 
-    /* 아래 섹션 */
+
+    /* =====================================
+       08. 아래 추가 섹션
+
+       ABOUT / SERVICES / WORK / CONTACT
+
+       현재 메인에서는 숨김 상태를 유지합니다.
+       ===================================== */
+
     section {
       padding: 120px 8%;
       min-height: 60vh;
@@ -131,98 +196,223 @@
       padding: 20px 0;
     }
 
+
+    /* =====================================
+       09. 푸터
+       ===================================== */
+
     footer {
       padding: 40px 5%;
       border-top: 1px solid #eee;
       font-size: 12px;
     }
 
+
+    /* =====================================
+       10. 모바일 화면
+
+       650px 이하 화면에 적용됩니다.
+
+       모바일 메인 로고 너비 : 88vw
+       ===================================== */
+
     @media (max-width: 650px) {
-      header {
-        height: 70px;
-        padding: 0 5%;
+
+      .hero {
+        padding: 110px 6% 40px;
       }
 
-      .logo { font-size: 24px; }
+      /* ✏️ 모바일 로고 이미지 크기 */
+      .hero-logo {
+        width: 88vw;
+        max-width: 100%;
+        height: auto;
+      }
 
-      nav { gap: 12px; }
-
-      nav a {
+      /* 모바일 서브 문구 */
+      .subtitle {
         font-size: 9px;
-        letter-spacing: 0;
+        letter-spacing: 1.5px;
+        margin-top: 18px;
       }
 
-      .hero h1 { font-size: 14vw; }
+      /* 추가 섹션 */
+      .services {
+        grid-template-columns: 1fr;
+      }
 
-      .subtitle { font-size: 9px; }
+      section {
+        padding: 90px 6%;
+      }
 
-      .services { grid-template-columns: 1fr; }
-
-      section { padding: 90px 6%; }
     }
- /* 전체 폰트 Pretendard 통일 */
-body, button, input, textarea, select {
-  font-family: 'Pretendard', sans-serif;
-}
+
   </style>
 </head>
+
+
 <body>
 
-  <header>
-    <a href="#home" class="logo">ohv.</a>
-<!-- 공통 네비게이션 -->
-<div id="site-navigation"></div>
-  </header>
+  <!-- =====================================
+       11. OHV 공통 네비게이션
+
+       상단 로고 및 ABOUT / SERVICES / WORK / CONTACT
+
+       navigation.html에서 자동으로 불러옵니다.
+
+       ※ 여기서 기존 ohv. 텍스트 로고를
+          따로 추가하지 마세요.
+       ===================================== -->
+
+  <div id="site-navigation"></div>
+
 
   <main>
+
+    <!-- =====================================
+         12. 메인 화면
+
+         ✏️ 수정 1. 메인 로고 이미지
+
+         index_logo.png 파일을 표시합니다.
+
+         현재 경로:
+         index.html과 같은 폴더
+
+         이미지 파일명이 다르거나
+         다른 폴더에 있다면 src를 수정하세요.
+         ===================================== -->
+
     <div class="hero" id="home">
-      <h1>OHV AGENCY</h1>
+
+      <h1 style="margin:0; line-height:0;">
+        <img
+          src="index_logo.png"
+          alt="OHV AGENCY"
+          class="hero-logo">
+      </h1>
+
+
+      <!-- =====================================
+           ✏️ 수정 2. 메인 서브 문구
+
+           아래 텍스트만 수정하면 됩니다.
+           ===================================== -->
+
       <div class="subtitle">
         Creative · Visual Design · Marketing
       </div>
- <div hidden>     
-   <div class="scroll">SCROLL TO EXPLORE ↓</div>
- </div>
-    </div>
-<div hidden>
-    <section id="about">
-      <div class="section-label">01 / ABOUT</div>
-      <h2>Oh, hello.</h2>
-      <p>
-OHV는 감탄사 ‘OH!’에서 시작합니다.
-브랜드만의 매력을 발견하고, 새로운 시선으로 해석하며, 감각적인 비주얼과 마케팅으로 구현합니다.
-브랜딩부터 콘텐츠, 인플루언서 마케팅, 캠페인까지. 브랜드의 아이디어가 사람들의 시선을 사로잡는 순간을 만듭니다.
-      </p>
-    </section>
 
-    <section id="services">
-      <div class="section-label">02 / SERVICES</div>
-      <h2>What we do.</h2>
-      <div class="services">
-        <div class="service">Branding & BX Design</div>
-        <div class="service">Creative Direction</div>
-        <div class="service">SNS & Content</div>
-        <div class="service">Influencer Marketing</div>
-        <div class="service">Lookbook & Campaign</div>
-        <div class="service">Pop-up & Experience</div>
+
+      <!-- =====================================
+           스크롤 안내 문구
+
+           현재 숨김 처리
+           ===================================== -->
+
+      <div hidden>
+        <div class="scroll">
+          SCROLL TO EXPLORE ↓
+        </div>
       </div>
-    </section>
 
-    <section id="work">
-      <div class="section-label">03 / WORK</div>
-      <h2>Selected works.</h2>
-      <p>Our projects are coming soon.</p>
-    </section>
+    </div>
 
-    <section id="contact">
-      <div class="section-label">04 / CONTACT</div>
-      <h2>Let's work together.</h2>
-      <p>Project inquiry form — Coming soon.</p>
-    </section>
- </div>
+
+    <!-- =====================================
+         13. 아래 추가 섹션
+
+         기존 홈페이지에 있던
+         ABOUT / SERVICES / WORK / CONTACT 영역
+
+         현재 hidden으로 숨겨져 있습니다.
+         향후 필요하면 hidden을 제거하세요.
+         ===================================== -->
+
+    <div hidden>
+
+      <!-- ABOUT -->
+      <section id="about">
+
+        <div class="section-label">01 / ABOUT</div>
+
+        <h2>Oh, hello.</h2>
+
+        <p>
+          OHV는 감탄사 ‘OH!’에서 시작합니다.
+          브랜드만의 매력을 발견하고, 새로운 시선으로 해석하며,
+          감각적인 비주얼과 마케팅으로 구현합니다.
+          브랜딩부터 콘텐츠, 인플루언서 마케팅, 캠페인까지.
+          브랜드의 아이디어가 사람들의 시선을 사로잡는 순간을 만듭니다.
+        </p>
+
+      </section>
+
+
+      <!-- SERVICES -->
+      <section id="services">
+
+        <div class="section-label">02 / SERVICES</div>
+
+        <h2>What we do.</h2>
+
+        <div class="services">
+          <div class="service">Branding & BX Design</div>
+          <div class="service">Creative Direction</div>
+          <div class="service">SNS & Content</div>
+          <div class="service">Influencer Marketing</div>
+          <div class="service">Lookbook & Campaign</div>
+          <div class="service">Pop-up & Experience</div>
+        </div>
+
+      </section>
+
+
+      <!-- WORK -->
+      <section id="work">
+
+        <div class="section-label">03 / WORK</div>
+
+        <h2>Selected works.</h2>
+
+        <p>Our projects are coming soon.</p>
+
+      </section>
+
+
+      <!-- CONTACT -->
+      <section id="contact">
+
+        <div class="section-label">04 / CONTACT</div>
+
+        <h2>Let's work together.</h2>
+
+        <p>Project inquiry form — Coming soon.</p>
+
+      </section>
+
+    </div>
+
   </main>
 
-  <footer>© OHV AGENCY. ALL RIGHTS RESERVED.</footer>
- <script src="navigation.js"></script>
+
+  <!-- =====================================
+       14. OHV 공통 푸터
+       ===================================== -->
+
+  <footer>
+    © OHV AGENCY. ALL RIGHTS RESERVED.
+  </footer>
+
+
+  <!-- =====================================
+       15. OHV 공통 네비게이션 기능
+
+       navigation.js에서
+       상단 메뉴 및 WORK 드롭다운을 관리합니다.
+       ===================================== -->
+
+  <script src="navigation.js"></script>
+
 </body>
 </html>
