@@ -27,7 +27,7 @@ const projects = [
   {
   id: "marketing-01",
   category: "MARKETING",
-  title: "PROJECT NAME 01",
+  title: "[29 EDITION] TTUDEMENT X GOMSONGYI EDITION",
   link: "projects/marketing-01.html"
   },
 
