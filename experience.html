@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="navigation.css">
+  <title>SELECTED EXPERIENCE — OHV AGENCY</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;                 /* 브라우저 기본 여백 제거 */
+      background: #fff;          /* 전체 배경색 */
+      color: #111;               /* 기본 글씨 색상 */
+      font-family: 'Pretendard', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;     /* 링크 밑줄 제거 */
+    }
+
+    button {
+      font-family: inherit;
+    }
+    main {
+      max-width: 1400px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 180px 10% 120px;
+    }
+    .label {
+      font-size: 12px;           /* 글씨 크기 */
+      letter-spacing: 2px;       /* 글자 간격 */
+    }
+    h1 {
+      font-size: clamp(42px, 7vw, 100px);
+      font-weight: 400;
+      letter-spacing: -0.065em;
+      line-height: 1.1;
+      margin: 30px 0 25px;
+    }
+    .intro {
+      max-width: 650px;
+      color: #777;
+      font-size: 14px;
+      line-height: 1.8;
+      margin: 0 0 70px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    /* 기본 필터 버튼 디자인 */
+    .filter {
+      background: none;
+      border: none;
+      padding: 5px 0;
+      color: #999;
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+
+    /* 마우스를 올렸을 때 */
+    .filter:hover {
+      color: #111;
+    }
+
+    /* 선택된 필터 버튼 */
+    .filter.active {
+      color: #111;
+      border-bottom: 1px solid #111;
+    }
+
+
+    /* =====================================
+       07. 프로젝트 목록 전체
+
+       프로젝트는 projects.js에서 자동으로 불러옵니다.
+       ===================================== */
+
+    .project-list {
+      border-top: 1px solid #111;
+    }
+
+    /* 프로젝트별 구분선 */
+    .project-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* =====================================
+       08. 프로젝트 한 줄 디자인
+
+       padding : 프로젝트 사이 세로 간격
+       gap     : 글씨와 화살표 사이 최소 간격
+
+       이미지는 표시하지 않습니다.
+       ===================================== */
+
+    .project-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 29px 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* 마우스를 올리면 글씨가 연해집니다 */
+    .project-link:hover {
+      opacity: 0.45;
+    }
+
+
+    /* =====================================
+       09. 프로젝트 제목
+
+       projects.js의 title에 입력한 내용이 표시됩니다.
+       ===================================== */
+
+    .project-title {
+      font-size: clamp(20px, 3vw, 34px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       10. 프로젝트 카테고리
+
+       MARKETING 또는 VISUAL 표시
+       ===================================== */
+
+    .project-category {
+      display: block;
+      margin-top: 10px;
+      color: #999;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+
+    /* =====================================
+       11. 프로젝트 오른쪽 화살표
+       ===================================== */
+
+    .project-arrow {
+      font-size: 24px;
+      font-weight: 300;
+      flex-shrink: 0;
+    }
+
+
+    /* =====================================
+       12. 프로젝트가 없을 때 안내 문구
+       ===================================== */
+
+    .empty {
+      padding: 45px 0;
+      color: #999;
+      font-size: 13px;
+    }
+
+
+    /* =====================================
+       13. 푸터
+
+       홈페이지 가장 아래 저작권 문구
+       ===================================== */
+
+    footer {
+      border-top: 1px solid #eee;
+      padding: 35px 5%;
+      font-size: 12px;
+    }
+
+
+    /* =====================================
+       14. 모바일 화면 설정
+
+       화면 너비가 650px 이하일 때 적용됩니다.
+       ===================================== */
+
+    @media (max-width: 650px) {
+
+      /* 모바일 페이지 여백 */
+      main {
+        padding: 150px 6% 80px;
+      }
+
+      /* 모바일 메인 제목 크기 */
+      h1 {
+        font-size: clamp(36px, 9vw, 56px);
+      }
+
+      /* 모바일 소개 문구 */
+      .intro {
+        font-size: 13px;
+        margin-bottom: 55px;
+      }
+
+      /* 모바일 필터 간격 */
+      .filters {
+        gap: 20px;
+      }
+
+      .filter {
+        font-size: 11px;
+      }
+
+      /* 모바일 프로젝트 간격 */
+      .project-link {
+        padding: 23px 0;
+      }
+
+      /* 모바일 프로젝트명 크기 */
+      .project-title {
+        font-size: 21px;
+      }
+
+      .project-arrow {
+        font-size: 20px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =====================================
+       공통 상단 네비게이션
+
+       navigation.js가 navigation.html을 불러옵니다.
+       여기서 로고와 메뉴를 직접 수정하지 마세요!
+       ===================================== -->
+
+  <div id="site-navigation"></div>
+
+
+  <main>
+    <div class="label">
+      03 / Selected Experience
+    </div>
+
+    <h1>Selected Experience.</h1>
+
+    <p class="intro">
+      A selection of projects completed by OHV members
+      during their previous professional roles.
+    </p>
+
+
+    <!-- =====================================
+         카테고리 필터
+
+         ALL       : 전체 프로젝트
+         MARKETING : Sunny 프로젝트
+         VISUAL    : Gio 프로젝트
+
+         클릭하면 아래 목록이 자동으로 변경됩니다.
+         ===================================== -->
+
+    <div class="filters"
+         role="group"
+         aria-label="Project category">
+
+      <button
+        class="filter active"
+        type="button"
+        data-filter="ALL"
+        aria-pressed="true">
+        ALL
+      </button>
+
+      <button
+        class="filter"
+        type="button"
+        data-filter="MARKETING"
+        aria-pressed="false">
+        MARKETING
+      </button>
+
+      <button
+        class="filter"
+        type="button"
+        data-filter="VISUAL"
+        aria-pressed="false">
+        VISUAL
+      </button>
+
+    </div>
+
+    <div class="project-list" id="project-list"></div>
+
+  </main>
+
+  <footer>
+    © OHV AGENCY. ALL RIGHTS RESERVED.
+  </footer>
+  <script src="projects.js"></script>
+
+
+  <!-- =====================================
+       프로젝트 목록 및 필터 기능
+
+       작동 방식
+
+       1. projects.js의 프로젝트 정보 가져오기
+       2. ALL / MARKETING / VISUAL 필터 적용
+       3. 프로젝트명과 카테고리 표시
+       4. 클릭하면 개별 HTML 상세 페이지로 이동
+
+       프로젝트를 추가할 때
+       아래 JavaScript는 수정하지 않아도 됩니다!
+       ===================================== -->
+
+  <script>
+
+    /* 프로젝트 목록 영역 */
+    const projectList = document.getElementById('project-list');
+
+    /* 카테고리 필터 버튼 */
+    const filterButtons = document.querySelectorAll('.filter');
+
+
+    /* =====================================
+       프로젝트 목록 생성 기능
+       ===================================== */
+
+    function renderProjects(category = 'ALL') {
+
+      /* 기존에 표시된 프로젝트 목록 비우기 */
+      projectList.replaceChildren();
+
+      /* 선택된 카테고리만 가져오기 */
+      const filtered = projects.filter(project =>
+        category === 'ALL' || project.category === category
+      );
+
+
+      /* 등록된 프로젝트가 없는 경우 */
+      if (filtered.length === 0) {
+        const empty = document.createElement('p');
+
+        empty.className = 'empty';
+        empty.textContent = 'No projects available yet.';
+
+        projectList.appendChild(empty);
+        return;
+      }
+
+
+      /* 프로젝트를 한 개씩 화면에 표시 */
+      filtered.forEach(project => {
+
+        /* 프로젝트 한 줄 */
+        const item = document.createElement('div');
+        item.className = 'project-item';
+
+        /* 클릭 가능한 상세 페이지 링크 */
+        const link = document.createElement('a');
+        link.className = 'project-link';
+        link.href = project.link;
+
+        /* 프로젝트 정보 영역 */
+        const info = document.createElement('div');
+
+        /* 프로젝트 제목 */
+        const title = document.createElement('div');
+        title.className = 'project-title';
+        title.textContent = project.title;
+
+        /* MARKETING / VISUAL 카테고리 */
+        const categoryLabel = document.createElement('span');
+        categoryLabel.className = 'project-category';
+        categoryLabel.textContent = project.category;
+
+        /* 오른쪽 화살표 */
+        const arrow = document.createElement('span');
+        arrow.className = 'project-arrow';
+        arrow.textContent = '↗';
+        arrow.setAttribute('aria-hidden', 'true');
+
+        /* 화면에 요소 조립하기 */
+        info.append(title, categoryLabel);
+        link.append(info, arrow);
+        item.appendChild(link);
+        projectList.appendChild(item);
+
+      });
+    }
+
+
+    /* =====================================
+       카테고리 필터 클릭 기능
+       ===================================== */
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        /* 선택된 버튼 디자인 변경 */
+        filterButtons.forEach(btn => {
+
+          const active = btn === button;
+
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-pressed', String(active));
+
+        });
+
+        /* 선택된 카테고리로 목록 다시 표시 */
+        renderProjects(button.dataset.filter);
+
+      });
+
+    });
+
+    renderProjects();
+
+  </script>
+
+  <script src="navigation.js"></script>
+
+</body>
+</html>
