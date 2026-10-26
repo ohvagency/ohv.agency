@@ -1,28 +1,69 @@
 
-<!-- OHV 공통 상단 네비게이션 -->
+<!-- =====================================
+     OHV 공통 네비게이션
+
+     기존 ohv. 텍스트 로고 삭제
+     logo.png 이미지 로고 사용
+
+     ABOUT / SERVICES / WORK / CONTACT 유지
+===================================== -->
 
 <header class="site-header">
-  <a href="index.html" class="logo">ohv.</a>
+
+  <!-- =====================================
+       01. OHV 이미지 로고
+
+       logo.png 파일은
+       index.html과 같은 위치에 있어야 합니다.
+
+       로고 클릭 시 메인 페이지로 이동
+  ===================================== -->
+
+  <a href="index.html" class="logo">
+    <img
+      src="/ohv.agency/logo.png"
+      alt="OHV AGENCY"
+      class="logo-image">
+  </a>
+
+
+  <!-- =====================================
+       02. 상단 메뉴
+  ===================================== -->
 
   <nav class="site-nav" aria-label="Main navigation">
 
     <a href="about.html">ABOUT</a>
+
     <a href="services.html">SERVICES</a>
 
+
+    <!-- =====================================
+         03. WORK 드롭다운
+
+         SELECTED EXPERIENCE
+         MAGAZINE
+
+         STUDIO WORK는 준비 중이므로 숨김
+    ===================================== -->
+
     <div class="nav-work">
+
       <button
         type="button"
         class="work-trigger"
         aria-expanded="false"
-        aria-controls="work-dropdown"
-      >
+        aria-controls="work-dropdown">
         WORK
       </button>
 
       <div class="work-dropdown" id="work-dropdown">
+
         <div class="dropdown-inner">
 
-          <!-- 추후 STUDIO WORK 공개
+          <!--
+          STUDIO WORK 준비 완료 시 주석 해제
+
           <a href="studio-work.html">STUDIO WORK</a>
           -->
 
@@ -35,10 +76,14 @@
           </a>
 
         </div>
+
       </div>
+
     </div>
+
 
     <a href="contact.html">CONTACT</a>
 
   </nav>
+
 </header>
