@@ -25,11 +25,10 @@ const projects = [
  /* MARKETING — SUNNY */
 
   {
-    id: "marketing-01",
-    category: "MARKETING",
-    title: "PROJECT NAME 01",
-    type: "Brand Marketing",
-    link: "projects/marketing-01.html"
+  id: "marketing-01",
+  category: "MARKETING",
+  title: "PROJECT NAME 01",
+  link: "projects/marketing-01.html"
   },
 
 
@@ -39,7 +38,6 @@ const projects = [
     id: "visual-01",
     category: "VISUAL",
     title: "PROJECT NAME 02",
-    type: "Graphic Design",
     link: "projects/visual-01.html"
   }
 
