@@ -9,7 +9,7 @@
   <!-- OHV 공통 폰트 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <!-- OHV 공통 네비게이션 디자인 -->
+  <!-- OHV 공통 네비게이션 -->
   <link rel="stylesheet" href="navigation.css">
 
   <title>SERVICES — OHV AGENCY</title>
@@ -77,10 +77,7 @@
 
 
     /* =====================================
-       03. SERVICES 메인 제목
-
-       현재 페이지는 작은 번호 라벨만 표시합니다.
-       h1은 추후 메인 제목 추가 시 사용할 수 있습니다.
+       03. 메인 제목 관련 설정
     ===================================== */
 
     h1 {
@@ -99,19 +96,24 @@
 
 
     /* =====================================
-       04. SERVICES 카테고리 목록
+       04. SERVICES 카테고리 리스트
 
-       Branding / Marketing Strategy / Lookbook 등
+       ✏️ 수정 포인트
 
-       EXPERIENCE 리스트와 크기 통일
-       PC : 22px
-       모바일 : 16px
+       margin: 0
+       → 리스트 사이 추가 공백 제거
 
-       margin-bottom : 각 카테고리 사이 간격
+       PC 글씨 : 22px
+       모바일 글씨 : 16px
     ===================================== */
 
     .group {
-      margin: 0 0 22px;
+      margin: 0;
+    }
+
+    /* 마지막 항목 아래 구분선 */
+    .group:last-child {
+      border-bottom: 1px solid #111;
     }
 
     .group-heading {
@@ -137,8 +139,12 @@
     /* =====================================
        05. 카테고리 펼치기 / 접기 버튼
 
-       padding : 리스트 위아래 여백
-       border-top : 리스트 위 구분선
+       ✏️ 수정 포인트
+
+       padding: 20px 0
+       → 위아래 각각 20px
+
+       숫자를 줄이면 리스트 간격도 줄어듭니다.
     ===================================== */
 
     .group-toggle {
@@ -147,7 +153,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 25px 0;
+
+      padding: 20px 0;
+
       border: 0;
       border-top: 1px solid #111;
       background: #fff;
@@ -157,16 +165,18 @@
       font: inherit;
     }
 
-    /* 마우스를 올리면 제목이 연해집니다 */
+    /* 마우스 호버 */
     .group-toggle:hover h2 {
       opacity: .55;
     }
 
+    /* 키보드 접근성 */
     .group-toggle:focus-visible {
       outline: 2px solid #111;
       outline-offset: 4px;
     }
 
+    /* 오른쪽 금액 안내 및 + 버튼 */
     .group-toggle .toggle-right {
       display: flex;
       align-items: center;
@@ -174,7 +184,7 @@
       flex-shrink: 0;
     }
 
-    /* 오른쪽 + 기호 */
+    /* + 버튼 디자인 */
     .group-toggle .symbol {
       font-size: 30px;
       font-weight: 300;
@@ -184,12 +194,12 @@
       transition: transform .2s ease;
     }
 
-    /* 펼쳤을 때 + 기호가 회전합니다 */
+    /* 펼치면 + 버튼 회전 */
     .group-toggle[aria-expanded="true"] .symbol {
       transform: rotate(45deg);
     }
 
-    /* 닫힌 서비스 가격표 숨기기 */
+    /* 닫힌 가격표 숨기기 */
     .group-content[hidden] {
       display: none;
     }
@@ -203,9 +213,6 @@
        06. 서비스 가격표
 
        SERVICE / BUDGET / TIMELINE
-
-       font-size : 표 글씨 크기
-       padding : 표 안쪽 여백
     ===================================== */
 
     .table-wrap {
@@ -239,7 +246,7 @@
       word-break: keep-all;
     }
 
-    /* 각 열의 너비 */
+    /* 표 각 열의 너비 */
     .service-table th:nth-child(1),
     .service-table td:nth-child(1) {
       width: 42%;
@@ -276,7 +283,7 @@
     /* =====================================
        08. PROJECT INFORMATION
 
-       유의사항 및 취소 규정 영역
+       유의사항 및 취소 규정
     ===================================== */
 
     .policy {
@@ -293,7 +300,7 @@
       margin: 0 0 45px;
     }
 
-    /* 유의사항 / 프로젝트 취소 및 계약 해지 */
+    /* 유의사항 / 계약 해지 제목 */
     .policy h3 {
       font-size: 20px;
       font-weight: 500;
@@ -390,8 +397,11 @@
     /* =====================================
        12. 모바일 화면
 
-       700px 이하에서 적용됩니다.
-       SERVICES 리스트 제목은 16px!
+       화면 너비 700px 이하 적용
+
+       ✏️ SERVICES 리스트 간격
+       PC : 20px
+       모바일 : 17px
     ===================================== */
 
     @media (max-width: 700px) {
@@ -409,16 +419,17 @@
         font-size: 16px;
       }
 
-      /* SERVICES 리스트 간격 */
+      /* 리스트 추가 공백 제거 */
       .group {
-        margin-bottom: 22px;
+        margin: 0;
       }
 
+      /* 모바일 리스트 위아래 여백 */
       .group-toggle {
-        padding: 20px 0;
+        padding: 17px 0;
       }
 
-      /* SERVICES 리스트 제목 */
+      /* 모바일 리스트 제목 */
       .group-heading h2 {
         font-size: 16px;
       }
@@ -435,7 +446,7 @@
         font-size: 24px;
       }
 
-      /* 모바일 서비스 가격표 */
+      /* 모바일 가격표 */
       .service-table th {
         font-size: 10px;
       }
@@ -481,7 +492,10 @@
 
 
 <body>
+
+  <!-- OHV 공통 네비게이션 -->
   <div id="site-navigation"></div>
+
 
   <main>
 
@@ -489,17 +503,25 @@
     <div class="eyebrow">02 / Our Services.</div>
 
 
-    <!-- 서비스 카테고리 표시 영역
-         아래 JavaScript의 groups 데이터에서
-         카테고리 및 가격표가 자동 생성됩니다.
-         이 영역에 직접 서비스 내용을 추가하지 마세요.-->
+    <!-- =====================================
+         서비스 카테고리 자동 표시 영역
+
+         서비스 수정은 아래 groups 데이터에서!
+    ===================================== -->
 
     <div id="service-groups"></div>
-    <!-- PROJECT INFORMATION / 유의사항-->
+
+
+    <!-- =====================================
+         PROJECT INFORMATION / 유의사항
+    ===================================== -->
+
     <section class="policy" id="terms">
-      <div class="eyebrow">PROJECT INFORMATION / 07</div>
-      <h2>Things to know.</h2>
+
+      <div class="eyebrow">PROJECT INFORMATION / Things to know.</div>
+      
       <h3>유의사항</h3>
+
       <ul>
         <li>상기 금액은 VAT 별도 기준이며, 세부 업무 범위 및 프로젝트 규모에 따라 협의 후 조정될 수 있습니다.</li>
         <li>패키지로 진행할 경우, 전체 업무 범위 및 계약 기간에 따라 비용 조정이 가능합니다.</li>
@@ -510,17 +532,16 @@
         <li>최종 견적 및 진행 일정은 프로젝트 세부 내용 확인 후 확정됩니다.</li>
       </ul>
 
-      <!-- 프로젝트 취소 및 계약 해지 안내 -->
+
+      <!-- 프로젝트 취소 및 계약 해지 -->
       <h3>프로젝트 취소 및 계약 해지</h3>
 
       <p class="note">
         프로젝트 취소 및 계약 해지 시점에 따라 취소 수수료가 발생할 수 있습니다.
       </p>
 
-
       <!-- 취소 수수료 표 -->
       <div class="table-wrap">
-
         <table class="cancel-table">
 
           <thead>
@@ -535,19 +556,23 @@
               <td>진행 예정일 기준 14일 전까지</td>
               <td>없음 (기진행 업무 및 발생 실비 별도 정산)</td>
             </tr>
+
             <tr>
               <td>진행 예정일 기준 7~13일 전</td>
               <td>계약 금액의 30%</td>
             </tr>
+
             <tr>
               <td>진행 예정일 기준 3~6일 전</td>
               <td>계약 금액의 50%</td>
             </tr>
+
             <tr>
               <td>진행 예정일 기준 2일 전~당일</td>
               <td>계약 금액의 100%</td>
             </tr>
           </tbody>
+
         </table>
       </div>
 
@@ -559,28 +584,32 @@
 
     </section>
 
-    <!-- CONTACT 버튼-->
 
+    <!-- 하단 CONTACT 버튼 -->
     <div class="closing">
       <a href="contact.html">CONTACT</a>
     </div>
+
   </main>
+
+
   <!-- OHV 공통 푸터 -->
   <footer>
     © OHV AGENCY. ALL RIGHTS RESERVED.
   </footer>
+
+
   <script>
 
     /* =====================================
        13. SERVICES 데이터
-       ✏️ 서비스명, 가격, 기간 수정은 여기서!
-       [서비스명, 금액, 소요기간]
-       예시:
-       ['네이밍 및 슬로건', '100~', 'D-14~21']
-       각 카테고리의 rows 안에
-       같은 형식으로 항목을 추가할 수 있습니다.
-       카테고리를 추가하면
-       번호가 자동으로 붙습니다.
+
+       ✏️ 서비스명 / 가격 / 기간 수정
+
+       형식:
+       ['서비스명', '금액', '소요기간']
+
+       카테고리와 항목은 아래에서 수정하세요.
     ===================================== */
 
     const groups = [
@@ -651,7 +680,14 @@
       }
     ];
 
-    /*  14. 특수문자 처리 */
+
+    /* =====================================
+       14. 특수문자 처리
+
+       HTML 안전 처리 코드
+       수정하지 않아도 됩니다.
+    ===================================== */
+
     const esc = s => String(s).replace(
       /[&<>"']/g,
       c => ({
@@ -663,33 +699,49 @@
       }[c])
     );
 
-    /* 15. 카테고리 및 가격표 자동 생성 */
+
+    /* =====================================
+       15. 카테고리 / 가격표 자동 생성
+
+       groups 데이터를 읽어서
+       서비스 목록을 자동 생성합니다.
+    ===================================== */
 
     document.querySelector('#service-groups').innerHTML =
       groups.map((g, i) => {
+
         const id = 'service-panel-' + i;
+
         return `
           <section class="group">
+
             <div class="group-heading">
+
               <button
                 class="group-toggle"
                 type="button"
                 aria-expanded="false"
                 aria-controls="${id}"
               >
+
                 <h2>
                   ${String(i + 1).padStart(2, '0')}. ${esc(g.name)}
                 </h2>
+
                 <span class="toggle-right">
                   <small>KRW / VAT EXCLUDED</small>
                   <span class="symbol" aria-hidden="true">+</span>
                 </span>
+
               </button>
 
             </div>
+
             <div class="group-content" id="${id}" hidden>
               <div class="table-wrap">
+
                 <table class="service-table">
+
                   <thead>
                     <tr>
                       <th>SERVICE</th>
@@ -707,32 +759,50 @@
                       </tr>
                     `).join('')}
                   </tbody>
+
                 </table>
+
               </div>
             </div>
+
           </section>
         `;
+
       }).join('');
 
-    /*  16. 카테고리 클릭 기능 */
+
+    /* =====================================
+       16. 카테고리 클릭 기능
+
+       클릭 시 가격표 펼치기 / 접기
+    ===================================== */
 
     document.querySelectorAll('.group-toggle').forEach(button => {
+
       button.addEventListener('click', () => {
+
         const panel = document.getElementById(
           button.getAttribute('aria-controls')
         );
+
         const expanded =
           button.getAttribute('aria-expanded') === 'true';
+
         button.setAttribute(
           'aria-expanded',
           String(!expanded)
         );
+
         panel.hidden = expanded;
+
       });
+
     });
+
   </script>
 
-  <!-- OHV 공통 네비게이션 기능 -->
+
+  <!-- OHV 공통 네비게이션 -->
   <script src="navigation.js"></script>
 
 </body>
