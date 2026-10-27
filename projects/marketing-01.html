@@ -399,6 +399,32 @@
 
     }
 
+/* 영상 목록 폰트 최종 조정 */
+
+.video-text {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 1.25;
+}
+
+.video-text::after {
+  margin-left: 7px;
+  font-size: 15px;
+}
+
+@media (max-width: 650px) {
+  .video-text {
+    font-size: 13px;
+    letter-spacing: -0.09em;
+    line-height: 1.25;
+  }
+
+  .video-text::after {
+    margin-left: 6px;
+    font-size: 14px;
+  }
+}
   </style>
 </head>
 
