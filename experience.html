@@ -17,12 +17,12 @@
       box-sizing: border-box;
     }
 
-    body {
-      margin: 0;                 /* 브라우저 기본 여백 제거 */
-      background: #fff;          /* 전체 배경색 */
-      color: #111;               /* 기본 글씨 색상 */
-      font-family: 'Pretendard', sans-serif;
-    }
+body {
+  margin: 0;
+  background: #F1F1F1;
+  color: #939393;
+  font-family: 'Pretendard', sans-serif;
+}
 
     a {
       color: inherit;
@@ -231,6 +231,68 @@
         font-size: 20px;
       }
     }
+
+/* =====================================
+   SELECTED EXPERIENCE 컬러 통일
+
+   배경색 : #F1F1F1
+   글자색 : #939393
+===================================== */
+
+/* 페이지 전체 배경 */
+html,
+body,
+main {
+  background-color: #F1F1F1;
+}
+
+/* 페이지 제목 및 소개 문구 */
+main,
+main .label,
+main .intro {
+  color: #939393;
+}
+
+/* ALL / MARKETING / VISUAL 필터 */
+main .filter {
+  color: #939393;
+}
+
+/* 선택된 필터 */
+main .filter.active {
+  color: #939393;
+  border-bottom-color: #939393;
+}
+
+/* 필터 마우스 오버 */
+main .filter:hover {
+  color: #666565;
+}
+
+/* 프로젝트명, 카테고리, 화살표 */
+main .project-link,
+main .project-title,
+main .project-category,
+main .project-arrow,
+main .empty {
+  color: #939393;
+}
+
+/* 프로젝트 목록 구분선 */
+main .project-list {
+  border-top-color: #939393;
+}
+
+main .project-item {
+  border-bottom-color: #D8D8D8;
+}
+
+/* 푸터 */
+footer {
+  background-color: #F1F1F1;
+  color: #939393;
+  border-top-color: #D8D8D8;
+}
 
   </style>
 </head>
