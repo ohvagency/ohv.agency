@@ -21,12 +21,12 @@
        01. 기본 설정
     ===================================== */
 
-    :root {
-      --ink: #111;
-      --muted: #777;
-      --line: #dedede;
-      --paper: #fff;
-    }
+:root {
+  --ink: #939393;
+  --muted: #939393;
+  --line: #dedede;
+  --paper: #F1F1F1;
+}
 
     * {
       box-sizing: border-box;
@@ -148,23 +148,23 @@
        숫자를 줄이면 리스트 간격도 줄어듭니다.
     ===================================== */
 
-    .group-toggle {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
+   .group-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
 
-      padding: 20px 0;
+  padding: 20px 0;
 
-      border: 0;
-      border-top: 1px solid #111;
-      background: #fff;
-      color: #111;
-      text-align: left;
-      cursor: pointer;
-      font: inherit;
-    }
+  border: 0;
+  border-top: 1px solid #939393;
+  background: #F1F1F1;
+  color: #939393;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
 
     /* 마우스 호버 */
     .group-toggle:hover h2 {
@@ -488,6 +488,49 @@
       }
     }
 
+/* =====================================
+   SERVICES 컬러 통일
+===================================== */
+
+/* 페이지 배경 */
+html,
+body {
+  background: #F1F1F1;
+}
+
+/* SERVICES 본문 전체 글자색 */
+main,
+main .eyebrow,
+main .meta,
+main .intro,
+main .group-heading small,
+main .group-toggle,
+main .service-table th,
+main .service-table td,
+main .note,
+main .policy,
+main .policy li::before,
+main .cancel-table th,
+main .cancel-table td,
+footer {
+  color: #939393;
+}
+
+/* 카테고리 버튼 배경 */
+main .group-toggle {
+  background: #F1F1F1;
+}
+
+/* CONTACT 버튼 */
+main .closing a {
+  color: #939393;
+  border-color: #939393;
+}
+
+main .closing a:hover {
+  background: #939393;
+  color: #F1F1F1;
+}
   </style>
 </head>
 
