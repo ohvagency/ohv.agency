@@ -399,36 +399,51 @@
 
     }
 
-
 /* =====================================
-   OHV 유튜브 영상 목록 글자 간격 최종 조정
+   OHV 유튜브 영상 목록 폰트 설정
 
-   자간 더 좁게
+   자간 : 기본값
+   줄 높이 : 기본값
    글씨 크기 및 굵기 유지
 ===================================== */
 
 .video-text {
   font-size: 15px !important;
   font-weight: 700 !important;
-  letter-spacing: -0.1em !important;
-  line-height: 1.1 !important;
-  font-stretch: condensed;
+  letter-spacing: normal !important;
+  line-height: normal !important;
 }
 
 /* + / − 기호 간격 */
 .video-text::after {
   margin-left: 7px;
-  letter-spacing: 0;
+  letter-spacing: normal;
 }
 
 /* 모바일 */
 @media (max-width: 650px) {
   .video-text {
     font-size: 13px !important;
-    letter-spacing: -0.13em !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
   }
 }
 
+/* =====================================
+   유튜브 영상 목록 세로 간격 줄이기
+===================================== */
+
+/* PC : 영상 제목 사이 간격 */
+.gallery {
+  gap: 8px;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .gallery {
+    gap: 6px;
+  }
+}
   </style>
 </head>
 
