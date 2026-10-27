@@ -5,490 +5,949 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- OHV 파비콘 -->
+
+  <!-- =====================================
+       01. OHV 공통 설정
+  ===================================== -->
+
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet"
+
+  <link
+    rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
   <link rel="stylesheet" href="navigation.css">
+
   <title>SELECTED EXPERIENCE — OHV AGENCY</title>
 
   <style>
+
+    /* =====================================
+       02. 기본 디자인
+
+       배경 : #F1F1F1
+       글씨 : #939393
+    ===================================== */
+
     * {
       box-sizing: border-box;
     }
 
-body {
-  margin: 0;
-  background: #F1F1F1;
-  color: #939393;
-  font-family: 'Pretendard', sans-serif;
-}
+    html,
+    body {
+      margin: 0;
+      background: #F1F1F1;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
     a {
       color: inherit;
-      text-decoration: none;     /* 링크 밑줄 제거 */
+      text-decoration: none;
     }
 
     button {
       font-family: inherit;
     }
+
+
+    /* =====================================
+       03. 전체 페이지 영역
+
+       기존 공통 네비게이션 아래부터 시작
+
+       ✏️ padding-top
+       → 콘텐츠 시작 높이
+
+       ✏️ padding 좌우 값
+       → 페이지 바깥 여백
+    ===================================== */
+
     main {
-      max-width: 1400px;
+      width: 100%;
+      max-width: 1800px;
       min-height: 100vh;
       margin: 0 auto;
-      padding: 180px 10% 120px;
-    }
-    .label {
-      font-size: 12px;           /* 글씨 크기 */
-      letter-spacing: 2px;       /* 글자 간격 */
-    }
-    h1 {
-      font-size: clamp(42px, 7vw, 100px);
-      font-weight: 400;
-      letter-spacing: -0.065em;
-      line-height: 1.1;
-      margin: 30px 0 25px;
-    }
-    .intro {
-      max-width: 650px;
-      color: #777;
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 0 0 70px;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 30px;
+      padding: 145px 4% 120px;
+      background: #F1F1F1;
     }
 
-    /* 기본 필터 버튼 디자인 */
-    .filter {
-      background: none;
+
+    /* =====================================
+       04. 3단 레이아웃
+
+       왼쪽 : 카테고리
+       가운데 : 프로젝트 리스트
+       오른쪽 : 프로젝트 상세
+
+       ✏️ 비율 조정
+
+       18% : 왼쪽
+       31% : 가운데
+       나머지 : 오른쪽
+
+       구분선 / 박스 / 테두리 없음
+    ===================================== */
+
+    .experience-layout {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 18%)
+        minmax(0, 31%)
+        minmax(0, 1fr);
+
+      column-gap: 26px;
+      align-items: start;
+      width: 100%;
+    }
+
+    .category-column,
+    .project-column,
+    .detail-column {
+      min-width: 0;
+      padding: 0;
+      margin: 0;
       border: none;
-      padding: 5px 0;
-      color: #999;
-      font-size: 12px;
-      letter-spacing: 1px;
-      cursor: pointer;
-    }
-
-    /* 마우스를 올렸을 때 */
-    .filter:hover {
-      color: #111;
-    }
-
-    /* 선택된 필터 버튼 */
-    .filter.active {
-      color: #111;
-      border-bottom: 1px solid #111;
+      background: transparent;
     }
 
 
     /* =====================================
-       07. 프로젝트 목록 전체
+       05. 왼쪽 카테고리
 
-       프로젝트는 projects.js에서 자동으로 불러옵니다.
-       ===================================== */
+       ALL
+       MARKETING
+       VISUAL
 
-    .project-list {
-      border-top: 1px solid #111;
-    }
+       Pretendard ExtraBold 800
+       자간 최대한 촘촘하게
 
-    /* 프로젝트별 구분선 */
-    .project-item {
-      border-bottom: 1px solid #ddd;
-    }
+       ✏️ font-size : 글씨 크기
+       ✏️ line-height : 줄 사이 간격
+    ===================================== */
 
-    /* =====================================
-       08. 프로젝트 한 줄 디자인
-
-       padding : 프로젝트 사이 세로 간격
-       gap     : 글씨와 화살표 사이 최소 간격
-
-       이미지는 표시하지 않습니다.
-       ===================================== */
-
-    .project-link {
+    .category-list {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 29px 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+    }
+
+    .category-button {
+      display: block;
+      width: auto;
+
+      margin: 0;
+      padding: 0;
+
+      background: transparent;
+      border: none;
+
+      color: #939393;
+
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.065em;
+      line-height: 1.2;
+      text-align: left;
+
+      cursor: pointer;
       transition: opacity 0.2s ease;
     }
 
-    /* 마우스를 올리면 글씨가 연해집니다 */
-    .project-link:hover {
-      opacity: 0.45;
+    .category-button:hover {
+      opacity: 0.55;
     }
 
-/* 프로젝트 리스트 제목 — PC */
-.project-title {
-  font-size: 22px;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1.35;
-  word-break: keep-all;
-}
+    .category-button.active {
+      color: #939393;
+      opacity: 1;
+    }
+
+    .category-button:not(.active) {
+      opacity: 0.65;
+    }
 
 
     /* =====================================
-       10. 프로젝트 카테고리
+       06. 가운데 프로젝트 리스트
 
-       MARKETING 또는 VISUAL 표시
-       ===================================== */
+       projects.js에서 자동으로 불러옴
 
-    .project-category {
+       Pretendard ExtraBold 800
+       자간 -0.065em
+
+       화살표 / 카테고리 표기 없음
+       프로젝트명 텍스트만 표시
+    ===================================== */
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 3px;
+
+      margin: 0;
+      padding: 0;
+
+      border: none;
+    }
+
+    .project-item {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .project-button {
       display: block;
-      margin-top: 10px;
-      color: #999;
-      font-size: 11px;
-      letter-spacing: 1px;
+      width: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.065em;
+      line-height: 1.2;
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
     }
 
-
-    /* =====================================
-       11. 프로젝트 오른쪽 화살표
-       ===================================== */
-
-    .project-arrow {
-      font-size: 24px;
-      font-weight: 300;
-      flex-shrink: 0;
+    .project-button:hover {
+      opacity: 0.55;
     }
 
+    .project-button.active {
+      color: #939393;
+      opacity: 1;
+    }
 
-    /* =====================================
-       12. 프로젝트가 없을 때 안내 문구
-       ===================================== */
+    .project-button:not(.active) {
+      opacity: 0.65;
+    }
 
     .empty {
-      padding: 45px 0;
-      color: #999;
+      margin: 0;
+      color: #939393;
       font-size: 13px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
     }
 
 
     /* =====================================
-       13. 푸터
+       07. 오른쪽 프로젝트 상세
 
-       홈페이지 가장 아래 저작권 문구
-       ===================================== */
+       기존 개별 프로젝트 HTML을 표시
+
+       별도 박스 / 테두리 없음
+
+       상세 내용은 Regular 400
+    ===================================== */
+
+    .detail-column {
+      width: 100%;
+      min-height: 300px;
+      color: #939393;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+    }
+
+    .detail-frame {
+      display: block;
+
+      width: 100%;
+      min-height: 300px;
+      height: 600px;
+
+      padding: 0;
+      margin: 0;
+
+      background: #F1F1F1;
+      border: 0;
+
+      overflow: hidden;
+    }
+
+    .detail-empty {
+      margin: 0;
+      color: #939393;
+      font-size: 13px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+
+    /* =====================================
+       08. 푸터
+
+       구분선 없음
+    ===================================== */
 
     footer {
-      border-top: 1px solid #eee;
       padding: 35px 5%;
+
+      background: #F1F1F1;
+      color: #939393;
+
+      border: none;
+
       font-size: 12px;
+      font-weight: 400;
     }
 
 
     /* =====================================
-       14. 모바일 화면 설정
+       09. 태블릿
 
-       화면 너비가 650px 이하일 때 적용됩니다.
-       ===================================== */
+       651px ~ 1024px
+
+       3단 구조 유지
+       글씨 크기 조정
+    ===================================== */
+
+    @media (max-width: 1024px) {
+
+      main {
+        padding: 130px 4% 90px;
+      }
+
+      .experience-layout {
+        grid-template-columns:
+          minmax(0, 20%)
+          minmax(0, 30%)
+          minmax(0, 1fr);
+
+        column-gap: 18px;
+      }
+
+      .category-button,
+      .project-button {
+        font-size: 15px;
+      }
+
+    }
+
+
+    /* =====================================
+       10. 모바일
+
+       화면이 좁을 때만 세로 배치
+
+       카테고리
+       ↓
+       프로젝트 리스트
+       ↓
+       프로젝트 상세
+    ===================================== */
 
     @media (max-width: 650px) {
 
-      /* 모바일 페이지 여백 */
       main {
-        padding: 150px 6% 80px;
+        padding: 125px 6% 80px;
       }
 
-      /* 모바일 메인 제목 크기 */
-      h1 {
-        font-size: clamp(36px, 9vw, 56px);
+      .experience-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
       }
 
-      /* 모바일 소개 문구 */
-      .intro {
-        font-size: 13px;
-        margin-bottom: 55px;
+      .category-column,
+      .project-column,
+      .detail-column {
+        width: 100%;
       }
 
-      /* 모바일 필터 간격 */
-      .filters {
-        gap: 20px;
+      .category-list {
+        gap: 6px;
       }
 
-      .filter {
-        font-size: 11px;
+      .project-list {
+        gap: 7px;
       }
 
-      /* 모바일 프로젝트 간격 */
-      .project-link {
-        padding: 20px 0;
-      }
-
-      /* 모바일 프로젝트명 크기 */
-      .project-title {
+      .category-button,
+      .project-button {
         font-size: 16px;
+        line-height: 1.25;
       }
 
-      .project-arrow {
-        font-size: 20px;
+      .detail-column {
+        margin-top: 8px;
       }
+
+      .detail-frame {
+        min-height: 200px;
+      }
+
     }
 
-/* =====================================
-   SELECTED EXPERIENCE 컬러 통일
-
-   배경색 : #F1F1F1
-   글자색 : #939393
-===================================== */
-
-/* 페이지 전체 배경 */
-html,
-body,
-main {
-  background-color: #F1F1F1;
-}
-
-/* 페이지 제목 및 소개 문구 */
-main,
-main .label,
-main .intro {
-  color: #939393;
-}
-
-/* ALL / MARKETING / VISUAL 필터 */
-main .filter {
-  color: #939393;
-}
-
-/* 선택된 필터 */
-main .filter.active {
-  color: #939393;
-  border-bottom-color: #939393;
-}
-
-/* 필터 마우스 오버 */
-main .filter:hover {
-  color: #666565;
-}
-
-/* 프로젝트명, 카테고리, 화살표 */
-main .project-link,
-main .project-title,
-main .project-category,
-main .project-arrow,
-main .empty {
-  color: #939393;
-}
-
-/* 프로젝트 목록 구분선 */
-main .project-list {
-  border-top-color: #939393;
-}
-
-main .project-item {
-  border-bottom-color: #D8D8D8;
-}
-
-/* 푸터 */
-footer {
-  background-color: #F1F1F1;
-  color: #939393;
-  border-top-color: #D8D8D8;
-}
-
   </style>
+
 </head>
 
 
 <body>
 
   <!-- =====================================
-       공통 상단 네비게이션
-
-       navigation.js가 navigation.html을 불러옵니다.
-       여기서 로고와 메뉴를 직접 수정하지 마세요!
-       ===================================== -->
+       11. OHV 공통 네비게이션
+  ===================================== -->
 
   <div id="site-navigation"></div>
 
 
   <main>
-    <div class="label">
-      03 / Selected Experience
-    </div>
-    <p class="intro">
-      A selection of projects completed by OHV members
-      during their previous professional roles.
-    </p>
-
 
     <!-- =====================================
-         카테고리 필터
+         12. 3단 레이아웃 시작
 
-         ALL       : 전체 프로젝트
-         MARKETING : Sunny 프로젝트
-         VISUAL    : Gio 프로젝트
+         왼쪽 : 카테고리
+         가운데 : 프로젝트
+         오른쪽 : 프로젝트 상세
+    ===================================== -->
 
-         클릭하면 아래 목록이 자동으로 변경됩니다.
-         ===================================== -->
+    <div class="experience-layout">
 
-    <div class="filters"
-         role="group"
-         aria-label="Project category">
 
-      <button
-        class="filter active"
-        type="button"
-        data-filter="ALL"
-        aria-pressed="true">
-        ALL
-      </button>
+      <!-- =====================================
+           13. 왼쪽 카테고리
 
-      <button
-        class="filter"
-        type="button"
-        data-filter="MARKETING"
-        aria-pressed="false">
-        MARKETING
-      </button>
+           클릭 시 가운데 프로젝트 목록 변경
 
-      <button
-        class="filter"
-        type="button"
-        data-filter="VISUAL"
-        aria-pressed="false">
-        VISUAL
-      </button>
+           ALL       : 전체
+           MARKETING : 마케팅 프로젝트
+           VISUAL    : 비주얼 프로젝트
+      ===================================== -->
+
+      <aside class="category-column">
+
+        <div
+          class="category-list"
+          role="group"
+          aria-label="Project category">
+
+          <button
+            type="button"
+            class="category-button active"
+            data-filter="ALL"
+            aria-pressed="true">
+            ALL
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-filter="MARKETING"
+            aria-pressed="false">
+            MARKETING
+          </button>
+
+          <button
+            type="button"
+            class="category-button"
+            data-filter="VISUAL"
+            aria-pressed="false">
+            VISUAL
+          </button>
+
+        </div>
+
+      </aside>
+
+
+      <!-- =====================================
+           14. 가운데 프로젝트 리스트
+
+           projects.js에서 자동 생성
+
+           프로젝트를 추가할 때는
+           projects.js만 수정하면 됩니다.
+      ===================================== -->
+
+      <section
+        class="project-column"
+        aria-label="Project list">
+
+        <div
+          class="project-list"
+          id="project-list">
+        </div>
+
+      </section>
+
+
+      <!-- =====================================
+           15. 오른쪽 프로젝트 상세
+
+           가운데 프로젝트명 클릭 시
+           해당 프로젝트 HTML이 표시됩니다.
+
+           기존 상세 페이지를 그대로 활용합니다.
+      ===================================== -->
+
+      <section
+        class="detail-column"
+        id="detail-column"
+        aria-label="Project details">
+
+        <iframe
+          class="detail-frame"
+          id="detail-frame"
+          title="Project details"
+          scrolling="no">
+        </iframe>
+
+      </section>
+
 
     </div>
 
-    <div class="project-list" id="project-list"></div>
-
   </main>
+
+
+  <!-- =====================================
+       16. 푸터
+  ===================================== -->
 
   <footer>
     © OHV AGENCY. ALL RIGHTS RESERVED.
   </footer>
+
+
+  <!-- =====================================
+       17. 프로젝트 데이터 불러오기
+
+       기존 projects.js 그대로 사용
+  ===================================== -->
+
   <script src="projects.js"></script>
 
 
   <!-- =====================================
-       프로젝트 목록 및 필터 기능
+       18. 프로젝트 선택 기능
 
-       작동 방식
+       1. 왼쪽 카테고리 선택
+       2. 가운데 프로젝트 목록 변경
+       3. 프로젝트명 클릭
+       4. 오른쪽에 상세 페이지 표시
 
-       1. projects.js의 프로젝트 정보 가져오기
-       2. ALL / MARKETING / VISUAL 필터 적용
-       3. 프로젝트명과 카테고리 표시
-       4. 클릭하면 개별 HTML 상세 페이지로 이동
+       기존 프로젝트 HTML을 재사용합니다.
 
-       프로젝트를 추가할 때
-       아래 JavaScript는 수정하지 않아도 됩니다!
-       ===================================== -->
+       새 프로젝트 추가 시
+       이 JavaScript는 수정하지 않아도 됩니다.
+  ===================================== -->
 
   <script>
 
-    /* 프로젝트 목록 영역 */
-    const projectList = document.getElementById('project-list');
+    /* =====================================
+       기본 요소 가져오기
+    ===================================== */
 
-    /* 카테고리 필터 버튼 */
-    const filterButtons = document.querySelectorAll('.filter');
+    const projectList =
+      document.getElementById('project-list');
+
+    const categoryButtons =
+      document.querySelectorAll('.category-button');
+
+    const detailFrame =
+      document.getElementById('detail-frame');
+
+    const detailColumn =
+      document.getElementById('detail-column');
+
+
+    /* 현재 선택한 프로젝트 */
+    let selectedProject = null;
+
+    /* 현재 선택한 카테고리 */
+    let selectedCategory = 'ALL';
+
+    /* 상세 페이지 높이 감시용 */
+    let detailResizeObserver = null;
 
 
     /* =====================================
-       프로젝트 목록 생성 기능
-       ===================================== */
+       19. 프로젝트 목록 생성
+
+       projects.js의 데이터를 사용합니다.
+    ===================================== */
 
     function renderProjects(category = 'ALL') {
 
-      /* 기존에 표시된 프로젝트 목록 비우기 */
+      selectedCategory = category;
+
+      /* 기존 목록 삭제 */
       projectList.replaceChildren();
 
-      /* 선택된 카테고리만 가져오기 */
+      /* 선택한 카테고리 프로젝트만 필터링 */
       const filtered = projects.filter(project =>
-        category === 'ALL' || project.category === category
+        category === 'ALL' ||
+        project.category === category
       );
 
 
-      /* 등록된 프로젝트가 없는 경우 */
+      /* 프로젝트가 하나도 없을 때 */
       if (filtered.length === 0) {
+
         const empty = document.createElement('p');
 
         empty.className = 'empty';
         empty.textContent = 'No projects available yet.';
 
         projectList.appendChild(empty);
+
+        selectedProject = null;
+        detailFrame.removeAttribute('src');
+        detailFrame.style.display = 'none';
+
         return;
+
       }
 
 
-      /* 프로젝트를 한 개씩 화면에 표시 */
+      /* 선택한 프로젝트가 현재 목록에 있는지 확인 */
+      const existingSelection = filtered.find(project =>
+        selectedProject &&
+        project.id === selectedProject.id
+      );
+
+      /* 없으면 첫 번째 프로젝트 자동 선택 */
+      const firstSelection =
+        existingSelection || filtered[0];
+
+
+      /* =====================================
+         프로젝트 버튼 생성
+      ===================================== */
+
       filtered.forEach(project => {
 
-        /* 프로젝트 한 줄 */
         const item = document.createElement('div');
         item.className = 'project-item';
 
-        /* 클릭 가능한 상세 페이지 링크 */
-        const link = document.createElement('a');
-        link.className = 'project-link';
-        link.href = project.link;
+        const button = document.createElement('button');
 
-        /* 프로젝트 정보 영역 */
-        const info = document.createElement('div');
+        button.type = 'button';
+        button.className = 'project-button';
+        button.textContent = project.title;
 
-        /* 프로젝트 제목 */
-        const title = document.createElement('div');
-        title.className = 'project-title';
-        title.textContent = project.title;
+        button.dataset.projectId = project.id;
 
-        /* MARKETING / VISUAL 카테고리 */
-        const categoryLabel = document.createElement('span');
-        categoryLabel.className = 'project-category';
-        categoryLabel.textContent = project.category;
+        const isActive =
+          project.id === firstSelection.id;
 
-        /* 오른쪽 화살표 */
-        const arrow = document.createElement('span');
-        arrow.className = 'project-arrow';
-        arrow.textContent = '↗';
-        arrow.setAttribute('aria-hidden', 'true');
+        button.classList.toggle('active', isActive);
+        button.setAttribute(
+          'aria-pressed',
+          String(isActive)
+        );
 
-        /* 화면에 요소 조립하기 */
-        info.append(title, categoryLabel);
-        link.append(info, arrow);
-        item.appendChild(link);
+        /* 프로젝트명 클릭 */
+        button.addEventListener('click', () => {
+
+          selectProject(project);
+
+        });
+
+        item.appendChild(button);
         projectList.appendChild(item);
 
       });
+
+
+      /* 첫 번째 프로젝트 자동 표시 */
+      selectProject(firstSelection);
+
     }
 
 
     /* =====================================
-       카테고리 필터 클릭 기능
-       ===================================== */
+       20. 프로젝트 선택 기능
 
-    filterButtons.forEach(button => {
+       가운데 프로젝트명 클릭 시
+       오른쪽 상세 페이지 변경
+    ===================================== */
 
-      button.addEventListener('click', function() {
+    function selectProject(project) {
 
-        /* 선택된 버튼 디자인 변경 */
-        filterButtons.forEach(btn => {
+      if (!project) return;
+
+      selectedProject = project;
+
+      /* 선택된 프로젝트 글씨 상태 변경 */
+      document.querySelectorAll('.project-button')
+        .forEach(button => {
+
+          const active =
+            button.dataset.projectId === project.id;
+
+          button.classList.toggle('active', active);
+          button.setAttribute(
+            'aria-pressed',
+            String(active)
+          );
+
+        });
+
+
+      /* 상세 페이지 링크가 없을 때 */
+      if (!project.link) {
+
+        detailFrame.style.display = 'none';
+
+        detailColumn.querySelectorAll('.detail-empty')
+          .forEach(element => element.remove());
+
+        const message = document.createElement('p');
+        message.className = 'detail-empty';
+        message.textContent =
+          'Project details will be updated soon.';
+
+        detailColumn.appendChild(message);
+
+        return;
+
+      }
+
+
+      /* 이전 안내 문구 제거 */
+      detailColumn.querySelectorAll('.detail-empty')
+        .forEach(element => element.remove());
+
+      detailFrame.style.display = 'block';
+
+      /* 프로젝트 상세 HTML 불러오기 */
+      detailFrame.src = project.link;
+
+    }
+
+
+    /* =====================================
+       21. 상세 페이지 디자인 정리
+
+       기존 프로젝트 상세 HTML에는
+       자체 네비게이션 / 푸터 / 여백이 있습니다.
+
+       오른쪽 영역에서는 중복 표시되지 않도록
+       해당 요소만 숨깁니다.
+
+       이미지 / 유튜브 / 프로젝트 소개는 유지합니다.
+    ===================================== */
+
+    detailFrame.addEventListener('load', () => {
+
+      try {
+
+        const doc =
+          detailFrame.contentDocument;
+
+        if (!doc) return;
+
+        /* 기존 상세 높이 감시 중단 */
+        if (detailResizeObserver) {
+          detailResizeObserver.disconnect();
+          detailResizeObserver = null;
+        }
+
+
+        /* 중복 네비게이션 숨김 */
+        const navigation =
+          doc.getElementById('site-navigation');
+
+        if (navigation) {
+          navigation.style.setProperty(
+            'display', 'none', 'important'
+          );
+        }
+
+
+        /* 중복 푸터 숨김 */
+        const footer = doc.querySelector('footer');
+
+        if (footer) {
+          footer.style.setProperty(
+            'display', 'none', 'important'
+          );
+        }
+
+
+        /* BACK TO EXPERIENCE 숨김 */
+        const back =
+          doc.querySelector('.back');
+
+        if (back) {
+          back.style.setProperty(
+            'display', 'none', 'important'
+          );
+        }
+
+
+        /* 상세 HTML의 main 영역 */
+        const detailMain =
+          doc.querySelector('main');
+
+        if (!detailMain) return;
+
+
+        /* 오른쪽 영역 안에 딱 맞게 배치 */
+        detailMain.style.setProperty(
+          'max-width', 'none', 'important'
+        );
+
+        detailMain.style.setProperty(
+          'width', '100%', 'important'
+        );
+
+        detailMain.style.setProperty(
+          'min-height', '0', 'important'
+        );
+
+        detailMain.style.setProperty(
+          'margin', '0', 'important'
+        );
+
+        detailMain.style.setProperty(
+          'padding', '0', 'important'
+        );
+
+
+        /* 상세 페이지 전체 배경 */
+        doc.documentElement.style.background =
+          '#F1F1F1';
+
+        doc.body.style.background = '#F1F1F1';
+        doc.body.style.margin = '0';
+
+
+        /* 오른쪽 상세 내용은 Regular */
+        detailMain.style.setProperty(
+          'font-weight', '400'
+        );
+
+
+        /* =====================================
+           상세 높이 자동 조정
+
+           iframe 내부의 스크롤바 없이
+           실제 콘텐츠 길이만큼 높이 변경
+        ===================================== */
+
+        function updateFrameHeight() {
+
+          const height = Math.ceil(
+            detailMain.getBoundingClientRect().height
+          );
+
+          detailFrame.style.height =
+            Math.max(height + 5, 100) + 'px';
+
+        }
+
+        updateFrameHeight();
+
+
+        /* 유튜브 펼치기 등으로 높이가 바뀌면
+           자동으로 iframe 높이도 변경 */
+        if ('ResizeObserver' in window) {
+
+          detailResizeObserver =
+            new ResizeObserver(updateFrameHeight);
+
+          detailResizeObserver.observe(detailMain);
+
+        }
+
+
+        /* 이미지 로딩 후 높이 재계산 */
+        doc.querySelectorAll('img').forEach(image => {
+
+          image.addEventListener(
+            'load',
+            updateFrameHeight
+          );
+
+        });
+
+
+      } catch (error) {
+
+        /* 다른 도메인의 상세 페이지인 경우
+           내부 디자인 수정은 제한됩니다. */
+
+        console.warn(
+          'Project detail could not be customized:',
+          error
+        );
+
+      }
+
+    });
+
+
+    /* =====================================
+       22. 카테고리 변경 기능
+    ===================================== */
+
+    categoryButtons.forEach(button => {
+
+      button.addEventListener('click', () => {
+
+        const category =
+          button.dataset.filter;
+
+        /* 선택된 카테고리 디자인 변경 */
+        categoryButtons.forEach(btn => {
 
           const active = btn === button;
 
           btn.classList.toggle('active', active);
-          btn.setAttribute('aria-pressed', String(active));
+
+          btn.setAttribute(
+            'aria-pressed',
+            String(active)
+          );
 
         });
 
-        /* 선택된 카테고리로 목록 다시 표시 */
-        renderProjects(button.dataset.filter);
+
+        /* 가운데 프로젝트 목록 다시 표시 */
+        renderProjects(category);
 
       });
 
     });
 
-    renderProjects();
+
+    /* =====================================
+       23. 초기 화면
+
+       처음 들어오면 ALL 선택
+
+       가운데 전체 프로젝트 표시
+
+       오른쪽에는 첫 번째 프로젝트 자동 표시
+    ===================================== */
+
+    renderProjects('ALL');
 
   </script>
+
+
+  <!-- =====================================
+       24. OHV 공통 네비게이션
+  ===================================== -->
 
   <script src="navigation.js"></script>
 
