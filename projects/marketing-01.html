@@ -9,7 +9,7 @@
   <!-- =====================================
        01. OHV 파비콘 / 폰트 / 네비게이션
 
-       이 HTML은 projects 폴더 안에 있으므로
+       projects 폴더 안의 HTML이므로
        공통 파일 경로 앞에 ../ 를 붙입니다.
   ===================================== -->
 
@@ -21,8 +21,8 @@
 
   <link rel="stylesheet" href="../navigation.css">
 
-  <!-- ✏️ 수정 1. 프로젝트명 -->
-  <title>PROJECT NAME — OHV AGENCY</title>
+  <!-- ✏️ 브라우저 탭 제목 -->
+  <title>유튜버 브랜디드 콘텐츠 바이럴 — OHV AGENCY</title>
 
   <style>
 
@@ -54,6 +54,10 @@
       text-decoration: none;
     }
 
+    button {
+      font-family: inherit;
+    }
+
 
     /* =====================================
        03. 프로젝트 상세 페이지 영역
@@ -69,7 +73,7 @@
 
 
     /* =====================================
-       04. 프로젝트 제목
+       04. 프로젝트 메인 제목
 
        PC : 28px
        모바일 : 22px
@@ -105,12 +109,10 @@
 
 
     /* =====================================
-       06. 프로젝트 콘텐츠 전체
+       06. 프로젝트 콘텐츠 영역
 
-       유튜브 영상과 이미지가
-       위에서 아래로 차례대로 표시됩니다.
-
-       gap : 콘텐츠 사이 간격
+       유튜브 영상 / 이미지가
+       세로로 차례대로 표시됩니다.
     ===================================== */
 
     .gallery {
@@ -121,15 +123,72 @@
 
 
     /* =====================================
-       07. 유튜브 영상 임베드
+       07. 클릭 가능한 유튜브 프로젝트명
+
+       ✏️ 제목 글씨만 클릭하면 영상 펼치기
+
+       별도 테두리 / + 버튼 없음
+    ===================================== */
+
+    .video-item {
+      width: 100%;
+    }
+
+    .video-text {
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      background: transparent;
+      color: #939393;
+
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.5;
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    /* 마우스를 올리면 글씨가 연해짐 */
+    .video-text:hover {
+      opacity: 0.55;
+    }
+
+    /* 키보드로 선택했을 때 */
+    .video-text:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 5px;
+    }
+
+
+    /* =====================================
+       08. 유튜브 영상 펼치기 영역
+
+       기본 상태 : 영상 숨김
+
+       제목 클릭 시 영상 표시
+       다시 클릭 시 영상 숨김
+    ===================================== */
+
+    .video-content[hidden] {
+      display: none;
+    }
+
+    .video-content {
+      margin-top: 18px;
+    }
+
+
+    /* =====================================
+       09. 유튜브 임베드
 
        영상 비율 : 16:9
-
-       width: 100%
-       → 프로젝트 콘텐츠 너비에 맞춤
-
-       aspect-ratio: 16 / 9
-       → PC / 모바일 영상 비율 유지
+       PC / 모바일 반응형
     ===================================== */
 
     .youtube-embed {
@@ -147,7 +206,7 @@
 
 
     /* =====================================
-       08. 프로젝트 이미지 배치
+       10. 프로젝트 이미지 배치
 
        one   : 한 줄에 1장
        two   : 한 줄에 2장
@@ -172,14 +231,7 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-
-    /* =====================================
-       09. 이미지 크기
-
-       원본 비율 유지
-       이미지 잘림 방지
-    ===================================== */
-
+    /* 이미지 원본 비율 유지 */
     .image-row img {
       display: block;
       width: 100%;
@@ -188,9 +240,7 @@
 
 
     /* =====================================
-       10. BACK TO EXPERIENCE
-
-       프로젝트 목록으로 돌아가기
+       11. BACK TO EXPERIENCE
     ===================================== */
 
     .back {
@@ -208,7 +258,7 @@
 
 
     /* =====================================
-       11. 푸터
+       12. 푸터
     ===================================== */
 
     footer {
@@ -221,9 +271,9 @@
 
 
     /* =====================================
-       12. 모바일 화면
+       13. 모바일 화면
 
-       화면 너비 650px 이하
+       650px 이하
     ===================================== */
 
     @media (max-width: 650px) {
@@ -246,7 +296,14 @@
         gap: 8px;
       }
 
-      /* 유튜브 영상도 16:9 자동 유지 */
+      /* 모바일 영상 제목 크기 */
+      .video-text {
+        font-size: 15px;
+      }
+
+      .video-content {
+        margin-top: 12px;
+      }
 
       .back {
         margin-top: 60px;
@@ -261,9 +318,7 @@
 <body>
 
   <!-- =====================================
-       13. OHV 공통 네비게이션
-
-       navigation.js가 navigation.html을 불러옵니다.
+       14. OHV 공통 네비게이션
   ===================================== -->
 
   <div id="site-navigation"></div>
@@ -272,53 +327,292 @@
   <main>
 
     <!-- =====================================
-         ✏️ 수정 2. 프로젝트 제목
-
-         PROJECT NAME을 실제 제목으로 변경
+         15. 프로젝트 메인 제목
     ===================================== -->
 
     <h1>[INFLUENCER MARKETING] 유튜버 브랜디드 콘텐츠 바이럴</h1>
 
 
     <!-- =====================================
-         ✏️ 수정 3. 프로젝트 소개
-
-         두 줄 정도 작성하면 됩니다.
+         16. 프로젝트 소개
     ===================================== -->
 
     <p class="description">시즌에 맞춰 메가 인플루언서와 협업한 유튜브 롱폼 브랜디드 콘텐츠 제작 및 확산
-     인플루언서 영향력을 활용한 자연스러운 바이럴 유도로 브랜드 인지도 제고 및 상품 구매 전환 강화</p>
+인플루언서 영향력을 활용한 자연스러운 바이럴 유도로 브랜드 인지도 제고 및 상품 구매 전환 강화</p>
 
 
+    <!-- =====================================
+         17. 프로젝트 콘텐츠 영역
 
-<div class="gallery">
+         유튜브 영상 + 이미지 배치
 
-  <!-- 유튜브 영상 위 프로젝트명 -->
-  <h2 class="video-title">
-    YOUHEE 윤비누 유튜브 브랜디드 (무진장 바이럴)
-  </h2>
+         필요할 때마다 아래 블록을
+         복사해서 추가할 수 있습니다.
+    ===================================== -->
 
-  <!-- 유튜브 영상 -->
-  <div class="youtube-embed">
-    <iframe
-      src="https://www.youtube.com/embed/H5JiGhz3nT8"
-      title="YouTube Branded Content"
-      loading="lazy"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
-
+    <div class="gallery">
 
 
       <!-- =====================================
-           ✏️ 수정 5. 프로젝트 이미지
+           ✏️ 유튜브 영상 01
 
-           이미지는 GitHub에 업로드 후 사용합니다.
+           프로젝트명 클릭 → 영상 펼치기
+           다시 클릭 → 영상 접기
 
-           이미지 저장 예시:
+           영상 ID : H5JiGhz3nT8
+
+           프로젝트명을 수정하려면
+           button 안의 글씨만 변경하세요.
+      ===================================== -->
+
+      <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-01">
+
+          튜드먼트 발매 바이럴 앨리스펑크 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-01"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/watch?v=WOmwkL30j7w"
+              title="튜드먼트 앨리스펑크 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+      <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-02">
+
+          튜드먼트 발매 바이럴 보라끌레르 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-02"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/A1_SdQFQIXM"
+              title="튜드먼트 보라끌레르 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+ <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-03">
+
+          튜드먼트 발매 바이럴 쁨이 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-03"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/DfFfHo6wcGc"
+              title="튜드먼트 쁨이 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+       <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-04">
+
+          튜드먼트 발매 바이럴 꼬민지 유튜브 쇼츠
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-04"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/tbOL5Hm9zZg"
+              title="튜드먼트 꼬민지 유튜브 쇼츠"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+       <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-05">
+
+          유희 무진장 바이럴 윤비누 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-05"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/H5JiGhz3nT8"
+              title="유희 윤비누 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+ <div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-06">
+
+          유희 발매 바이럴 현진 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-06"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/q3Yza_6EDqY"
+              title="유희 현진 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+<div class="video-item">
+
+        <!-- 클릭 가능한 프로젝트명 -->
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-07">
+
+          유희 발매 바이럴 송이송이 유튜브 브랜디드
+
+        </button>
+
+
+        <!-- 처음에는 숨겨져 있는 유튜브 영상 -->
+        <div
+          class="video-content"
+          id="youtube-07"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/924wiuEmC3c"
+              title="유희 송이송이 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+      
+      <!-- =====================================
+           ✏️ 이미지 추가 예시
+
+           저장 위치 예시:
 
            images/
              projects/
@@ -328,25 +622,15 @@
                    02.jpg
                    03.jpg
 
-           실제 HTML 이미지 경로:
+           HTML에서는 ../ 를 붙입니다.
 
-           ../images/projects/marketing/marketing01_youhee/01.jpg
-
-           이미지 배치는 아래 예시를 참고하세요.
-
-           one   : 한 줄에 1장
-           two   : 한 줄에 2장
-           three : 한 줄에 3장
-
-           ※ 아래 이미지 예시는 주석 처리되어 있습니다.
-           사용할 블록의 주석을 제거하세요.
+           아래 코드는 모두 주석 처리되어 있습니다.
+           실제 사용할 때 주석을 제거하세요.
       ===================================== -->
 
 
       <!-- =====================================
-           [이미지 1장 배치]
-
-           한 줄에 큰 이미지 1장
+           [이미지 한 줄에 1장]
       =====================================
 
       <div class="image-row one">
@@ -362,9 +646,7 @@
 
 
       <!-- =====================================
-           [이미지 2장 배치]
-
-           한 줄에 이미지 2장
+           [이미지 한 줄에 2장]
       =====================================
 
       <div class="image-row two">
@@ -385,9 +667,7 @@
 
 
       <!-- =====================================
-           [이미지 3장 배치]
-
-           한 줄에 이미지 3장
+           [이미지 한 줄에 3장]
       =====================================
 
       <div class="image-row three">
@@ -412,23 +692,11 @@
       ===================================== -->
 
 
-      <!-- =====================================
-           이미지 추가 방법
-
-           1. 필요한 이미지 배치 블록 복사
-           2. 주석 제거
-           3. src 이미지 경로 변경
-           4. 원하는 위치에 붙여넣기
-
-           유튜브 영상 위에도 배치할 수 있습니다.
-      ===================================== -->
-
-
     </div>
 
 
     <!-- =====================================
-         15. 프로젝트 목록으로 돌아가기
+         18. 프로젝트 목록으로 돌아가기
     ===================================== -->
 
     <a class="back" href="../experience.html">
@@ -439,7 +707,7 @@
 
 
   <!-- =====================================
-       16. OHV 공통 푸터
+       19. OHV 공통 푸터
     ===================================== -->
 
   <footer>
@@ -448,10 +716,63 @@
 
 
   <!-- =====================================
-       17. OHV 공통 네비게이션 기능
+       20. 유튜브 영상 펼치기 / 접기 기능
 
-       projects 폴더의 상위 파일 불러오기
-    ===================================== -->
+       1. 프로젝트명을 클릭하면 영상 표시
+       2. 다시 클릭하면 영상 숨김
+       3. 영상을 접으면 재생도 정지
+
+       여러 영상이 있어도 자동으로 작동합니다.
+  ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.video-text').forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+        const iframe = panel.querySelector('iframe');
+
+
+        if (isOpen) {
+
+          /* 영상 접기 */
+
+          panel.hidden = true;
+          button.setAttribute('aria-expanded', 'false');
+
+          /* 재생 중인 영상 정지 */
+          iframe.removeAttribute('src');
+
+        } else {
+
+          /* 영상 펼치기 */
+
+          panel.hidden = false;
+          button.setAttribute('aria-expanded', 'true');
+
+          /* 처음 펼칠 때 영상 불러오기 */
+          iframe.src = iframe.dataset.src;
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+
+  <!-- =====================================
+       21. 공통 네비게이션 기능
+  ===================================== -->
 
   <script src="../navigation.js"></script>
 
