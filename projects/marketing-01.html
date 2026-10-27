@@ -399,32 +399,36 @@
 
     }
 
-/* 영상 목록 폰트 최종 조정 */
+
+/* =====================================
+   OHV 유튜브 영상 목록 글자 간격 최종 조정
+
+   자간 더 좁게
+   글씨 크기 및 굵기 유지
+===================================== */
 
 .video-text {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.09em;
-  line-height: 1.25;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.13em !important;
+  line-height: 1.25 !important;
+  font-stretch: condensed;
 }
 
+/* + / − 기호 간격 */
 .video-text::after {
   margin-left: 7px;
-  font-size: 15px;
+  letter-spacing: 0;
 }
 
+/* 모바일 */
 @media (max-width: 650px) {
   .video-text {
-    font-size: 13px;
-    letter-spacing: -0.09em;
-    line-height: 1.25;
-  }
-
-  .video-text::after {
-    margin-left: 6px;
-    font-size: 14px;
+    font-size: 13px !important;
+    letter-spacing: -0.13em !important;
   }
 }
+
   </style>
 </head>
 
