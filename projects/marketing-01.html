@@ -5,45 +5,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- OHV 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
+
   <!-- =====================================
-       01. OHV 공통 폰트
-       ===================================== -->
-  <link rel="stylesheet"
+       01. OHV 파비콘 / 폰트 / 네비게이션
+
+       이 HTML은 projects 폴더 안에 있으므로
+       공통 파일 경로 앞에 ../ 를 붙입니다.
+  ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <!--
-    OHV 공통 네비게이션 디자인
-
-    이 파일은 projects 폴더 안에 있기 때문에
-    ../navigation.css 로 불러옵니다.
-  -->
   <link rel="stylesheet" href="../navigation.css">
 
-  <!--
-    ✏️ 수정 1. 브라우저 탭 제목
-    PROJECT NAME을 실제 프로젝트명으로 변경
-  -->
+  <!-- ✏️ 수정 1. 프로젝트명 -->
   <title>PROJECT NAME — OHV AGENCY</title>
 
   <style>
 
     /* =====================================
        02. 기본 설정
-       ===================================== */
+
+       배경색 : #F1F1F1
+       글자색 : #939393
+    ===================================== */
 
     * {
       box-sizing: border-box;
     }
 
-body {
-  margin: 0;
-  background: #F1F1F1;
-  color: #939393;
-  font-family: 'Pretendard', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+    html,
+    body {
+      background: #F1F1F1;
+    }
+
+    body {
+      margin: 0;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
 
     a {
       color: inherit;
@@ -52,19 +56,15 @@ body {
 
 
     /* =====================================
-       03. 전체 페이지 영역
-
-       max-width : 페이지 최대 너비
-       padding   : 상단 / 좌우 / 하단 여백
-
-       상단 여백은 고정 네비게이션을 고려합니다.
-       ===================================== */
+       03. 프로젝트 상세 페이지 영역
+    ===================================== */
 
     main {
       max-width: 1400px;
       min-height: 100vh;
       margin: 0 auto;
       padding: 180px 10% 120px;
+      background: #F1F1F1;
     }
 
 
@@ -73,10 +73,7 @@ body {
 
        PC : 28px
        모바일 : 22px
-
-       font-size : 글씨 크기
-       margin-bottom : 제목과 설명 사이 간격
-       ===================================== */
+    ===================================== */
 
     h1 {
       font-size: 28px;
@@ -85,6 +82,7 @@ body {
       line-height: 1.3;
       margin: 0 0 16px;
       word-break: keep-all;
+      color: #939393;
     }
 
 
@@ -93,15 +91,13 @@ body {
 
        PC : 14px
        모바일 : 13px
-
-       두 줄 정도의 프로젝트 소개를 작성합니다.
-       ===================================== */
+    ===================================== */
 
     .description {
       max-width: 760px;
       font-size: 14px;
       line-height: 1.8;
-      color: #777;
+      color: #939393;
       margin: 0 0 55px;
       white-space: pre-line;
       word-break: keep-all;
@@ -109,12 +105,13 @@ body {
 
 
     /* =====================================
-       06. 프로젝트 이미지 전체 영역
+       06. 프로젝트 콘텐츠 전체
 
-       gap : 이미지 줄 사이 간격
+       유튜브 영상과 이미지가
+       위에서 아래로 차례대로 표시됩니다.
 
-       필요에 따라 숫자를 변경할 수 있습니다.
-       ===================================== */
+       gap : 콘텐츠 사이 간격
+    ===================================== */
 
     .gallery {
       display: flex;
@@ -124,14 +121,38 @@ body {
 
 
     /* =====================================
-       07. 이미지 한 줄 설정
+       07. 유튜브 영상 임베드
 
-       one   : 1장
-       two   : 2장
-       three : 3장
+       영상 비율 : 16:9
 
-       이미지 개수에 따라 자동으로 균등 배치
-       ===================================== */
+       width: 100%
+       → 프로젝트 콘텐츠 너비에 맞춤
+
+       aspect-ratio: 16 / 9
+       → PC / 모바일 영상 비율 유지
+    ===================================== */
+
+    .youtube-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #F1F1F1;
+    }
+
+    .youtube-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+    /* =====================================
+       08. 프로젝트 이미지 배치
+
+       one   : 한 줄에 1장
+       two   : 한 줄에 2장
+       three : 한 줄에 3장
+    ===================================== */
 
     .image-row {
       display: grid;
@@ -139,30 +160,25 @@ body {
       align-items: start;
     }
 
-    /* 한 줄에 이미지 1장 */
     .image-row.one {
       grid-template-columns: 1fr;
     }
 
-    /* 한 줄에 이미지 2장 */
     .image-row.two {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* 한 줄에 이미지 3장 */
     .image-row.three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
 
     /* =====================================
-       08. 이미지 크기 설정
+       09. 이미지 크기
 
-       width: 100% → 칸 너비에 맞춤
-       height: auto → 이미지 원본 비율 유지
-
-       이미지가 잘리지 않도록 설정했습니다.
-       ===================================== */
+       원본 비율 유지
+       이미지 잘림 방지
+    ===================================== */
 
     .image-row img {
       display: block;
@@ -172,16 +188,17 @@ body {
 
 
     /* =====================================
-       09. BACK TO EXPERIENCE 버튼
+       10. BACK TO EXPERIENCE
 
-       클릭하면 프로젝트 목록으로 돌아갑니다.
-       ===================================== */
+       프로젝트 목록으로 돌아가기
+    ===================================== */
 
     .back {
       display: inline-block;
       margin-top: 70px;
       font-size: 11px;
       letter-spacing: 1px;
+      color: #939393;
       transition: opacity 0.2s;
     }
 
@@ -191,25 +208,23 @@ body {
 
 
     /* =====================================
-       10. 푸터
-       ===================================== */
+       11. 푸터
+    ===================================== */
 
     footer {
-      border-top: 1px solid #eee;
+      background: #F1F1F1;
+      border-top: 1px solid #D8D8D8;
       padding: 35px 5%;
       font-size: 12px;
+      color: #939393;
     }
 
 
     /* =====================================
-       11. 모바일 화면 설정
+       12. 모바일 화면
 
-       화면 너비가 650px 이하일 때 적용
-
-       제목 : 22px
-       설명 : 13px
-       이미지 2장/3장 배치는 그대로 유지
-       ===================================== */
+       화면 너비 650px 이하
+    ===================================== */
 
     @media (max-width: 650px) {
 
@@ -231,44 +246,13 @@ body {
         gap: 8px;
       }
 
+      /* 유튜브 영상도 16:9 자동 유지 */
+
       .back {
         margin-top: 60px;
       }
 
     }
-
-/* =====================================
-   OHV 프로젝트 상세 페이지 컬러 통일
-
-   배경색 : #F1F1F1
-   글자색 : #939393
-===================================== */
-
-/* 페이지 전체 배경 */
-html,
-body,
-main {
-  background-color: #F1F1F1;
-}
-
-/* 프로젝트 제목 및 소개 문구 */
-main,
-main h1,
-main .description {
-  color: #939393;
-}
-
-/* BACK TO EXPERIENCE 링크 */
-main .back {
-  color: #939393;
-}
-
-/* 푸터 */
-footer {
-  background-color: #F1F1F1;
-  color: #939393;
-  border-top-color: #D8D8D8;
-}
 
   </style>
 </head>
@@ -277,11 +261,10 @@ footer {
 <body>
 
   <!-- =====================================
-       12. OHV 공통 네비게이션
+       13. OHV 공통 네비게이션
 
        navigation.js가 navigation.html을 불러옵니다.
-       로고 및 메뉴는 공통 파일에서 관리합니다.
-       ===================================== -->
+  ===================================== -->
 
   <div id="site-navigation"></div>
 
@@ -291,65 +274,106 @@ footer {
     <!-- =====================================
          ✏️ 수정 2. 프로젝트 제목
 
-         PROJECT NAME을 실제 프로젝트명으로 변경
-         ===================================== -->
+         PROJECT NAME을 실제 제목으로 변경
+    ===================================== -->
 
-    <h1>PROJECT NAME</h1>
+    <h1>[INFLUENCER MARKETING] YOUHEE 윤비누 브랜디드</h1>
 
 
     <!-- =====================================
          ✏️ 수정 3. 프로젝트 소개
 
-         두 줄 정도 자유롭게 작성하면 됩니다.
-         아래 문구만 수정하세요.
-         ===================================== -->
+         두 줄 정도 작성하면 됩니다.
+    ===================================== -->
 
-    <p class="description">프로젝트에 대한 간단한 소개를 입력해 주세요.
-프로젝트의 핵심 내용이나 작업 방향을 두 줄 정도 작성하면 됩니다.</p>
+    <p class="description">무신사 블프에 맞춰서 인플루언서 활용한 바이럴</p>
 
 
     <!-- =====================================
-         ✏️ 수정 4. 프로젝트 이미지
+         14. 프로젝트 콘텐츠 영역
 
-         이미지는 GitHub에 업로드한 뒤 추가합니다.
+         유튜브 영상 + 이미지
 
-         이미지 저장 예시:
-         images/projects/marketing-01/01.jpg
-
-         이 HTML 파일은 projects 폴더에 있으므로
-         이미지 경로 앞에 ../ 를 붙여야 합니다.
-
-         예시:
-         ../images/projects/marketing-01/01.jpg
-
-         원하는 이미지 배치를 자유롭게 복사하세요.
-
-         one   : 한 줄에 1장
-         two   : 한 줄에 2장
-         three : 한 줄에 3장
-
-         아래 예시는 현재 주석 처리되어 있으므로
-         사이트에 나타나지 않습니다.
-
-         이미지를 업로드하면 해당 예시의
-         바깥쪽 주석을 제거하고 사용하세요.
-         ===================================== -->
+         순서를 바꾸고 싶다면
+         해당 블록의 위치를 변경하면 됩니다.
+    ===================================== -->
 
     <div class="gallery">
 
 
       <!-- =====================================
+           ✏️ 수정 4. 유튜브 영상
+
+           현재 적용된 영상:
+           https://www.youtube.com/watch?v=H5JiGhz3nT8
+
+           다른 영상으로 교체하려면
+           embed/ 뒤 영상 ID만 변경하세요.
+
+           예시:
+           youtube.com/watch?v=ABC123
+
+           변경:
+           youtube.com/embed/ABC123
+      ===================================== -->
+
+      <div class="youtube-embed">
+
+        <iframe
+          src="https://www.youtube.com/embed/H5JiGhz3nT8"
+          title="OHV Project YouTube Video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+
+      <!-- =====================================
+           ✏️ 수정 5. 프로젝트 이미지
+
+           이미지는 GitHub에 업로드 후 사용합니다.
+
+           이미지 저장 예시:
+
+           images/
+             projects/
+               marketing/
+                 marketing01_youhee/
+                   01.jpg
+                   02.jpg
+                   03.jpg
+
+           실제 HTML 이미지 경로:
+
+           ../images/projects/marketing/marketing01_youhee/01.jpg
+
+           이미지 배치는 아래 예시를 참고하세요.
+
+           one   : 한 줄에 1장
+           two   : 한 줄에 2장
+           three : 한 줄에 3장
+
+           ※ 아래 이미지 예시는 주석 처리되어 있습니다.
+           사용할 블록의 주석을 제거하세요.
+      ===================================== -->
+
+
+      <!-- =====================================
            [이미지 1장 배치]
 
-           사용하려면 아래 코드의
-           바깥쪽 주석을 제거하세요.
-           =====================================
+           한 줄에 큰 이미지 1장
+      =====================================
 
       <div class="image-row one">
+
         <img
-          src="../images/projects/marketing-01/01.jpg"
+          src="../images/projects/marketing/marketing01_youhee/01.jpg"
           alt="프로젝트 이미지 1"
           loading="lazy">
+
       </div>
 
       ===================================== -->
@@ -358,19 +382,21 @@ footer {
       <!-- =====================================
            [이미지 2장 배치]
 
-           같은 줄에 이미지 2장이 표시됩니다.
-           =====================================
+           한 줄에 이미지 2장
+      =====================================
 
       <div class="image-row two">
+
         <img
-          src="../images/projects/marketing-01/02.jpg"
+          src="../images/projects/marketing/marketing01_youhee/02.jpg"
           alt="프로젝트 이미지 2"
           loading="lazy">
 
         <img
-          src="../images/projects/marketing-01/03.jpg"
+          src="../images/projects/marketing/marketing01_youhee/03.jpg"
           alt="프로젝트 이미지 3"
           loading="lazy">
+
       </div>
 
       ===================================== -->
@@ -379,26 +405,40 @@ footer {
       <!-- =====================================
            [이미지 3장 배치]
 
-           같은 줄에 이미지 3장이 표시됩니다.
-           =====================================
+           한 줄에 이미지 3장
+      =====================================
 
       <div class="image-row three">
+
         <img
-          src="../images/projects/marketing-01/04.jpg"
+          src="../images/projects/marketing/marketing01_youhee/04.jpg"
           alt="프로젝트 이미지 4"
           loading="lazy">
 
         <img
-          src="../images/projects/marketing-01/05.jpg"
+          src="../images/projects/marketing/marketing01_youhee/05.jpg"
           alt="프로젝트 이미지 5"
           loading="lazy">
 
         <img
-          src="../images/projects/marketing-01/06.jpg"
+          src="../images/projects/marketing/marketing01_youhee/06.jpg"
           alt="프로젝트 이미지 6"
           loading="lazy">
+
       </div>
 
+      ===================================== -->
+
+
+      <!-- =====================================
+           이미지 추가 방법
+
+           1. 필요한 이미지 배치 블록 복사
+           2. 주석 제거
+           3. src 이미지 경로 변경
+           4. 원하는 위치에 붙여넣기
+
+           유튜브 영상 위에도 배치할 수 있습니다.
       ===================================== -->
 
 
@@ -406,11 +446,8 @@ footer {
 
 
     <!-- =====================================
-         13. 프로젝트 목록으로 돌아가기
-
-         ../experience.html
-         → 상위 폴더의 experience.html로 이동
-         ===================================== -->
+         15. 프로젝트 목록으로 돌아가기
+    ===================================== -->
 
     <a class="back" href="../experience.html">
       ← BACK TO EXPERIENCE
@@ -420,8 +457,8 @@ footer {
 
 
   <!-- =====================================
-       14. OHV 푸터
-       ===================================== -->
+       16. OHV 공통 푸터
+    ===================================== -->
 
   <footer>
     © OHV AGENCY. ALL RIGHTS RESERVED.
@@ -429,14 +466,12 @@ footer {
 
 
   <!-- =====================================
-       15. OHV 공통 네비게이션 기능
+       17. OHV 공통 네비게이션 기능
 
-       상대 경로가 아닌 저장소 루트 경로를 사용해
-       프로젝트 상세 페이지에서도
-       navigation.html을 불러올 수 있도록 합니다.
-       ===================================== -->
+       projects 폴더의 상위 파일 불러오기
+    ===================================== -->
 
-<script src="../navigation.js"></script>
+  <script src="../navigation.js"></script>
 
 </body>
 </html>
