@@ -1,9 +1,45 @@
 
 /* =====================================
    OHV 공통 네비게이션
+
+   배경색 : #F1F1F1
+   글자색 : #939393
+
+   PC / 모바일 공통 적용
 ===================================== */
 
-/* 01. 상단 헤더 전체 */
+
+/* =====================================
+   00. OHV 공통 컬러 설정
+
+   앞으로 사이트 컬러를 바꾸고 싶다면
+   아래 두 컬러코드만 수정하면 됩니다.
+===================================== */
+
+:root {
+  --ohv-bg: #F1F1F1;
+  --ohv-text: #939393;
+  --ohv-border: #D8D8D8;
+}
+
+
+/* =====================================
+   01. 전체 사이트 기본 컬러
+===================================== */
+
+html,
+body {
+  background-color: var(--ohv-bg);
+  color: var(--ohv-text);
+}
+
+
+/* =====================================
+   02. 상단 고정 네비게이션
+
+   PC 높이 : 80px
+   좌우 여백 : 5%
+===================================== */
 
 .site-header {
   position: fixed;
@@ -17,19 +53,20 @@
   align-items: center;
   justify-content: space-between;
 
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background-color: var(--ohv-bg);
+  border-bottom: 1px solid var(--ohv-border);
+
   z-index: 1000;
 }
 
 
 /* =====================================
-   02. OHV 이미지 로고
+   03. OHV 이미지 로고
 
-   기존 텍스트 로고 대신 logo.png 사용
+   logo.png 이미지 사용
 
-   height : 로고 이미지 높이
-   width: auto : 원본 이미지 비율 유지
+   이미지 색상은 CSS로 변경되지 않으므로
+   원본 PNG 컬러를 수정해야 합니다.
 ===================================== */
 
 .site-header .logo {
@@ -42,16 +79,16 @@
 .site-header .logo-image {
   display: block;
 
-  height: 32px;  /* PC 로고 크기 */
+  height: 32px;
   width: auto;
-
   max-width: 100%;
+
   object-fit: contain;
 }
 
 
 /* =====================================
-   03. 상단 메뉴
+   04. 상단 메뉴
 
    ABOUT / SERVICES / WORK / CONTACT
 ===================================== */
@@ -68,9 +105,13 @@
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 1px;
-  color: #111;
+
+  color: var(--ohv-text);
   text-decoration: none;
 }
+
+
+/* 메뉴 마우스 오버 */
 
 .site-header .site-nav a:hover,
 .site-header .work-trigger:hover {
@@ -79,7 +120,7 @@
 
 
 /* =====================================
-   04. WORK 드롭다운
+   05. WORK 드롭다운
 ===================================== */
 
 .nav-work {
@@ -92,8 +133,14 @@
   padding: 0;
   border: 0;
   background: none;
+
+  color: var(--ohv-text);
+
   cursor: pointer;
 }
+
+
+/* 드롭다운 박스 위치 */
 
 .work-dropdown {
   position: absolute;
@@ -105,6 +152,7 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+
   transform: translateY(-5px);
 
   transition:
@@ -114,44 +162,63 @@
   z-index: 200;
 }
 
+
+/* 드롭다운 내부 배경 */
+
 .dropdown-inner {
   padding: 12px 18px;
-  background: #fff;
-  border: 1px solid #eee;
+
+  background-color: var(--ohv-bg);
+  border: 1px solid var(--ohv-border);
+
   box-shadow: 0 8px 24px rgba(0,0,0,0.04);
 }
+
+
+/* 드롭다운 메뉴 글자 */
 
 .site-header .work-dropdown a {
   display: block;
   padding: 15px 0;
+
   font-family: 'Pretendard', sans-serif;
   font-size: 11px;
+  font-weight: 400;
   letter-spacing: 0.3px;
   line-height: 1.5;
-  color: #111;
+
+  color: var(--ohv-text);
   text-decoration: none;
 }
 
+
+/* 드롭다운 메뉴 구분선 */
+
 .work-dropdown a + a {
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--ohv-border);
 }
 
 
 /* =====================================
-   05. WORK 드롭다운 열기
+   06. WORK 드롭다운 열기
 
    PC : 마우스 올리기
-   모바일 : 버튼 클릭
+   모바일 : 클릭
 ===================================== */
 
 @media (hover: hover) {
+
   .nav-work:hover .work-dropdown {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
   }
+
 }
+
+
+/* 클릭 및 키보드 포커스 */
 
 .nav-work.is-open .work-dropdown,
 .nav-work:focus-within .work-dropdown {
@@ -163,33 +230,46 @@
 
 
 /* =====================================
-   06. 모바일 화면
+   07. 모바일 화면
 
    화면 너비 650px 이하 적용
 ===================================== */
 
 @media (max-width: 650px) {
 
+  /* 모바일 네비 높이 */
+
   .site-header {
     height: 70px;
   }
 
-  /* 모바일 로고 크기 */
+
+  /* 모바일 이미지 로고 */
+
   .site-header .logo-image {
     height: 24px;
     width: auto;
     max-width: 100%;
   }
 
+
+  /* 모바일 메뉴 간격 */
+
   .site-header .site-nav {
     gap: 12px;
   }
+
+
+  /* 모바일 메뉴 글자 크기 */
 
   .site-header .site-nav > a,
   .site-header .work-trigger {
     font-size: 9px;
     letter-spacing: 0;
   }
+
+
+  /* 모바일 WORK 드롭다운 */
 
   .work-dropdown {
     right: -38px;
@@ -200,47 +280,20 @@
     font-size: 10px;
   }
 
-   
+}
+
+
 /* =====================================
-   OHV 전체 사이트 컬러
+   08. 전체 사이트 글자색 통일
+
+   본문 / 링크 / 푸터에 기본 컬러 적용
+
+   개별 페이지에 더 구체적인 CSS가 있으면
+   해당 페이지의 설정이 우선할 수 있습니다.
 ===================================== */
 
-:root {
-  --ohv-bg: #F1F1F1;
-  --ohv-text: #939393;
-}
-
-/* 전체 배경 및 기본 글자색 */
-html,
-body {
-  background-color: var(--ohv-bg);
-  color: var(--ohv-text);
-}
-
-/* 상단 네비게이션 */
-.site-header {
-  background-color: var(--ohv-bg);
-}
-
-.site-header .site-nav > a,
-.site-header .work-trigger {
-  color: var(--ohv-text);
-}
-
-/* WORK 드롭다운 */
-.dropdown-inner {
-  background-color: var(--ohv-bg);
-}
-
-.site-header .work-dropdown a {
-  color: var(--ohv-text);
-}
-
-/* 본문 텍스트 및 링크 */
 body main,
 body main a,
 body footer {
   color: var(--ohv-text);
-}
-
 }
