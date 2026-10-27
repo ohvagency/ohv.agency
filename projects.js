@@ -26,8 +26,8 @@ const projects = [
 
   {
   id: "marketing-01",
-  category: "MARKETING",
-  title: "[INFLUENCER MARKETING] 유튜버 브랜디드 콘텐츠 바이럴",
+  category: "Influencer Marketing",
+  title: "유튜버 브랜디드 콘텐츠 바이럴",
   link: "projects/marketing-01.html"
   },
 
