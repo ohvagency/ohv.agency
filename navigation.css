@@ -200,4 +200,47 @@
     font-size: 10px;
   }
 
+   
+/* =====================================
+   OHV 전체 사이트 컬러
+===================================== */
+
+:root {
+  --ohv-bg: #F1F1F1;
+  --ohv-text: #939393;
+}
+
+/* 전체 배경 및 기본 글자색 */
+html,
+body {
+  background-color: var(--ohv-bg);
+  color: var(--ohv-text);
+}
+
+/* 상단 네비게이션 */
+.site-header {
+  background-color: var(--ohv-bg);
+}
+
+.site-header .site-nav > a,
+.site-header .work-trigger {
+  color: var(--ohv-text);
+}
+
+/* WORK 드롭다운 */
+.dropdown-inner {
+  background-color: var(--ohv-bg);
+}
+
+.site-header .work-dropdown a {
+  color: var(--ohv-text);
+}
+
+/* 본문 텍스트 및 링크 */
+body main,
+body main a,
+body footer {
+  color: var(--ohv-text);
+}
+
 }
