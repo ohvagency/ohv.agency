@@ -27,7 +27,7 @@ const projects = [
   {
   id: "marketing-01",
   category: "MARKETING",
-  title: "[29 EDITION] TTUDEMENT X GOMSONGYI EDITION",
+  title: "[INFLUENCER MARKETING] YOUHEE 윤비누YOONSOAP 브랜디",
   link: "projects/marketing-01.html"
   },
 
