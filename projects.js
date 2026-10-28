@@ -30,7 +30,12 @@ const projects = [
   title: "유튜버 브랜디드 콘텐츠 바이럴",
   link: "projects/marketing-01.html"
   },
-
+  {
+  id: "edition-01",
+  category: "Influencer Collaboration",
+  title: "인플루언서 공동개발(제작) 에디션",
+  link: "projects/edition-01.html"
+  },
 
   /*  VISUAL — GIO */
 
