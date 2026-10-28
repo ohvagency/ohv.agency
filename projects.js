@@ -35,7 +35,7 @@ const projects = [
   category: "Influencer Collaboration",
   title: "인플루언서 공동개발(제작) 에디션",
   link: "projects/edition-01.html"
-  },
+  }
 
   /*  VISUAL — GIO */
 
