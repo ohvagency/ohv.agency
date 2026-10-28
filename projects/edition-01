@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       01. OHV 공통 설정
+
+       EXPERIENCE 3단 구조
+       오른쪽 프로젝트 상세 페이지용
+  ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- ✏️ 브라우저 탭 제목 -->
+  <title>튜드먼트 29 EDITION — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       02. 기본 디자인
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F1F1F1;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: light;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    main {
+      width: 100%;
+      max-width: none;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =====================================
+       03. 프로젝트 제목
+
+       카테고리 : Bold
+       프로젝트명 : Regular
+    ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 8px;
+      row-gap: 4px;
+
+      margin: 0 0 20px;
+      line-height: 1.4;
+      color: #939393;
+      word-break: keep-all;
+    }
+
+    .project-heading-category {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    .project-heading-title {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================
+       04. 프로젝트 소개
+
+       ✏️ margin-bottom
+       → 소개와 콘텐츠 사이 간격
+    ===================================== */
+
+    .description {
+      max-width: 760px;
+      margin: 0 0 65px;
+
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1.8;
+
+      color: #939393;
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       05. 콘텐츠 목록
+    ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+
+    /* =====================================
+       06. 클릭 가능한 콘텐츠 제목
+
+       클릭 → 펼치기
+       다시 클릭 → 접기
+    ===================================== */
+
+    .content-item {
+      width: 100%;
+    }
+
+    .content-toggle {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+
+      border: none;
+      background: transparent;
+      color: #939393;
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: normal;
+
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .content-toggle:hover {
+      opacity: 0.55;
+    }
+
+    .content-toggle:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 4px;
+    }
+
+
+    /* =====================================
+       07. + / − 표시
+    ===================================== */
+
+    .content-toggle::after {
+      content: "+";
+      display: inline-block;
+
+      margin-left: 7px;
+      font-size: 15px;
+
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1;
+    }
+
+    .content-toggle[aria-expanded="true"]::after {
+      content: "−";
+    }
+
+
+    /* =====================================
+       08. 콘텐츠 펼치기 / 접기
+    ===================================== */
+
+    .content-panel[hidden] {
+      display: none;
+    }
+
+    .content-panel {
+      margin-top: 14px;
+    }
+
+
+    /* =====================================
+       09. 29CM 에디션 임베드
+
+       PC : 650px 높이
+       모바일 : 500px 높이
+
+       ※ 29CM에서 외부 임베드를 차단하면
+       iframe에 페이지가 표시되지 않을 수 있습니다.
+    ===================================== */
+
+    .edition-embed {
+      width: 100%;
+      height: 650px;
+      background: #F1F1F1;
+    }
+
+    .edition-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+    /* =====================================
+       10. 원본 페이지 링크
+    ===================================== */
+
+    .external-link {
+      display: inline-block;
+      margin-top: 12px;
+
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: normal;
+
+      color: #939393;
+      text-decoration: none;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .external-link:hover {
+      opacity: 0.55;
+    }
+
+
+    /* =====================================
+       11. 이미지 배치
+
+       one   : 한 줄에 1장
+       two   : 한 줄에 2장
+       three : 한 줄에 3장
+
+       이미지는 원본 비율 유지
+    ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       12. 모바일 화면
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      .project-heading {
+        column-gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .project-heading-category {
+        font-size: 12px;
+      }
+
+      .project-heading-title {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 45px;
+      }
+
+      .gallery {
+        gap: 6px;
+      }
+
+      .content-toggle {
+        font-size: 13px;
+      }
+
+      .content-toggle::after {
+        font-size: 14px;
+        margin-left: 6px;
+      }
+
+      .content-panel {
+        margin-top: 12px;
+      }
+
+      .edition-embed {
+        height: 500px;
+      }
+
+      .image-row {
+        gap: 8px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- =====================================
+         13. 프로젝트 제목
+
+         카테고리와 프로젝트명을 수정하세요.
+    ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        CONTENT MARKETING
+      </span>
+
+      <span class="project-heading-title">
+        튜드먼트 29 EDITION
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         14. 프로젝트 소개
+
+         아래 소개 문구는 자유롭게 수정하세요.
+    ===================================== -->
+
+    <p class="description">튜드먼트의 브랜드 무드와 제품을 소개하는 29CM 에디션 콘텐츠
+브랜드의 매력을 새로운 시선으로 전달하는 디지털 콘텐츠 프로젝트</p>
+
+
+    <!-- =====================================
+         15. 프로젝트 콘텐츠
+    ===================================== -->
+
+    <div class="gallery">
+
+      <!-- =====================================
+           ✏️ 29CM EDITION
+
+           제목 클릭 → 에디션 페이지 펼치기
+           다시 클릭 → 접기
+
+           제목 및 링크 변경 가능
+      ===================================== -->
+
+      <div class="content-item">
+
+        <button
+          type="button"
+          class="content-toggle"
+          aria-expanded="false"
+          aria-controls="edition-01">
+
+          튜드먼트 29 EDITION
+
+        </button>
+
+
+        <!-- 처음에는 숨겨진 29CM 페이지 -->
+
+        <div
+          class="content-panel"
+          id="edition-01"
+          hidden>
+
+          <div class="edition-embed">
+
+            <iframe
+              data-src="https://www.29cm.co.kr/content/29edition/2026/04/ttudement"
+              title="튜드먼트 29 EDITION"
+              loading="lazy">
+            </iframe>
+
+          </div>
+
+
+          <!-- 임베드가 차단된 경우 원본 페이지 이동 -->
+
+          <a
+            class="external-link"
+            href="https://www.29cm.co.kr/content/29edition/2026/04/ttudement"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            VIEW ORIGINAL ON 29CM ↗
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           16. 이미지 1장 배치 예시
+
+           사용하려면 바깥 주석을 제거하고
+           실제 이미지 경로로 변경하세요.
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row one">
+
+        <img
+          src="../images/projects/marketing-02/01.jpg"
+          alt="프로젝트 이미지 1"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           17. 이미지 2장 배치 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row two">
+
+        <img
+          src="../images/projects/marketing-02/02.jpg"
+          alt="프로젝트 이미지 2"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/03.jpg"
+          alt="프로젝트 이미지 3"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           18. 이미지 3장 배치 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row three">
+
+        <img
+          src="../images/projects/marketing-02/04.jpg"
+          alt="프로젝트 이미지 4"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/05.jpg"
+          alt="프로젝트 이미지 5"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/06.jpg"
+          alt="프로젝트 이미지 6"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================
+       19. 에디션 펼치기 / 접기 기능
+
+       제목 클릭 → 펼치기
+       다시 클릭 → 접기
+
+       임베드는 처음 열 때 로딩됩니다.
+    ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.content-toggle').forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        if (!panel) return;
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+        const iframe = panel.querySelector('iframe');
+
+        if (isOpen) {
+
+          /* 접기 */
+
+          panel.hidden = true;
+
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          if (iframe) {
+            iframe.removeAttribute('src');
+          }
+
+        } else {
+
+          /* 펼치기 */
+
+          panel.hidden = false;
+
+          button.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          if (iframe && iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+          }
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
