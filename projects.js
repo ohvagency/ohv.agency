@@ -32,11 +32,40 @@ const projects = [
   {
     id: "edition-01",
     category: "Influencer Collaboration",
-    title: "인플루언서 공동개발(제작) 에디션",
+    title: "곰송이 튜드먼트 공동개발(제작) 에디션",
     link: "projects/edition-01.html"
   },
-
-
+   
+  {
+   id: "pop-up_influencer-01",
+    category: "Pop-up & Exhibition",
+    title: "[INVITATION] Korilakkuma Vacation with YOUHEE",
+    link: "projects/pop-up_influencer-Korilakkuma Vacation with YOUHEE.html"
+  },
+  {
+   id: "pop-up_influencer-02",
+    category: "Pop-up & Exhibition",
+    title: "[INVITATION] Rosette of Youhee",
+    link: "projects/pop-up_influencer-Rosette of Youhee.html"
+  },
+  {
+   id: "pop-up_influencer-03",
+    category: "Pop-up & Exhibition",
+    title: "[INVITATION] Your Wishlist",
+    link: "projects/pop-up_influencer-Your Wishlist.html"
+  }, 
+  {
+   id: "pop-up_influencer-04",
+    category: "Pop-up & Exhibition",
+    title: "[INVITATION] Youhee Basic Line POP-UP",
+    link: "projects/pop-up_influencer-Youhee Basic Line POP-UP.html"
+  },    
+  {
+   id: "pop-up_influencer-05",
+    category: "Pop-up & Exhibition",
+    title: "[INVITATION] TTUDEMENT 25FW POP-UP",
+    link: "projects/pop-up_influencer-TTUDEMENT 25FW POP-UP.html"
+  },  
   /* VISUAL — GIO */
 
   {
