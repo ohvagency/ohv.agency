@@ -1,0 +1,1028 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       01. OHV 공통 설정
+
+       EXPERIENCE 3단 구조
+       오른쪽 프로젝트 상세 페이지용
+  ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <title>튜드먼트 29 EDITION — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       02. 기본 디자인
+
+       배경 : #F1F1F1
+       글자 : #939393
+       폰트 : Pretendard
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F1F1F1;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: light;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    main {
+      width: 100%;
+      max-width: none;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =====================================
+       03. 프로젝트 메인 제목
+
+       카테고리 : Bold
+       프로젝트명 : Regular
+    ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      column-gap: 8px;
+      row-gap: 4px;
+
+      margin: 0 0 20px;
+
+      color: #939393;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .project-heading-category {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    .project-heading-title {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================
+       04. 프로젝트 소개
+
+       margin-bottom
+       → 설명과 콘텐츠 사이 간격
+    ===================================== */
+
+    .description {
+      max-width: 760px;
+      margin: 0 0 65px;
+
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1.8;
+
+      color: #939393;
+
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       05. 콘텐츠 전체 영역
+    ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+
+    /* =====================================
+       06. 29CM 에디션 제목
+
+       클릭 → 펼치기
+       다시 클릭 → 접기
+    ===================================== */
+
+    .content-item {
+      width: 100%;
+    }
+
+    .content-toggle {
+      display: inline-block;
+
+      margin: 0;
+      padding: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: normal;
+
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .content-toggle:hover {
+      opacity: 0.55;
+    }
+
+    .content-toggle:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 4px;
+    }
+
+
+    /* =====================================
+       07. + / − 표시
+
+       닫힘 : +
+       열림 : −
+    ===================================== */
+
+    .content-toggle::after {
+      content: "+";
+      display: inline-block;
+
+      margin-left: 7px;
+
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1;
+    }
+
+    .content-toggle[aria-expanded="true"]::after {
+      content: "−";
+    }
+
+
+    /* =====================================
+       08. 29CM 콘텐츠 펼치기
+    ===================================== */
+
+    .content-panel[hidden] {
+      display: none;
+    }
+
+    .content-panel {
+      margin-top: 14px;
+    }
+
+
+    /* =====================================
+       09. 29CM 에디션 임베드
+
+       외부 사이트에서 iframe을 차단하면
+       페이지가 표시되지 않을 수 있습니다.
+    ===================================== */
+
+    .edition-embed {
+      width: 100%;
+      height: 650px;
+      background: #F1F1F1;
+    }
+
+    .edition-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .external-link {
+      display: inline-block;
+
+      margin-top: 12px;
+
+      font-size: 11px;
+      font-weight: 400;
+
+      color: #939393;
+      text-decoration: none;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .external-link:hover {
+      opacity: 0.55;
+    }
+
+
+    /* =====================================
+       10. 곰송이 이미지 슬라이드
+
+       이미지 총 9장
+
+       이미지 위에 좌우 화살표 표시
+       이미지 숫자 카운터 없음
+
+       한 번에 이미지 1장씩
+    ===================================== */
+
+    .image-slider {
+      width: 100%;
+      min-width: 0;
+      margin-top: 20px;
+    }
+
+    /* 이미지 및 화살표 기준 영역 */
+    .slider-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #F1F1F1;
+    }
+
+    /* 이미지 가로 배열 */
+    .slider-track {
+      display: flex;
+      width: 100%;
+      align-items: flex-start;
+
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+
+    /* 이미지 한 장 */
+    .slide {
+      flex: 0 0 100%;
+      min-width: 0;
+    }
+
+    /* 원본 이미지 비율 유지 */
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       11. 이미지 위 좌우 화살표
+
+       이미지 중앙 높이에 겹쳐서 표시
+
+       ✏️ left / right
+       → 이미지 가장자리와의 거리
+    ===================================== */
+
+    .slider-prev,
+    .slider-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      height: 40px;
+
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-family: 'Pretendard', sans-serif;
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1;
+
+      cursor: pointer;
+
+      transition: opacity 0.2s ease;
+    }
+
+    /* 이전 이미지 */
+    .slider-prev {
+      left: 10px;
+    }
+
+    /* 다음 이미지 */
+    .slider-next {
+      right: 10px;
+    }
+
+    .slider-prev:hover,
+    .slider-next:hover {
+      opacity: 0.5;
+    }
+
+    .slider-prev:focus-visible,
+    .slider-next:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 2px;
+    }
+
+
+    /* =====================================
+       12. 유튜브 영상
+
+       이미지 슬라이드 아래에 표시
+
+       클릭해서 펼치는 기능 없음
+       처음부터 영상 표시
+
+       영상 비율 16:9
+    ===================================== */
+
+    .youtube-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+
+      margin-top: 25px;
+
+      background: #F1F1F1;
+    }
+
+    .youtube-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+    /* =====================================
+       13. 일반 프로젝트 이미지 배치
+
+       one   : 한 줄에 1장
+       two   : 한 줄에 2장
+       three : 한 줄에 3장
+
+       이미지 원본 비율 유지
+    ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       14. 모바일 화면
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      .project-heading {
+        column-gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .project-heading-category {
+        font-size: 12px;
+      }
+
+      .project-heading-title {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 45px;
+      }
+
+      .gallery {
+        gap: 6px;
+      }
+
+      .content-toggle {
+        font-size: 13px;
+      }
+
+      .content-toggle::after {
+        font-size: 14px;
+        margin-left: 6px;
+      }
+
+      .content-panel {
+        margin-top: 12px;
+      }
+
+      .edition-embed {
+        height: 500px;
+      }
+
+      /* 이미지 슬라이드 */
+      .image-slider {
+        margin-top: 15px;
+      }
+
+      /* 모바일 화살표 */
+      .slider-prev,
+      .slider-next {
+        width: 32px;
+        height: 32px;
+        font-size: 22px;
+      }
+
+      .slider-prev {
+        left: 4px;
+      }
+
+      .slider-next {
+        right: 4px;
+      }
+
+      /* 유튜브 */
+      .youtube-embed {
+        margin-top: 15px;
+      }
+
+      /* 일반 이미지 */
+      .image-row {
+        gap: 8px;
+      }
+
+    }
+
+/* =====================================
+   프로젝트 콘텐츠 하이퍼링크
+===================================== */
+
+.project-link {
+  display: inline-block;
+  align-self: flex-start;
+
+  margin-top: 6px;
+  margin-bottom: 18px;
+
+  color: #939393;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+
+  transition: opacity 0.2s ease;
+}
+
+.project-link:hover {
+  opacity: 0.5;
+}
+
+@media (max-width: 650px) {
+  .project-link {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+}
+  </style>
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- =====================================
+         15. 프로젝트 메인 제목
+    ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        EDITION
+      </span>
+
+      <span class="project-heading-title">
+        곰송이 튜드먼트 29 EDITION (공동 개발)
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         16. 프로젝트 소개
+
+         기존 작성한 문구 유지
+    ===================================== -->
+
+    <p class="description">현실적이고 따라 하기 좋은 출근룩, 하객룩, 데일리룩 콘텐츠를 선보이는 패션 유튜버 곰송이와 튜드먼트의 26 SS 컬렉션 공동 개발 및 출시
+곰송이의 스타일링 노하우와 튜드먼트의 브랜드 감도를 결합한 협업 컬렉션</p>
+
+
+    <!-- =====================================
+         17. 프로젝트 콘텐츠 시작
+
+         01. 29CM 에디션
+         02. 곰송이 이미지 슬라이드
+         03. 유튜브 임베드
+         04. 추가 이미지 예시
+    ===================================== -->
+
+    <div class="gallery">
+
+
+      <!-- =====================================
+           18. 29CM 에디션 시작
+
+           기존 클릭 → 펼치기 기능 유지
+      ===================================== -->
+
+      <div class="content-item">
+
+        <button
+          type="button"
+          class="content-toggle"
+          aria-expanded="false"
+          aria-controls="edition-01">
+
+          튜드먼트 29 EDITION 상세 페이지
+
+        </button>
+
+
+        <!-- 처음에는 숨겨진 에디션 -->
+
+        <div
+          class="content-panel"
+          id="edition-01"
+          hidden>
+
+          <div class="edition-embed">
+
+            <iframe
+              data-src="https://www.29cm.co.kr/content/29edition/2026/04/ttudement"
+              title="튜드먼트 29 EDITION"
+              loading="lazy">
+            </iframe>
+
+          </div>
+
+
+          <!-- 29CM 원본 페이지 이동 -->
+
+          <a
+            class="external-link"
+            href="https://www.29cm.co.kr/content/29edition/2026/04/ttudement"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            VIEW ORIGINAL ON 29CM ↗
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- ===== 29CM 에디션 끝 ===== -->
+
+
+      <!-- =====================================
+           19. 곰송이 이미지 슬라이드 시작
+
+           이미지 9장
+
+           좌우 화살표가 이미지 위에 표시됩니다.
+
+           숫자 카운터 없음
+
+           이미지 경로:
+           images/projects/marketing/
+           marketing02_ttudement/
+      ===================================== -->
+
+      <div class="image-slider">
+
+        <div class="slider-viewport">
+
+          <!-- ===== 이미지 9장 시작 ===== -->
+
+          <div class="slider-track">
+
+            <!-- 이미지 01 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi1.jpg"
+                alt="곰송이 콜라보 이미지 1"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 02 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi2.jpg"
+                alt="곰송이 콜라보 이미지 2"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 03 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi3.jpg"
+                alt="곰송이 콜라보 이미지 3"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 04 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi4.jpg"
+                alt="곰송이 콜라보 이미지 4"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 05 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi5.jpg"
+                alt="곰송이 콜라보 이미지 5"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 06 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi6.jpg"
+                alt="곰송이 콜라보 이미지 6"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 07 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi7.jpg"
+                alt="곰송이 콜라보 이미지 7"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 08 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi8.jpg"
+                alt="곰송이 콜라보 이미지 8"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 09 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing02_ttudement/gomsongyi9.jpg"
+                alt="곰송이 콜라보 이미지 9"
+                loading="lazy">
+            </div>
+
+          </div>
+
+          <!-- ===== 이미지 9장 끝 ===== -->
+
+<!-- ===== 이미지 관련 링크 ===== -->
+<a
+  class="project-link"
+  href="https://www.instagram.com/gomsongyi/"
+  target="_blank"
+  rel="noopener noreferrer">
+  @gomsongyi
+</a>
+<a
+  class="project-link"
+  href="https://www.instagram.com/p/DXp_gK-gSi6/"
+  target="_blank"
+  rel="noopener noreferrer">
+  @gomsongyi X @ttudement
+</a>
+
+          <!-- =====================================
+               이미지 위 좌우 화살표
+
+               슬라이드 안쪽에 배치되어
+               이미지 위에 겹쳐 표시됩니다.
+          ===================================== -->
+
+          <button
+            type="button"
+            class="slider-prev"
+            aria-label="이전 이미지">
+            &lt;
+          </button>
+
+          <button
+            type="button"
+            class="slider-next"
+            aria-label="다음 이미지">
+            &gt;
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ===== 곰송이 이미지 슬라이드 끝 ===== -->
+
+
+      <!-- =====================================
+           20. 유튜브 임베드 시작
+
+           이미지 슬라이드 아래에 바로 표시
+
+           기존 영상 주소 유지:
+           dcnVJaa17-A
+
+           + / − 펼치기 기능 없음
+      ===================================== -->
+
+      <div class="youtube-embed">
+
+        <iframe
+          src="https://www.youtube.com/embed/dcnVJaa17-A"
+          title="곰송이 튜드먼트 29에디션"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+      <!-- ===== 유튜브 임베드 끝 ===== -->
+<a
+  class="project-link"
+  href="https://www.youtube.com/@gomsongyi"
+  target="_blank"
+  rel="noopener noreferrer">
+  @곰송이 gomsongyi
+</a>
+
+      <!-- =====================================
+           21. 이미지 1장 배치 예시
+
+           필요한 경우 주석 제거 후 사용
+
+           이미지 경로는 실제 파일로 수정
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row one">
+
+        <img
+          src="../images/projects/marketing-02/01.jpg"
+          alt="프로젝트 이미지 1"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           22. 이미지 2장 배치 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row two">
+
+        <img
+          src="../images/projects/marketing-02/02.jpg"
+          alt="프로젝트 이미지 2"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/03.jpg"
+          alt="프로젝트 이미지 3"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           23. 이미지 3장 배치 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row three">
+
+        <img
+          src="../images/projects/marketing-02/04.jpg"
+          alt="프로젝트 이미지 4"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/05.jpg"
+          alt="프로젝트 이미지 5"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing-02/06.jpg"
+          alt="프로젝트 이미지 6"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+    </div>
+    <!-- ===== 프로젝트 gallery 끝 ===== -->
+
+  </main>
+
+
+  <!-- =====================================
+       24. 29CM 에디션 펼치기 / 접기
+
+       기존 기능 유지
+
+       제목 클릭 → 펼치기
+       다시 클릭 → 접기
+  ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.content-toggle').forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        if (!panel) return;
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+        const iframe = panel.querySelector('iframe');
+
+        if (isOpen) {
+
+          /* 에디션 접기 */
+          panel.hidden = true;
+
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          if (iframe) {
+            iframe.removeAttribute('src');
+          }
+
+        } else {
+
+          /* 에디션 펼치기 */
+          panel.hidden = false;
+
+          button.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          if (iframe && iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+          }
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+
+  <!-- =====================================
+       25. 곰송이 이미지 슬라이드 기능
+
+       좌우 화살표 클릭으로 이동
+
+       이미지 총 9장 자동 인식
+
+       숫자 카운터 기능 제거
+  ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.image-slider').forEach(slider => {
+
+      const track = slider.querySelector('.slider-track');
+      const slides = slider.querySelectorAll('.slide');
+
+      const prev = slider.querySelector('.slider-prev');
+      const next = slider.querySelector('.slider-next');
+
+      let index = 0;
+      const total = slides.length;
+
+      if (!track || !total || !prev || !next) return;
+
+
+      /* 이미지 위치 변경 */
+      function updateSlider() {
+
+        track.style.transform =
+          `translateX(-${index * 100}%)`;
+
+      }
+
+
+      /* 이전 이미지 */
+      prev.addEventListener('click', () => {
+
+        index = (index - 1 + total) % total;
+
+        updateSlider();
+
+      });
+
+
+      /* 다음 이미지 */
+      next.addEventListener('click', () => {
+
+        index = (index + 1) % total;
+
+        updateSlider();
+
+      });
+
+
+      /* 첫 번째 이미지 표시 */
+      updateSlider();
+
+    });
+
+  </script>
+
+</body>
+</html>
