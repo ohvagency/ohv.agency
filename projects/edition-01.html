@@ -339,6 +339,107 @@
 
     }
 
+/* =====================================
+   OHV 이미지 슬라이드 디자인
+
+   한 번에 이미지 1장
+   원본 이미지 비율 유지
+
+   배경색 / 글자색 OHV 공통 적용
+===================================== */
+
+.image-slider {
+  width: 100%;
+  min-width: 0;
+}
+
+/* 이미지가 보이는 영역 */
+.slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 이미지 가로 나열 */
+.slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.35s ease;
+}
+
+/* 이미지 한 장 */
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+/* 이미지 원본 비율 유지 */
+.slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 하단 컨트롤 */
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  color: #939393;
+}
+
+/* 좌우 화살표 */
+.slider-prev,
+.slider-next {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #939393;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.slider-prev:hover,
+.slider-next:hover {
+  opacity: 0.5;
+}
+
+/* 이미지 순서 */
+.slider-count {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: #939393;
+}
+
+/* =====================================
+   유튜브 영상 임베드
+
+   PC / 모바일 16:9 비율 유지
+===================================== */
+
+.youtube-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 25px;
+  background: #F1F1F1;
+}
+
+.youtube-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .youtube-embed {
+    margin-top: 15px;
+  }
+}
   </style>
 </head>
 
@@ -437,7 +538,93 @@
 
       </div>
 
+<!-- =====================================
+     곰송이 이미지 슬라이드
 
+     이미지 총 9장
+     좌우 버튼으로 한 장씩 이동
+
+     이미지 추가 시
+     slide 안에 img 한 줄씩 추가
+===================================== -->
+
+<div class="image-slider">
+
+  <!-- 이미지가 표시되는 영역 -->
+  <div class="slider-viewport">
+
+    <div class="slider-track">
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi1.jpg" alt="곰송이 콜라보 이미지 1" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi2.jpg" alt="곰송이 콜라보 이미지 2" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi3.jpg" alt="곰송이 콜라보 이미지 3" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi4.jpg" alt="곰송이 콜라보 이미지 4" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi5.jpg" alt="곰송이 콜라보 이미지 5" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi6.jpg" alt="곰송이 콜라보 이미지 6" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi7.jpg" alt="곰송이 콜라보 이미지 7" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi8.jpg" alt="곰송이 콜라보 이미지 8" loading="lazy">
+      </div>
+
+      <div class="slide">
+        <img src="../images/projects/marketing/marketing02_ttudement/gomsongyi9.jpg" alt="곰송이 콜라보 이미지 9" loading="lazy">
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- 이미지 넘기기 -->
+  <div class="slider-controls">
+
+    <button type="button" class="slider-prev" aria-label="이전 이미지">
+      ←
+    </button>
+
+    <span class="slider-count">01 / 09</span>
+
+    <button type="button" class="slider-next" aria-label="다음 이미지">
+      →
+    </button>
+
+  </div>
+
+</div>
+
+ <div class="youtube-embed">
+
+  <iframe
+    src="https://www.youtube.com/embed/dcnVJaa17-A"
+    title="곰송이 튜드먼트 29에디"
+    loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+
+</div>
+      
       <!-- =====================================
            16. 이미지 1장 배치 예시
 
@@ -578,5 +765,47 @@
 
   </script>
 
+<!-- =====================================
+     이미지 슬라이드 기능
+
+     좌우 화살표 클릭으로 이동
+     9장 자동 인식
+===================================== -->
+
+<script>
+  document.querySelectorAll('.image-slider').forEach(slider => {
+
+    const track = slider.querySelector('.slider-track');
+    const slides = slider.querySelectorAll('.slide');
+    const prev = slider.querySelector('.slider-prev');
+    const next = slider.querySelector('.slider-next');
+    const count = slider.querySelector('.slider-count');
+
+    let index = 0;
+    const total = slides.length;
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      count.textContent =
+        String(index + 1).padStart(2, '0') +
+        ' / ' +
+        String(total).padStart(2, '0');
+    }
+
+    prev.addEventListener('click', () => {
+      index = (index - 1 + total) % total;
+      updateSlider();
+    });
+
+    next.addEventListener('click', () => {
+      index = (index + 1) % total;
+      updateSlider();
+    });
+
+    updateSlider();
+
+  });
+</script>
 </body>
 </html>
