@@ -1,0 +1,894 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       OHV AGENCY
+       NEW PROJECT TEMPLATE
+
+       이미지 슬라이드 + 유튜브 임베드
+
+       EXPERIENCE 오른쪽 상세 페이지용
+  ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- ✏️ 브라우저 탭 제목 -->
+  <title>NEW PROJECT — OHV AGENCY</title>
+
+  <style>
+
+    /* ===== 기본 디자인 ===== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      background: #F1F1F1;
+      color: #939393;
+
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: light;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    main {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =====================================
+       01. 프로젝트 제목
+    ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      column-gap: 8px;
+      row-gap: 4px;
+
+      margin: 0 0 20px;
+
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .project-heading-category {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    .project-heading-title {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================
+       02. 프로젝트 설명
+    ===================================== */
+
+    .description {
+      max-width: 760px;
+      margin: 0 0 65px;
+
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.8;
+      letter-spacing: normal;
+
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       03. 콘텐츠 전체 영역
+
+       슬라이드 → 링크
+       유튜브 → 링크
+    ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      gap: 0;
+    }
+
+
+    /* =====================================
+       04. 이미지 슬라이드
+
+       이미지 위 좌우 화살표
+       숫자 카운터 없음
+       이미지 원본 비율 유지
+    ===================================== */
+
+    .image-slider {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .slider-viewport {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .slider-track {
+      display: flex;
+      width: 100%;
+
+      transition: transform 0.35s ease;
+      will-change: transform;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      min-width: 0;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       05. 슬라이드 화살표
+
+       이미지 위 좌우 중앙
+
+       ✏️ left / right 숫자로
+       화살표 위치 변경 가능
+    ===================================== */
+
+    .slider-prev,
+    .slider-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 40px;
+      height: 40px;
+
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 27px;
+      font-weight: 400;
+      line-height: 1;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .slider-prev {
+      left: 10px;
+    }
+
+    .slider-next {
+      right: 10px;
+    }
+
+    .slider-prev:hover,
+    .slider-next:hover {
+      opacity: 0.5;
+    }
+
+    .slider-prev:focus-visible,
+    .slider-next:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 2px;
+    }
+
+
+    /* =====================================
+       06. 콘텐츠 하이퍼링크
+
+       이미지 아래 링크
+       유튜브 아래 링크
+
+       밑줄 적용
+    ===================================== */
+
+    .project-link {
+      display: inline-block;
+      align-self: flex-start;
+
+      margin-top: 10px;
+
+      color: #939393;
+
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: normal;
+
+      text-decoration: underline;
+      text-underline-offset: 3px;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .project-link:hover {
+      opacity: 0.5;
+    }
+
+    /* 이미지 링크와 유튜브 사이 간격 */
+    .image-link {
+      margin-bottom: 35px;
+    }
+
+    /* 유튜브 아래 링크 */
+    .youtube-link {
+      margin-bottom: 0;
+    }
+
+
+    /* =====================================
+       07. 유튜브 임베드
+
+       클릭해서 펼치기 기능 없음
+       영상 항상 표시
+
+       영상 비율 16:9
+    ===================================== */
+
+    .youtube-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+
+      background: #F1F1F1;
+    }
+
+    .youtube-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      border: none;
+    }
+
+
+    /* =====================================
+       08. 추가 이미지 배치
+
+       one   : 이미지 1장
+       two   : 이미지 2장
+       three : 이미지 3장
+    ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+
+      margin-top: 30px;
+    }
+
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       09. 모바일
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      .project-heading {
+        column-gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .project-heading-category {
+        font-size: 12px;
+      }
+
+      .project-heading-title {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 12px;
+        margin-bottom: 45px;
+      }
+
+      .slider-prev,
+      .slider-next {
+        width: 32px;
+        height: 32px;
+        font-size: 22px;
+      }
+
+      .slider-prev {
+        left: 4px;
+      }
+
+      .slider-next {
+        right: 4px;
+      }
+
+      .project-link {
+        font-size: 10px;
+        margin-top: 8px;
+      }
+
+      .image-link {
+        margin-bottom: 25px;
+      }
+
+      .image-row {
+        gap: 8px;
+        margin-top: 25px;
+      }
+
+    }
+
+/* ===== 인스타그램 임베드 ===== */
+
+.instagram-embed {
+  width: 100%;
+  min-width: 0;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.instagram-embed .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 540px !important;
+  margin: 0 !important;
+}
+
+/* =====================================
+   X (트위터) 게시물 임베드
+===================================== */
+
+.twitter-embed {
+  width: 100%;
+  min-width: 0;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.twitter-embed .twitter-tweet {
+  max-width: 550px;
+  margin: 0 !important;
+}
+
+/* =====================================
+   프로젝트 설명 텍스트
+===================================== */
+
+.content-description {
+  margin: 20px 0 25px;
+
+  color: #939393;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: normal;
+
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+
+/* =====================================
+   구글 드라이브 영상
+===================================== */
+
+.drive-video {
+  width: 100%;
+  aspect-ratio: 7 / 12;
+  margin-top: 0;
+  background: #F1F1F1;
+}
+
+.drive-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+/* 모바일 */
+@media (max-width: 650px) {
+
+  .content-description {
+    font-size: 12px;
+    margin: 15px 0 20px;
+  }
+
+}    
+  </style>
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- =====================================
+         10. 프로젝트 제목
+
+         ✏️ 카테고리 / 프로젝트명 수정
+    ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        POP-UP INVITATION
+      </span>
+
+      <span class="project-heading-title">
+        Your Wishlist
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         11. 프로젝트 소개
+
+         ✏️ 설명 2줄 수정
+    ===================================== -->
+
+    <p class="description">브랜드 유희와 리틀트윈스타의 콜라보 선발매 및 FW 시즌 신제품 발매를 기념한 오프라인 팝업스토어에 매거진·인플루언서 초청 및 현장 콘텐츠 확산
+사전 인비테이션부터 팝업 현장 콘텐츠까지 온·오프라인 바이럴을 연계하여 팝업 화제성 및 브랜드 인지도 제고</p>
+
+
+    <!-- =====================================
+         12. 프로젝트 콘텐츠 시작
+    ===================================== -->
+
+    <div class="gallery">
+
+
+      <!-- =====================================
+           13. 이미지 슬라이드 시작
+
+           ✏️ 이미지 경로 수정
+
+           이미지 추가:
+           <div class="slide"> 복사
+
+           이미지 삭제:
+           해당 slide 블록 삭제
+
+           이미지 개수 자동 인식
+      ===================================== -->
+
+      <div class="image-slider">
+
+        <div class="slider-viewport">
+
+          <div class="slider-track">
+
+            <!-- 이미지 01 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing01_youhee/wishlist_1.jpg"
+                alt="프로젝트 이미지 1"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 02 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing01_youhee/wishlist_2.jpg"
+                alt="프로젝트 이미지 2"
+                loading="lazy">
+            </div>
+
+            <!-- 이미지 03 -->
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing01_youhee/wishlist_3.jpg"
+                alt="프로젝트 이미지 3"
+                loading="lazy">
+            </div>
+            
+            <div class="slide">
+              <img
+                src="../images /projects /marketing /marketing01_youhee/wishlist_4.jpg"
+                alt="프로젝트 이미지 4"
+                loading="lazy">
+            </div>
+            
+<!-- 이미지 05 -->
+<div class="slide">
+  <img
+    src="../images /projects /marketing /marketing01_youhee/wishlist_5.jpg"
+    alt="프로젝트 이미지 5"
+    loading="lazy">
+</div>
+
+<!-- 이미지 06 -->
+<div class="slide">
+  <img
+    src="../images /projects /marketing /marketing01_youhee/wishlist_6.jpg"
+    alt="프로젝트 이미지 6"
+    loading="lazy">
+</div>
+
+<!-- 이미지 07 -->
+<div class="slide">
+  <img
+    src="../images /projects /marketing /marketing01_youhee/wishlist_7.jpg"
+    alt="프로젝트 이미지 7"
+    loading="lazy">
+</div>
+
+<!-- 이미지 08 -->
+<div class="slide">
+  <img
+    src="../images /projects /marketing /marketing01_youhee/wishlist_8.jpg"
+    alt="프로젝트 이미지 8"
+    loading="lazy">
+</div>
+          </div>
+
+
+          <!-- 이미지 위 좌우 화살표 -->
+
+          <button
+            type="button"
+            class="slider-prev"
+            aria-label="이전 이미지">
+            &lt;
+          </button>
+
+          <button
+            type="button"
+            class="slider-next"
+            aria-label="다음 이미지">
+            &gt;
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- ===== 이미지 슬라이드 끝 ===== -->
+
+<!-- =====================================
+     01. 사전 인비테이션 설명
+===================================== -->
+
+<p class="content-description">브랜드 팝업 오픈에 앞서 인플루언서 대상 사전 인비테이션 약 100건 진행을 통한 방문 유도
+초청장을 활용한 자발적 SNS 콘텐츠 확산으로 팝업 오픈 전 사전 바이럴 및 브랜드 화제성 확대</p>
+
+
+<!-- =====================================
+     02. 사전 인비테이션 구글 드라이브 영상
+===================================== -->
+
+<div class="drive-video">
+
+  <iframe
+    src="https://drive.google.com/file/d/1vSwMyIJxpu-a9Hjj3zPhYOYDxWKawlz-/preview"
+    title="사전 인비테이션 영상"
+    loading="lazy"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+
+</div>
+<!-- ===== 첫 번째 영상 끝 ===== -->
+
+
+<!-- =====================================
+     03. 팝업 현장 바이럴 설명
+===================================== -->
+
+<p class="content-description">브랜드 팝업 현장에 초청한 인플루언서의 방문 콘텐츠를 통해
+브랜드 경험을 자연스러운 바이럴로 확산</p>
+
+
+<!-- =====================================
+     04. 팝업 현장 구글 드라이브 영상
+===================================== -->
+
+<div class="drive-video">
+
+  <iframe
+    src="https://drive.google.com/file/d/1WkY11TX4-2mR7cDe9xnAkSv9_LZdXPdL/preview"
+    title="팝업 인플루언서 방문 영상"
+    loading="lazy"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+
+</div>
+<!-- ===== 두 번째 영상 끝 ===== -->
+
+
+      <!-- =====================================
+           15. 유튜브 영상 시작
+
+           ✏️ VIDEO_ID 수정
+
+           유튜브 주소 예시:
+           youtube.com/watch?v=XXXXXXXX
+
+           임베드 주소:
+           youtube.com/embed/XXXXXXXX
+      ===================================== -->
+
+
+<!-- ===== 인스타그램 임베드 시작 ===== -->
+
+<div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBQhzlbpWUh/"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+<div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBQplgjJxN3/"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+<div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBT4tLsysrR/"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+    <div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBY5twfTYr4/?img_index=13"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+          <div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBX0aoGvQQz/"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+                <div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBa16QhJibZ/?img_index=2"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+<div class="instagram-embed">
+  <blockquote
+    class="instagram-media"
+    data-instgrm-permalink="https://www.instagram.com/p/DBdCK1vJz6l/"
+    data-instgrm-version="14">
+  </blockquote>
+</div>
+<!-- ===== 인스타그램 임베드 끝 ===== -->
+      <!-- =====================================
+           17. 추가 이미지 1장 예시
+
+           사용하려면 바깥 주석 제거
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row one">
+
+        <img
+          src="../images/projects/NEW_PROJECT/04.jpg"
+          alt="추가 프로젝트 이미지"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           18. 추가 이미지 2장 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row two">
+
+        <img
+          src="../images/projects/NEW_PROJECT/05.jpg"
+          alt="프로젝트 이미지 5"
+          loading="lazy">
+
+        <img
+          src="../images/projects/NEW_PROJECT/06.jpg"
+          alt="프로젝트 이미지 6"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           19. 추가 이미지 3장 예시
+      ===================================== -->
+
+      <!--
+
+      <div class="image-row three">
+
+        <img
+          src="../images/projects/NEW_PROJECT/07.jpg"
+          alt="프로젝트 이미지 7"
+          loading="lazy">
+
+        <img
+          src="../images/projects/NEW_PROJECT/08.jpg"
+          alt="프로젝트 이미지 8"
+          loading="lazy">
+
+        <img
+          src="../images/projects/NEW_PROJECT/09.jpg"
+          alt="프로젝트 이미지 9"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+    </div>
+    <!-- ===== gallery 끝 ===== -->
+
+  </main>
+
+
+  <!-- =====================================
+       20. 이미지 슬라이드 기능
+
+       이미지 개수 자동 인식
+       좌우 화살표로 이동
+       마지막 이미지 → 첫 번째 이미지
+       숫자 카운터 없음
+  ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.image-slider').forEach(slider => {
+
+      const track = slider.querySelector('.slider-track');
+      const slides = slider.querySelectorAll('.slide');
+
+      const prev = slider.querySelector('.slider-prev');
+      const next = slider.querySelector('.slider-next');
+      const viewport = slider.querySelector('.slider-viewport');
+
+      let index = 0;
+      const total = slides.length;
+
+      if (!track || !total || !prev || !next) return;
+
+
+      /* 이미지 이동 */
+      function updateSlider() {
+
+        track.style.transform =
+          `translateX(-${index * 100}%)`;
+
+        /* 이미지마다 원본 비율이 다를 수 있어
+           현재 이미지 높이에 맞춰 영역 조절 */
+
+        const currentImage = slides[index].querySelector('img');
+
+        if (currentImage) {
+          const updateHeight = () => {
+            const height = currentImage.getBoundingClientRect().height;
+            if (height > 0) {
+              viewport.style.height = `${height}px`;
+            }
+          };
+
+          if (currentImage.complete) {
+            updateHeight();
+          } else {
+            currentImage.addEventListener('load', updateHeight, {once: true});
+          }
+        }
+
+      }
+
+
+      /* 이전 이미지 */
+      prev.addEventListener('click', () => {
+
+        index = (index - 1 + total) % total;
+        updateSlider();
+
+      });
+
+
+      /* 다음 이미지 */
+      next.addEventListener('click', () => {
+
+        index = (index + 1) % total;
+        updateSlider();
+
+      });
+
+
+      /* 화면 크기 변경 시 높이 재계산 */
+      window.addEventListener('resize', updateSlider);
+
+
+      /* 첫 번째 이미지 표시 */
+      updateSlider();
+
+    });
+
+  </script>
+<!-- X 게시물 임베드 실행 -->
+<script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+  <script async src="https://www.instagram.com/embed.js"></script>
+</body>
+</html>
