@@ -1,0 +1,594 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       01. OHV 공통 설정
+
+       이 파일은 projects 폴더 안에 있습니다.
+       ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- ✏️ 수정 1. 브라우저 탭 제목 -->
+  <title>PROJECT NAME — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       02. 기본 디자인
+
+       배경색 : #F1F1F1
+       글자색 : #939393
+       폰트   : Pretendard
+       ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F1F1F1;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: light;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+
+    /* =====================================
+       03. 프로젝트 상세 영역
+
+       EXPERIENCE 3단 구조의
+       오른쪽 영역에 표시됩니다.
+
+       불필요한 상단 여백 없음
+       ===================================== */
+
+    main {
+      width: 100%;
+      max-width: none;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* =====================================
+       04. 프로젝트 메인 제목
+
+       영문 카테고리 : Bold 700
+       프로젝트 제목 : Regular 400
+       ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      column-gap: 8px;
+      row-gap: 4px;
+
+      margin: 0 0 20px;
+
+      color: #939393;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    /* 카테고리 */
+    .project-heading-category {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    /* 프로젝트 제목 */
+    .project-heading-title {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================
+       05. 프로젝트 소개
+
+       ✏️ margin-bottom
+       → 소개와 콘텐츠 사이 간격
+
+       현재 : 65px
+       ===================================== */
+
+    .description {
+      max-width: 760px;
+
+      margin: 0 0 65px;
+
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1.8;
+
+      color: #939393;
+
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       06. 프로젝트 콘텐츠 영역
+
+       이미지 / 영상이 세로로 배치됩니다.
+
+       gap : 콘텐츠 사이 간격
+       ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+    }
+
+
+    /* =====================================
+       07. 이미지 배치
+
+       one   : 한 줄에 1장
+       two   : 한 줄에 2장
+       three : 한 줄에 3장
+
+       이미지 원본 비율 유지
+       ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+    }
+
+    /* 이미지 1장 */
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    /* 이미지 2장 */
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* 이미지 3장 */
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       08. 클릭 가능한 영상 제목
+
+       제목 클릭 → 영상 펼치기
+       다시 클릭 → 영상 접기
+
+       Bold 700
+       자간 기본값
+       ===================================== */
+
+    .video-item {
+      width: 100%;
+    }
+
+    .video-text {
+      display: inline-block;
+
+      margin: 0;
+      padding: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: normal;
+
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .video-text:hover {
+      opacity: 0.55;
+    }
+
+    .video-text:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 4px;
+    }
+
+
+    /* =====================================
+       09. 영상 제목 뒤 + / − 표시
+
+       닫힘 : +
+       열림 : −
+
+       HTML에 직접 입력할 필요 없음
+       ===================================== */
+
+    .video-text::after {
+      content: "+";
+      display: inline-block;
+
+      margin-left: 7px;
+
+      font-size: 15px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1;
+    }
+
+    .video-text[aria-expanded="true"]::after {
+      content: "−";
+    }
+
+
+    /* =====================================
+       10. 영상 펼치기 영역
+       ===================================== */
+
+    .video-content[hidden] {
+      display: none;
+    }
+
+    .video-content {
+      margin-top: 14px;
+    }
+
+
+    /* =====================================
+       11. 유튜브 영상 비율
+
+       PC / 모바일 16:9
+       ===================================== */
+
+    .youtube-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #F1F1F1;
+    }
+
+    .youtube-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+    /* =====================================
+       12. 모바일 설정
+       ===================================== */
+
+    @media (max-width: 650px) {
+
+      .project-heading {
+        column-gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .project-heading-category {
+        font-size: 12px;
+      }
+
+      .project-heading-title {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 45px;
+      }
+
+      .gallery {
+        gap: 6px;
+      }
+
+      .image-row {
+        gap: 8px;
+      }
+
+      .video-text {
+        font-size: 13px;
+      }
+
+      .video-text::after {
+        font-size: 14px;
+        margin-left: 6px;
+      }
+
+      .video-content {
+        margin-top: 12px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- =====================================
+         ✏️ 수정 2. 프로젝트 제목
+
+         카테고리와 프로젝트명 수정
+         ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        CATEGORY
+      </span>
+
+      <span class="project-heading-title">
+        PROJECT NAME
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         ✏️ 수정 3. 프로젝트 소개
+
+         두 줄 정도 작성
+         ===================================== -->
+
+    <p class="description">프로젝트에 대한 간단한 소개를 입력해 주세요.
+프로젝트의 핵심 내용이나 작업 방향을 작성하면 됩니다.</p>
+
+
+    <!-- =====================================
+         ✏️ 수정 4. 프로젝트 콘텐츠
+
+         원하는 배치 코드를 복사해서 사용하세요.
+
+         이미지 1장 / 2장 / 3장
+         유튜브 영상
+
+         아래 예시들은 주석 처리되어 있습니다.
+         ===================================== -->
+
+    <div class="gallery">
+
+
+      <!-- =====================================
+           [이미지 1장 배치]
+
+           한 줄에 이미지 1장
+
+           사용하려면 주석을 제거하세요.
+           ===================================== -->
+
+      <!--
+
+      <div class="image-row one">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/01.jpg"
+          alt="프로젝트 이미지 1"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           [이미지 2장 배치]
+
+           한 줄에 이미지 2장
+           ===================================== -->
+
+      <!--
+
+      <div class="image-row two">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/02.jpg"
+          alt="프로젝트 이미지 2"
+          loading="lazy">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/03.jpg"
+          alt="프로젝트 이미지 3"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           [이미지 3장 배치]
+
+           한 줄에 이미지 3장
+           ===================================== -->
+
+      <!--
+
+      <div class="image-row three">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/04.jpg"
+          alt="프로젝트 이미지 4"
+          loading="lazy">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/05.jpg"
+          alt="프로젝트 이미지 5"
+          loading="lazy">
+
+        <img
+          src="../images/projects/PROJECT_FOLDER/06.jpg"
+          alt="프로젝트 이미지 6"
+          loading="lazy">
+
+      </div>
+
+      -->
+
+
+      <!-- =====================================
+           [유튜브 영상 배치]
+
+           제목을 클릭하면 영상이 펼쳐집니다.
+
+           ✏️ 수정할 부분
+
+           1. youtube-01 번호 (2군데)
+           2. 영상 제목
+           3. 유튜브 영상 ID
+
+           영상 추가 시 이 블록 전체 복사
+           ===================================== -->
+
+      <!--
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-01">
+
+          VIDEO PROJECT NAME
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-01"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/VIDEO_ID"
+              title="Project Video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      -->
+
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================
+       13. 유튜브 영상 펼치기 / 접기
+
+       처음 한 번만 설정하는 기능입니다.
+
+       이후 영상이 늘어나도
+       JavaScript 수정 불필요
+       ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.video-text').forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        if (!panel) return;
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+        const iframe = panel.querySelector('iframe');
+
+        if (isOpen) {
+
+          /* 영상 접기 */
+          panel.hidden = true;
+
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          /* 재생 중지 */
+          if (iframe) {
+            iframe.removeAttribute('src');
+          }
+
+        } else {
+
+          /* 영상 펼치기 */
+          panel.hidden = false;
+
+          button.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          /* 영상 불러오기 */
+          if (iframe && iframe.dataset.src) {
+            iframe.src = iframe.dataset.src;
+          }
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
