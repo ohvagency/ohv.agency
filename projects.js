@@ -69,10 +69,10 @@ const projects = [
   /* VISUAL — GIO */
 
   {
-    id: "visual-01",
-    category: "VISUAL",
-    title: "PROJECT NAME 02",
-    link: "projects/visual-01.html"
+    id: "graphic design youhee-01",
+    category: "Graphic Design",
+    title: "26SS graphic",
+    link: "youhee tshirt.html"
   }
 
 ];
