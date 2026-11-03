@@ -5,10 +5,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- OHV 파비콘 -->
+
+  <!-- OHV 파비콘 -->
   <link rel="icon" type="image/png" href="favicon.png">
+
   <!-- OHV 공통 폰트 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
   <!-- OHV 공통 네비게이션 -->
   <link rel="stylesheet" href="navigation.css">
@@ -21,12 +25,12 @@
        01. 기본 설정
     ===================================== */
 
-:root {
-  --ink: #939393;
-  --muted: #939393;
-  --line: #dedede;
-  --paper: #F1F1F1;
-}
+    :root {
+      --ink: #939393;
+      --muted: #939393;
+      --line: #D8D8D8;
+      --paper: #F1F1F1;
+    }
 
     * {
       box-sizing: border-box;
@@ -59,8 +63,6 @@
 
     /* =====================================
        02. 페이지 전체 영역
-
-       padding : 위 / 좌우 / 아래 여백
     ===================================== */
 
     main {
@@ -78,7 +80,7 @@
 
 
     /* =====================================
-       03. 메인 제목 관련 설정
+       03. 메인 제목
     ===================================== */
 
     h1 {
@@ -91,18 +93,13 @@
 
     .intro {
       font: italic 19px Georgia, serif;
-      color: #666;
+      color: var(--muted);
       margin: 0 0 110px;
     }
 
 
     /* =====================================
        04. SERVICES 카테고리 리스트
-
-       ✏️ 수정 포인트
-
-       margin: 0
-       → 리스트 사이 추가 공백 제거
 
        PC 글씨 : 22px
        모바일 글씨 : 16px
@@ -112,9 +109,8 @@
       margin: 0;
     }
 
-    /* 마지막 항목 아래 구분선 */
     .group:last-child {
-      border-bottom: 1px solid #111;
+      border-bottom: 1px solid var(--line);
     }
 
     .group-heading {
@@ -130,54 +126,47 @@
       word-break: keep-all;
     }
 
-    .group-heading small {
-      color: var(--muted);
-      font-size: 11px;
-      white-space: nowrap;
-    }
-
 
     /* =====================================
-       05. 카테고리 펼치기 / 접기 버튼
+       05. 카테고리 펼치기 / 접기
 
-       ✏️ 수정 포인트
-
-       padding: 20px 0
-       → 위아래 각각 20px
-
-       숫자를 줄이면 리스트 간격도 줄어듭니다.
+       버튼 간격
+       PC : 20px
+       모바일 : 17px
     ===================================== */
 
-   .group-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
+    .group-toggle {
+      width: 100%;
 
-  padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  border: 0;
-  border-top: 1px solid #939393;
-  background: #F1F1F1;
-  color: #939393;
-  text-align: left;
-  cursor: pointer;
-  font: inherit;
-}
+      gap: 18px;
+      padding: 20px 0;
 
-    /* 마우스 호버 */
+      border: 0;
+      border-top: 1px solid #939393;
+
+      background: #F1F1F1;
+      color: #939393;
+
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+    }
+
     .group-toggle:hover h2 {
       opacity: .55;
     }
 
-    /* 키보드 접근성 */
     .group-toggle:focus-visible {
-      outline: 2px solid #111;
+      outline: 2px solid #939393;
       outline-offset: 4px;
     }
 
-    /* 오른쪽 금액 안내 및 + 버튼 */
+    /* 오른쪽 + 버튼 */
+
     .group-toggle .toggle-right {
       display: flex;
       align-items: center;
@@ -185,22 +174,23 @@
       flex-shrink: 0;
     }
 
-    /* + 버튼 디자인 */
     .group-toggle .symbol {
       font-size: 30px;
       font-weight: 300;
       line-height: 1;
+
       min-width: 24px;
       text-align: center;
+
       transition: transform .2s ease;
     }
 
-    /* 펼치면 + 버튼 회전 */
+    /* 펼쳤을 때 + 회전 */
+
     .group-toggle[aria-expanded="true"] .symbol {
       transform: rotate(45deg);
     }
 
-    /* 닫힌 가격표 숨기기 */
     .group-content[hidden] {
       display: none;
     }
@@ -211,9 +201,15 @@
 
 
     /* =====================================
-       06. 서비스 가격표
+       06. 서비스 목록
 
-       SERVICE / BUDGET / TIMELINE
+       기존 BUDGET 열 삭제
+
+       SERVICE / TIMELINE
+
+       ✏️ 열 너비
+       SERVICE  : 75%
+       TIMELINE : 25%
     ===================================== */
 
     .table-wrap {
@@ -227,45 +223,52 @@
       table-layout: fixed;
     }
 
+    /* 표 제목 */
+
     .service-table th {
       font-size: 11px;
       letter-spacing: .1em;
-      color: #777;
+
+      color: #939393;
       font-weight: 400;
       text-align: left;
+
       padding: 15px 16px 15px 0;
-      border-top: 1px solid #111;
-      border-bottom: 1px solid #ddd;
+
+      border-top: 1px solid #939393;
+      border-bottom: 1px solid var(--line);
     }
+
+    /* 표 내용 */
 
     .service-table td {
       padding: 20px 16px 20px 0;
-      border-bottom: 1px solid #e9e9e9;
+
+      border-bottom: 1px solid var(--line);
+
       vertical-align: top;
+
       font-size: 14px;
+      font-weight: 400;
       line-height: 1.7;
+
+      color: #939393;
       word-break: keep-all;
     }
 
-    /* 표 각 열의 너비 */
+    /* SERVICE */
+
     .service-table th:nth-child(1),
     .service-table td:nth-child(1) {
-      width: 42%;
+      width: 75%;
     }
+
+    /* TIMELINE */
 
     .service-table th:nth-child(2),
     .service-table td:nth-child(2) {
-      width: 37%;
-    }
-
-    .service-table th:nth-child(3),
-    .service-table td:nth-child(3) {
-      width: 21%;
+      width: 25%;
       white-space: nowrap;
-    }
-
-    .price {
-      font-weight: 500;
     }
 
 
@@ -275,7 +278,7 @@
 
     .note {
       font-size: 12px;
-      color: #888;
+      color: #939393;
       line-height: 1.8;
       margin-top: 20px;
     }
@@ -284,16 +287,17 @@
     /* =====================================
        08. PROJECT INFORMATION
 
-       유의사항 및 취소 규정
+       가격 / VAT / 취소 수수료 안내 삭제
+
+       프로젝트 진행 관련 안내만 유지
     ===================================== */
 
     .policy {
       padding-top: 35px;
-      border-top: 1px solid #111;
+      border-top: 1px solid #939393;
       margin-top: 100px;
     }
 
-    /* Things to know. 제목 */
     .policy h2 {
       font-size: clamp(28px, 3.5vw, 48px);
       font-weight: 400;
@@ -301,7 +305,6 @@
       margin: 0 0 45px;
     }
 
-    /* 유의사항 / 계약 해지 제목 */
     .policy h3 {
       font-size: 20px;
       font-weight: 500;
@@ -316,51 +319,23 @@
 
     .policy li {
       padding: 16px 0;
-      border-bottom: 1px solid #e8e8e8;
+      border-bottom: 1px solid var(--line);
+
       font-size: 14px;
       line-height: 1.9;
+
       word-break: keep-all;
     }
 
     .policy li::before {
       content: '—';
       margin-right: 12px;
-      color: #888;
+      color: #939393;
     }
 
 
     /* =====================================
-       09. 취소 수수료 표
-    ===================================== */
-
-    .cancel-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .cancel-table th,
-    .cancel-table td {
-      text-align: left;
-      padding: 17px 12px 17px 0;
-      border-bottom: 1px solid #e8e8e8;
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    .cancel-table th {
-      font-weight: 400;
-      color: #777;
-      border-top: 1px solid #111;
-      font-size: 12px;
-    }
-
-    .cancel-table td:last-child {
-      font-weight: 500;
-    }
-
-
-    /* =====================================
-       10. 하단 CONTACT 버튼
+       09. 하단 CONTACT 버튼
     ===================================== */
 
     .closing {
@@ -370,39 +345,42 @@
 
     .closing a {
       display: inline-block;
-      border: 1px solid #111;
+
+      border: 1px solid #939393;
       padding: 17px 30px;
+
       font-size: 12px;
       letter-spacing: .08em;
+
+      color: #939393;
+
       transition: .2s;
     }
 
     .closing a:hover {
-      background: #111;
-      color: #fff;
+      background: #939393;
+      color: #F1F1F1;
     }
 
 
     /* =====================================
-       11. 푸터
+       10. 푸터
     ===================================== */
 
     footer {
-      border-top: 1px solid #eee;
+      border-top: 1px solid #D8D8D8;
+
       padding: 32px 5%;
+
       font-size: 11px;
-      color: #777;
+      color: #939393;
     }
 
 
     /* =====================================
-       12. 모바일 화면
+       11. 모바일 화면
 
-       화면 너비 700px 이하 적용
-
-       ✏️ SERVICES 리스트 간격
-       PC : 20px
-       모바일 : 17px
+       700px 이하
     ===================================== */
 
     @media (max-width: 700px) {
@@ -420,17 +398,16 @@
         font-size: 16px;
       }
 
-      /* 리스트 추가 공백 제거 */
+      /* 리스트 간격 */
+
       .group {
         margin: 0;
       }
 
-      /* 모바일 리스트 위아래 여백 */
       .group-toggle {
         padding: 17px 0;
       }
 
-      /* 모바일 리스트 제목 */
       .group-heading h2 {
         font-size: 16px;
       }
@@ -439,15 +416,12 @@
         gap: 10px;
       }
 
-      .group-toggle .toggle-right small {
-        font-size: 9px;
-      }
-
       .group-toggle .symbol {
         font-size: 24px;
       }
 
-      /* 모바일 가격표 */
+      /* 모바일 서비스 표 */
+
       .service-table th {
         font-size: 10px;
       }
@@ -459,79 +433,37 @@
 
       .service-table th:nth-child(1),
       .service-table td:nth-child(1) {
-        width: 39%;
+        width: 65%;
       }
 
       .service-table th:nth-child(2),
       .service-table td:nth-child(2) {
-        width: 40%;
-      }
-
-      .service-table th:nth-child(3),
-      .service-table td:nth-child(3) {
-        width: 21%;
+        width: 35%;
         white-space: normal;
       }
 
       /* 모바일 유의사항 */
+
       .policy h2 {
         font-size: 30px;
       }
 
-      .policy li,
-      .cancel-table td {
+      .policy h3 {
+        font-size: 17px;
+      }
+
+      .policy li {
         font-size: 12px;
       }
 
-      .cancel-table th {
-        font-size: 11px;
+      .note {
+        font-size: 12px;
       }
+
     }
 
-/* =====================================
-   SERVICES 컬러 통일
-===================================== */
-
-/* 페이지 배경 */
-html,
-body {
-  background: #F1F1F1;
-}
-
-/* SERVICES 본문 전체 글자색 */
-main,
-main .eyebrow,
-main .meta,
-main .intro,
-main .group-heading small,
-main .group-toggle,
-main .service-table th,
-main .service-table td,
-main .note,
-main .policy,
-main .policy li::before,
-main .cancel-table th,
-main .cancel-table td,
-footer {
-  color: #939393;
-}
-
-/* 카테고리 버튼 배경 */
-main .group-toggle {
-  background: #F1F1F1;
-}
-
-/* CONTACT 버튼 */
-main .closing a {
-  color: #939393;
-  border-color: #939393;
-}
-
-main .closing a:hover {
-  background: #939393;
-  color: #F1F1F1;
-}
   </style>
+
 </head>
 
 
@@ -544,100 +476,107 @@ main .closing a:hover {
   <main>
 
     <!-- SERVICES 상단 라벨 -->
-    <div class="eyebrow">02 / Our Services.</div>
+    <div class="eyebrow">
+      02 / Our Services.
+    </div>
 
 
     <!-- =====================================
-         서비스 카테고리 자동 표시 영역
+         서비스 카테고리 자동 표시
 
-         서비스 수정은 아래 groups 데이터에서!
+         서비스 수정은
+         아래 groups 데이터에서!
     ===================================== -->
 
     <div id="service-groups"></div>
 
 
     <!-- =====================================
-         PROJECT INFORMATION / 유의사항
+         PROJECT INFORMATION
+
+         가격 관련 정보 제거
     ===================================== -->
 
     <section class="policy" id="terms">
 
-      <div class="eyebrow">PROJECT INFORMATION / Things to know.</div>
-      
+      <div class="eyebrow">
+        PROJECT INFORMATION / Things to know.
+      </div>
+
       <h3>유의사항</h3>
 
       <ul>
-        <li>상기 금액은 VAT 별도 기준이며, 세부 업무 범위 및 프로젝트 규모에 따라 협의 후 조정될 수 있습니다.</li>
-        <li>패키지로 진행할 경우, 전체 업무 범위 및 계약 기간에 따라 비용 조정이 가능합니다.</li>
-        <li>외부 인력 섭외, 인플루언서 출연료, 촬영·제작비, 광고 집행비 등은 별도 산정되며, 대행 운영 시 Fee가 적용될 수 있습니다.</li>
-        <li>소요기간은 일반적인 프로젝트 진행 기준으로, 업무 난이도 및 피드백 일정에 따라 변동될 수 있습니다.</li>
-        <li>기본 견적에는 사전 협의된 작업 범위 및 수정 횟수가 포함되며, 추가 요청 사항 발생 시 별도 비용이 청구될 수 있습니다.</li>
-        <li>장기 계약 및 정기 운영 프로젝트의 경우, 운영 기간과 업무 범위에 따라 별도 견적 협의가 가능합니다.</li>
-        <li>최종 견적 및 진행 일정은 프로젝트 세부 내용 확인 후 확정됩니다.</li>
+
+        <li>
+          세부 업무 범위 및 프로젝트 규모에 따라
+          진행 방식이 달라질 수 있습니다.
+        </li>
+
+        <li>
+          프로젝트 일정은 업무 범위 및 협의 내용에 따라
+          조정될 수 있습니다.
+        </li>
+
+        <li>
+          외부 인력 섭외, 인플루언서 협업,
+          촬영 및 제작 등은 프로젝트 성격에 따라
+          별도로 진행될 수 있습니다.
+        </li>
+
+        <li>
+          소요기간은 일반적인 프로젝트 진행 기준으로,
+          업무 난이도 및 피드백 일정에 따라
+          변동될 수 있습니다.
+        </li>
+
+        <li>
+          기본 진행 범위 및 수정 횟수는
+          프로젝트 시작 전 협의를 통해 확정됩니다.
+        </li>
+
+        <li>
+          장기 계약 및 정기 운영 프로젝트의 경우,
+          운영 기간과 업무 범위에 따라
+          진행 방식이 조정될 수 있습니다.
+        </li>
+
+        <li>
+          최종 진행 일정은 프로젝트 세부 내용
+          확인 후 확정됩니다.
+        </li>
+
       </ul>
 
 
       <!-- 프로젝트 취소 및 계약 해지 -->
+
       <h3>프로젝트 취소 및 계약 해지</h3>
 
       <p class="note">
-        프로젝트 취소 및 계약 해지 시점에 따라 취소 수수료가 발생할 수 있습니다.
+        프로젝트 취소 및 계약 해지 관련 사항은
+        진행 상황과 계약 조건에 따라 별도 협의합니다.
       </p>
-
-      <!-- 취소 수수료 표 -->
-      <div class="table-wrap">
-        <table class="cancel-table">
-
-          <thead>
-            <tr>
-              <th>취소 시점</th>
-              <th>취소 수수료</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>진행 예정일 기준 14일 전까지</td>
-              <td>없음 (기진행 업무 및 발생 실비 별도 정산)</td>
-            </tr>
-
-            <tr>
-              <td>진행 예정일 기준 7~13일 전</td>
-              <td>계약 금액의 30%</td>
-            </tr>
-
-            <tr>
-              <td>진행 예정일 기준 3~6일 전</td>
-              <td>계약 금액의 50%</td>
-            </tr>
-
-            <tr>
-              <td>진행 예정일 기준 2일 전~당일</td>
-              <td>계약 금액의 100%</td>
-            </tr>
-          </tbody>
-
-        </table>
-      </div>
-
-      <!-- 취소 관련 추가 안내 -->
-      <ul>
-        <li>외부 업체 및 인력 섭외가 확정된 경우, 해당 업체의 취소 규정에 따른 비용이 추가 발생할 수 있습니다.</li>
-        <li>최종 취소 수수료 및 정산 금액은 실제 진행된 업무와 발생 비용을 고려하여 협의 후 확정됩니다.</li>
-      </ul>
 
     </section>
 
 
-    <!-- 하단 CONTACT 버튼 -->
+    <!-- =====================================
+         하단 CONTACT 버튼
+    ===================================== -->
+
     <div class="closing">
-      <a href="contact.html">CONTACT</a>
+
+      <a href="contact.html">
+        CONTACT
+      </a>
+
     </div>
 
   </main>
 
 
   <!-- OHV 공통 푸터 -->
+
   <footer>
     © OHV AGENCY. ALL RIGHTS RESERVED.
   </footer>
@@ -646,89 +585,131 @@ main .closing a:hover {
   <script>
 
     /* =====================================
-       13. SERVICES 데이터
+       12. SERVICES 데이터
 
-       ✏️ 서비스명 / 가격 / 기간 수정
+       가격 / BUDGET 정보 삭제 완료
 
-       형식:
-       ['서비스명', '금액', '소요기간']
+       ✏️ 서비스 추가 방법
 
-       카테고리와 항목은 아래에서 수정하세요.
+       ['서비스명', '소요기간']
+
+       예시:
+       ['브랜드 전략', 'D-30~45']
+
+       카테고리와 서비스명은
+       아래에서 직접 수정하세요.
     ===================================== */
 
     const groups = [
+
+      /* =====================================
+         01. BRANDING
+      ===================================== */
+
       {
         name: 'Branding',
+
         rows: [
-          ['브랜드 전략', '프로젝트 규모 및 업무 범위에 따라 협의', 'D-30~45'],
-          ['네이밍 및 슬로건', '100~', 'D-14~21'],
-          ['BX 디자인', '프로젝트 규모 및 업무 범위에 따라 협의', 'D-30~45'],
-          ['리브랜딩', '300~', 'D-45~60'],
-          ['패키지 디자인', '80~', 'D-14~30'],
-          ['브랜드 소개서 및 템플릿', '50~', 'D-7~14']
+          ['브랜드 전략', 'D-30~45'],
+          ['네이밍 및 슬로건', 'D-14~21'],
+          ['BX 디자인', 'D-30~45'],
+          ['리브랜딩', 'D-45~60'],
+          ['패키지 디자인', 'D-14~30'],
+          ['브랜드 소개서 및 템플릿', 'D-7~14']
         ]
       },
+
+
+      /* =====================================
+         02. MARKETING STRATEGY
+      ===================================== */
 
       {
         name: 'Marketing Strategy',
+
         rows: [
-          ['IMC 캠페인 기획', '200~', 'D-21~30'],
-          ['시즌 마케팅 플랜', '150~', 'D-21~30']
+          ['IMC 캠페인 기획', 'D-21~30'],
+          ['시즌 마케팅 플랜', 'D-21~30']
         ]
       },
+
+
+      /* =====================================
+         03. LOOKBOOK
+      ===================================== */
 
       {
         name: 'Lookbook',
+
         rows: [
-          ['기획', '100~', 'D-21~30'],
-          ['섭외 및 핸들링', 'Fee 15~20%', 'D-21~30'],
-          ['캠페인 리터칭', '5~15만원/컷', 'D-7~14'],
-          ['이커머스 리터칭', '1~3만원/컷', 'D-5~10'],
-          ['현장 콘텐츠', '50만원/풀데이', 'D-7~14']
+          ['기획', 'D-21~30'],
+          ['섭외 및 핸들링', 'D-21~30'],
+          ['캠페인 리터칭', 'D-7~14'],
+          ['이커머스 리터칭', 'D-5~10'],
+          ['현장 콘텐츠', 'D-7~14']
         ]
       },
+
+
+      /* =====================================
+         04. CONTENT
+      ===================================== */
 
       {
         name: 'Content',
+
         rows: [
-          ['SNS 채널 전략', '150~', 'D-14~21'],
-          ['정기 콘텐츠 제작', '프로젝트 규모 및 업무 범위에 따라 협의', 'D-14~21'],
-          ['콘텐츠 촬영', 'Fee 15~20%', 'D-14~21'],
-          ['릴스 제작', '50만원/건', 'D-7~14'],
-          ['피드 제작', '30만원/건', 'D-3~7']
+          ['SNS 채널 전략', 'D-14~21'],
+          ['정기 콘텐츠 제작', 'D-14~21'],
+          ['콘텐츠 촬영', 'D-14~21'],
+          ['릴스 제작', 'D-7~14'],
+          ['피드 제작', 'D-3~7']
         ]
       },
+
+
+      /* =====================================
+         05. INFLUENCER MARKETING
+      ===================================== */
 
       {
         name: 'Influencer Marketing',
+
         rows: [
-          ['인플루언서 유가 협업', 'Fee 15~20%', 'D-21~30'],
-          ['유튜브 브랜디드·PPL', 'Fee 15~20%', 'D-30~45'],
-          ['인플루언서 에디션', 'Fee 15~20%', 'D-45~60'],
-          ['시딩 및 PR 패키지', 'Fee 15~20%', 'D-21~30'],
-          ['앰배서더 운영', 'Fee 15~20%', 'D-30~45']
+          ['인플루언서 유가 협업', 'D-21~30'],
+          ['유튜브 브랜디드·PPL', 'D-30~45'],
+          ['인플루언서 에디션', 'D-45~60'],
+          ['시딩 및 PR 패키지', 'D-21~30'],
+          ['앰배서더 운영', 'D-30~45']
         ]
       },
 
+
+      /* =====================================
+         06. POP-UP & EXPERIENCE
+      ===================================== */
+
       {
         name: 'Pop-up & Experience',
+
         rows: [
-          ['팝업 콘셉트 기획', '150~', 'D-30~45'],
-          ['공간 비주얼 및 그래픽 디자인', '300~', 'D-21~30'],
-          ['사이니지 디자인', '50~', 'D-14~21'],
-          ['굿즈 디자인', '50~/종', 'D-21~30'],
-          ['프로모션 제작물', '30~', 'D-7~14'],
-          ['인플루언서 및 미디어 초청', '집행비 Fee 15~20%', 'D-21~30'],
-          ['팝업 SNS 컨텐츠 제작', '30~', 'D-14~21']
+          ['팝업 콘셉트 기획', 'D-30~45'],
+          ['공간 비주얼 및 그래픽 디자인', 'D-21~30'],
+          ['사이니지 디자인', 'D-14~21'],
+          ['굿즈 디자인', 'D-21~30'],
+          ['프로모션 제작물', 'D-7~14'],
+          ['인플루언서 및 미디어 초청', 'D-21~30'],
+          ['팝업 SNS 컨텐츠 제작', 'D-14~21']
         ]
       }
+
     ];
 
 
     /* =====================================
-       14. 특수문자 처리
+       13. 특수문자 처리
 
-       HTML 안전 처리 코드
+       HTML 안전 처리
        수정하지 않아도 됩니다.
     ===================================== */
 
@@ -745,10 +726,13 @@ main .closing a:hover {
 
 
     /* =====================================
-       15. 카테고리 / 가격표 자동 생성
+       14. 서비스 목록 자동 생성
 
-       groups 데이터를 읽어서
-       서비스 목록을 자동 생성합니다.
+       기존:
+       SERVICE / BUDGET / TIMELINE
+
+       변경:
+       SERVICE / TIMELINE
     ===================================== */
 
     document.querySelector('#service-groups').innerHTML =
@@ -773,40 +757,64 @@ main .closing a:hover {
                 </h2>
 
                 <span class="toggle-right">
-                  <small>KRW / VAT EXCLUDED</small>
-                  <span class="symbol" aria-hidden="true">+</span>
+
+                  <span
+                    class="symbol"
+                    aria-hidden="true">+</span>
+
                 </span>
 
               </button>
 
             </div>
 
-            <div class="group-content" id="${id}" hidden>
+
+            <div
+              class="group-content"
+              id="${id}"
+              hidden>
+
               <div class="table-wrap">
 
                 <table class="service-table">
 
                   <thead>
                     <tr>
-                      <th>SERVICE</th>
-                      <th>BUDGET (단위: 만 원)</th>
-                      <th>TIMELINE</th>
+
+                      <th scope="col">
+                        SERVICE
+                      </th>
+
+                      <th scope="col">
+                        TIMELINE
+                      </th>
+
                     </tr>
                   </thead>
 
+
                   <tbody>
+
                     ${g.rows.map(r => `
                       <tr>
-                        <td>${esc(r[0])}</td>
-                        <td class="price">${esc(r[1])}</td>
-                        <td>${esc(r[2])}</td>
+
+                        <td>
+                          ${esc(r[0])}
+                        </td>
+
+                        <td>
+                          ${esc(r[1])}
+                        </td>
+
                       </tr>
                     `).join('')}
+
                   </tbody>
 
                 </table>
 
               </div>
+
             </div>
 
           </section>
@@ -816,9 +824,10 @@ main .closing a:hover {
 
 
     /* =====================================
-       16. 카테고리 클릭 기능
+       15. 카테고리 클릭 기능
 
-       클릭 시 가격표 펼치기 / 접기
+       클릭하면 서비스 목록 펼치기
+       다시 클릭하면 접기
     ===================================== */
 
     document.querySelectorAll('.group-toggle').forEach(button => {
@@ -850,4 +859,5 @@ main .closing a:hover {
   <script src="navigation.js"></script>
 
 </body>
+
 </html>
