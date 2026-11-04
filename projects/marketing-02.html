@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       01. OHV 공통 설정
+       projects 폴더 안의 HTML입니다.
+  ===================================== -->
+
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <link rel="stylesheet" href="../navigation.css">
+
+  <title>유튜버 브랜디드 콘텐츠 바이럴 — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       02. 기본 설정
+
+       배경색 : #F1F1F1
+       글자색 : #939393
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      background: #F1F1F1;
+    }
+
+    body {
+      margin: 0;
+      color: #939393;
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+
+    /* =====================================
+       03. 프로젝트 상세 페이지 영역
+    ===================================== */
+
+    main {
+      max-width: 1400px;
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: 180px 10% 120px;
+      background: #F1F1F1;
+    }
+
+
+    /* =====================================
+       04. 프로젝트 메인 제목
+
+       INFLUENCER MARKETING
+       → 작고 굵게
+
+       유튜버 브랜디드 콘텐츠 바이럴
+       → 조금 작게, 일반 굵기
+
+       ✏️ 제목 사이 간격 : column-gap
+    ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      column-gap: 9px;
+      row-gap: 4px;
+
+      margin: 0 0 22px;
+
+      line-height: 1.4;
+      color: #939393;
+      word-break: keep-all;
+    }
+
+    /* 영문 카테고리 */
+    .project-heading-category {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    /* 한글 메인 제목 */
+    .project-heading-title {
+      font-size: 23px;
+      font-weight: 400;
+      letter-spacing: -0.055em;
+    }
+
+
+    /* =====================================
+       05. 프로젝트 설명
+
+       ✏️ margin-bottom
+       → 설명과 영상 목록 사이 간격
+
+       현재 : 75px
+    ===================================== */
+
+    .description {
+      max-width: 760px;
+
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 2;
+
+      color: #939393;
+
+      margin: 0 0 75px;
+
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       06. 프로젝트 콘텐츠 영역
+
+       영상 목록과 이미지가
+       위에서 아래로 표시됩니다.
+
+       ✏️ gap : 영상 목록 사이 간격
+    ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+
+    /* =====================================
+       07. 영상 목록
+
+       기존 영상 제목 유지
+
+       글씨 : 16px
+       굵기 : Bold 700
+       자간 : -0.065em
+
+       별도 박스 / 구분선 없음
+    ===================================== */
+
+    .video-item {
+      width: 100%;
+    }
+
+    .video-text {
+      display: inline-block;
+
+      padding: 0;
+      margin: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+      line-height: 1.35;
+
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+
+      transition: opacity 0.2s ease;
+    }
+
+    .video-text:hover {
+      opacity: 0.55;
+    }
+
+    .video-text:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 5px;
+    }
+
+
+    /* =====================================
+       08. 영상 펼치기 표시
+
+       닫혀 있을 때 : +
+       열려 있을 때 : −
+
+       기존 영상 제목 뒤에 자동으로 표시
+
+       HTML에서 + 를 직접 넣을 필요 없습니다.
+    ===================================== */
+
+    .video-text::after {
+      content: "+";
+
+      display: inline-block;
+      margin-left: 9px;
+
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+
+      color: #939393;
+      vertical-align: baseline;
+    }
+
+    .video-text[aria-expanded="true"]::after {
+      content: "−";
+    }
+
+
+    /* =====================================
+       09. 영상 펼치기 / 접기 영역
+    ===================================== */
+
+    .video-content[hidden] {
+      display: none;
+    }
+
+    .video-content {
+      margin-top: 20px;
+    }
+
+
+    /* =====================================
+       10. 유튜브 영상 임베드
+
+       16:9 자동 반응형
+    ===================================== */
+
+    .youtube-embed {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #F1F1F1;
+    }
+
+    .youtube-embed iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+
+    /* =====================================
+       11. 프로젝트 이미지 배치
+
+       one   : 한 줄에 1장
+       two   : 한 줄에 2장
+       three : 한 줄에 3장
+    ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       12. BACK TO EXPERIENCE
+    ===================================== */
+
+    .back {
+      display: inline-block;
+
+      margin-top: 70px;
+
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: #939393;
+
+      transition: opacity 0.2s;
+    }
+
+    .back:hover {
+      opacity: 0.45;
+    }
+
+
+    /* =====================================
+       13. 푸터
+    ===================================== */
+
+    footer {
+      background: #F1F1F1;
+      border-top: 1px solid #D8D8D8;
+
+      padding: 35px 5%;
+
+      font-size: 12px;
+      color: #939393;
+    }
+
+
+    /* =====================================
+       14. 모바일 화면
+
+       화면 너비 650px 이하
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      main {
+        padding: 150px 6% 80px;
+      }
+
+      /* 메인 제목 */
+      .project-heading {
+        column-gap: 7px;
+        row-gap: 3px;
+        margin-bottom: 18px;
+      }
+
+      .project-heading-category {
+        font-size: 14px;
+      }
+
+      .project-heading-title {
+        font-size: 19px;
+      }
+
+      /* 프로젝트 설명 */
+      .description {
+        font-size: 13px;
+        line-height: 1.9;
+        margin-bottom: 55px;
+      }
+
+      /* 영상 목록 */
+      .gallery {
+        gap: 18px;
+      }
+
+      .video-text {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .video-text::after {
+        font-size: 15px;
+        margin-left: 7px;
+      }
+
+      .video-content {
+        margin-top: 14px;
+      }
+
+      /* 이미지 간격 */
+      .image-row {
+        gap: 8px;
+      }
+
+      .back {
+        margin-top: 60px;
+      }
+
+    }
+
+/* =====================================
+   OHV 유튜브 영상 목록 폰트 설정
+
+   자간 : 기본값
+   줄 높이 : 기본값
+   글씨 크기 및 굵기 유지
+===================================== */
+
+.video-text {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+  line-height: normal !important;
+}
+
+/* + / − 기호 간격 */
+.video-text::after {
+  margin-left: 7px;
+  letter-spacing: normal;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .video-text {
+    font-size: 13px !important;
+    letter-spacing: normal !important;
+    line-height: normal !important;
+  }
+}
+
+/* =====================================
+   유튜브 영상 목록 세로 간격 줄이기
+===================================== */
+
+/* PC : 영상 제목 사이 간격 */
+.gallery {
+  gap: 8px;
+}
+
+/* 모바일 */
+@media (max-width: 650px) {
+  .gallery {
+    gap: 6px;
+  }
+}
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =====================================
+       15. OHV 공통 네비게이션
+  ===================================== -->
+
+  <div id="site-navigation"></div>
+
+
+  <main>
+
+    <!-- =====================================
+         16. 프로젝트 메인 제목
+
+         ✏️ 카테고리와 제목 개별 수정 가능
+    ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        INFLUENCER MARKETING
+      </span>
+
+      <span class="project-heading-title">
+        유튜버 브랜디드 콘텐츠 바이럴
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         17. 프로젝트 소개
+
+         기존 문구 유지
+    ===================================== -->
+
+    <p class="description">시즌에 맞춰 메가 인플루언서와 협업한 유튜브 롱폼 브랜디드 콘텐츠 제작 및 확산
+인플루언서 영향력을 활용한 자연스러운 바이럴 유도로 브랜드 인지도 제고 및 상품 구매 전환 강화</p>
+
+
+    <!-- =====================================
+         18. 프로젝트 콘텐츠
+
+         현재 유튜브 영상 7개
+
+         영상 제목 / 순서 / ID 유지
+    ===================================== -->
+
+    <div class="gallery">
+
+
+      <!-- =====================================
+           YOUTUBE 01
+           앨리스펑크
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-01">
+
+          앨리스펑크 유튜브 브랜디드 튜드먼트 발매 바이럴 
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-01"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/WOmwkL30j7w"
+              title="튜드먼트 앨리스펑크 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 02
+           보라끌레르
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-02">
+
+          보라끌레르 유튜브 브랜디드 튜드먼트 발매 바이럴 
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-02"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/A1_SdQFQIXM"
+              title="튜드먼트 보라끌레르 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 03
+           쁨이
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-03">
+
+          쁨이 유튜브 브랜디드 튜드먼트 발매 바이럴 
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-03"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/DfFfHo6wcGc"
+              title="튜드먼트 쁨이 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 04
+           꼬민지
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-04">
+
+         꼬민지 유튜브 쇼츠 튜드먼트 발매 바이럴 
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-04"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/tbOL5Hm9zZg"
+              title="튜드먼트 꼬민지 유튜브 쇼츠"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 05
+           윤비누
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-05">
+
+          윤비누 유튜브 브랜디드 유희 무진장 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-05"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/H5JiGhz3nT8"
+              title="유희 윤비누 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 06
+           현진
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-06">
+
+          현진 유튜브 브랜디드 유희 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-06"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/q3Yza_6EDqY"
+              title="유희 현진 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           YOUTUBE 07
+           송이송이
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="youtube-07">
+
+          송이송이 유튜브 브랜디드 유희 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="youtube-07"
+          hidden>
+
+          <div class="youtube-embed">
+
+            <iframe
+              data-src="https://www.youtube.com/embed/924wiuEmC3c"
+              title="유희 송이송이 유튜브 브랜디드"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           19. 프로젝트 이미지 추가 예시
+
+           이미지 경로:
+
+           ../images/projects/marketing/marketing01_youhee/
+
+           아래 예시는 주석 처리되어 있으므로
+           현재 화면에 표시되지 않습니다.
+
+           필요할 때 주석을 제거하고 사용하세요.
+      ===================================== -->
+
+
+      <!-- =====================================
+           [이미지 1장 배치]
+      =====================================
+
+      <div class="image-row one">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/01.jpg"
+          alt="프로젝트 이미지 1"
+          loading="lazy">
+
+      </div>
+
+      ===================================== -->
+
+
+      <!-- =====================================
+           [이미지 2장 배치]
+      =====================================
+
+      <div class="image-row two">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/02.jpg"
+          alt="프로젝트 이미지 2"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/03.jpg"
+          alt="프로젝트 이미지 3"
+          loading="lazy">
+
+      </div>
+
+      ===================================== -->
+
+
+      <!-- =====================================
+           [이미지 3장 배치]
+      =====================================
+
+      <div class="image-row three">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/04.jpg"
+          alt="프로젝트 이미지 4"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/05.jpg"
+          alt="프로젝트 이미지 5"
+          loading="lazy">
+
+        <img
+          src="../images/projects/marketing/marketing01_youhee/06.jpg"
+          alt="프로젝트 이미지 6"
+          loading="lazy">
+
+      </div>
+
+      ===================================== -->
+
+
+    </div>
+
+
+    <!-- =====================================
+         20. 프로젝트 목록으로 돌아가기
+    ===================================== -->
+
+    <a class="back" href="../experience.html">
+      ← BACK TO EXPERIENCE
+    </a>
+
+  </main>
+
+
+  <!-- =====================================
+       21. OHV 푸터
+  ===================================== -->
+
+  <footer>
+    © OHV AGENCY. ALL RIGHTS RESERVED.
+  </footer>
+
+
+  <!-- =====================================
+       22. 유튜브 영상 펼치기 / 접기
+
+       제목 클릭 → 영상 표시
+       다시 클릭 → 영상 숨김
+
+       영상을 접으면 재생 중지
+
+       + / − 기호는 CSS에서 자동 변경
+
+       영상이 추가되어도
+       이 JavaScript는 수정하지 않습니다.
+  ===================================== -->
+
+  <script>
+
+    document.querySelectorAll('.video-text').forEach(button => {
+
+      button.addEventListener('click', function() {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        if (!panel) return;
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+        const iframe = panel.querySelector('iframe');
+
+        if (isOpen) {
+
+          /* =====================================
+             영상 접기
+          ===================================== */
+
+          panel.hidden = true;
+
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          /* 유튜브 재생 정지 */
+          if (iframe) {
+            iframe.removeAttribute('src');
+          }
+
+        } else {
+
+          /* =====================================
+             영상 펼치기
+          ===================================== */
+
+          panel.hidden = false;
+
+          button.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          /* 영상 불러오기 */
+          if (iframe) {
+            iframe.src = iframe.dataset.src;
+          }
+
+        }
+
+      });
+
+    });
+
+  </script>
+
+
+  <!-- =====================================
+       23. OHV 공통 네비게이션
+  ===================================== -->
+
+  <script src="../navigation.js"></script>
+
+</body>
+</html>
