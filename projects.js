@@ -66,6 +66,12 @@ const projects = [
     title: "[INVITATION] TTUDEMENT 25FW POP-UP",
     link: "projects/pop-up_influencer-TTUDEMENT 25FW POP-UP.html"
   },  
+   {
+    id: "marketing-02",
+    category: "Influencer Marketing",
+    title: "인스타그램 PPL 바이럴",
+    link: "projects/marketing-02.html"
+  },  
   /* VISUAL — GIO */
 
   {
