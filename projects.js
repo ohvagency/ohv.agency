@@ -69,8 +69,14 @@ const projects = [
    {
     id: "marketing-02",
     category: "Influencer Marketing",
-    title: "인스타그램 PPL 바이럴",
+    title: "[TTUDEMENT] 인스타그램 PPL 바이럴",
     link: "projects/marketing-02.html"
+  },  
+      {
+    id: "marketing-03",
+    category: "Influencer Marketing",
+    title: "[YOUHEE] 인스타그램 PPL 바이럴",
+    link: "projects/marketing-03.html"
   },  
   /* VISUAL — GIO */
 
