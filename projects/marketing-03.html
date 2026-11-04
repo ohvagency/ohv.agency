@@ -1,0 +1,1312 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- =====================================
+       OHV AGENCY
+       INSTAGRAM PPL PROJECT
+
+       EXPERIENCE 오른쪽 상세 페이지 전용
+
+       네비게이션 / 푸터 / BACK 버튼 없음
+  ===================================== -->
+
+  <!-- OHV 파비콘 -->
+  <link rel="icon" type="image/png" href="../favicon.png">
+
+  <!-- OHV 공통 폰트 -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <title>인스타그램 PPL 콘텐츠 바이럴 — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       01. 기본 설정
+    ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+
+      width: 100%;
+      background: #F1F1F1;
+      color: #939393;
+
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color-scheme: light;
+    }
+
+    button,
+    a {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+
+    /* =====================================
+       02. 프로젝트 상세 영역
+
+       EXPERIENCE 3단 구조 전용
+
+       상단 / 좌우 / 하단 여백 제거
+
+       기존:
+       padding: 180px 10% 120px;
+
+       변경:
+       padding: 0;
+    ===================================== */
+
+    main {
+      width: 100%;
+      max-width: none;
+      min-height: 0;
+
+      margin: 0;
+      padding: 0;
+
+      background: #F1F1F1;
+    }
+
+
+    /* =====================================
+       03. 프로젝트 제목
+
+       카테고리 : Bold 700
+       프로젝트명 : Regular 400
+    ===================================== */
+
+    .project-heading {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+
+      column-gap: 8px;
+      row-gap: 4px;
+
+      margin: 0 0 20px;
+
+      color: #939393;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .project-heading-category {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.065em;
+    }
+
+    .project-heading-title {
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -0.035em;
+    }
+
+
+    /* =====================================
+       04. 프로젝트 소개
+
+       설명 아래 여백 : 65px
+    ===================================== */
+
+    .description {
+      max-width: 760px;
+
+      margin: 0 0 65px;
+
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: normal;
+      line-height: 1.8;
+
+      color: #939393;
+
+      white-space: pre-line;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       05. 프로젝트 콘텐츠 영역
+
+       영상 제목 사이 간격
+
+       PC : 8px
+       모바일 : 6px
+    ===================================== */
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+      gap: 8px;
+    }
+
+    .video-item {
+      width: 100%;
+      min-width: 0;
+    }
+
+
+    /* =====================================
+       06. 인스타그램 PPL 제목
+
+       PC : 15px
+       모바일 : 13px
+
+       폰트 : Bold 700
+       자간 : 기본값
+    ===================================== */
+
+    .video-text {
+      display: inline-block;
+
+      max-width: 100%;
+
+      margin: 0;
+      padding: 0;
+
+      border: none;
+      background: transparent;
+
+      color: #939393;
+
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: normal;
+
+      text-align: left;
+      word-break: keep-all;
+
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    .video-text:hover {
+      opacity: 0.55;
+    }
+
+    .video-text:focus-visible {
+      outline: 1px solid #939393;
+      outline-offset: 5px;
+    }
+
+
+    /* =====================================
+       07. + / − 표시
+
+       닫힘 : +
+       열림 : −
+
+       HTML에서 직접 입력하지 않아도 됩니다.
+    ===================================== */
+
+    .video-text::after {
+      content: "+";
+
+      display: inline-block;
+
+      margin-left: 7px;
+
+      color: #939393;
+
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+
+      letter-spacing: normal;
+      vertical-align: baseline;
+    }
+
+    .video-text[aria-expanded="true"]::after {
+      content: "−";
+    }
+
+
+    /* =====================================
+       08. 인스타그램 펼치기 영역
+    ===================================== */
+
+    .video-content[hidden] {
+      display: none;
+    }
+
+    .video-content {
+      width: 100%;
+      min-width: 0;
+
+      margin-top: 14px;
+    }
+
+
+    /* =====================================
+       09. 인스타그램 임베드
+
+       3단 구조 오른쪽 영역에 맞춤
+
+       게시물이 잘리지 않도록
+       overflow: visible
+    ===================================== */
+
+    .instagram-embed {
+      width: 100%;
+      min-width: 0;
+
+      margin: 0;
+      overflow: visible;
+    }
+
+    .instagram-embed .instagram-media {
+      width: 100% !important;
+
+      min-width: 0 !important;
+      max-width: 540px !important;
+
+      margin: 0 !important;
+    }
+
+    .instagram-embed iframe {
+      max-width: 100%;
+    }
+
+
+    /* =====================================
+       10. 추가 이미지 배치
+
+       추후 다른 프로젝트에서도 사용 가능
+
+       one   : 1장
+       two   : 2장
+       three : 3장
+    ===================================== */
+
+    .image-row {
+      display: grid;
+      gap: 15px;
+      align-items: start;
+    }
+
+    .image-row.one {
+      grid-template-columns: 1fr;
+    }
+
+    .image-row.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .image-row.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .image-row img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =====================================
+       11. 모바일 화면
+
+       650px 이하
+
+       EXPERIENCE 오른쪽 상세 영역 전용
+       모바일에서도 불필요한 여백 없음
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      main {
+        width: 100%;
+        min-height: 0;
+        padding: 0;
+      }
+
+      .project-heading {
+        column-gap: 6px;
+        row-gap: 4px;
+        margin-bottom: 16px;
+      }
+
+      .project-heading-category {
+        font-size: 12px;
+      }
+
+      .project-heading-title {
+        font-size: 17px;
+      }
+
+      .description {
+        font-size: 12px;
+        line-height: 1.8;
+        margin-bottom: 45px;
+      }
+
+      .gallery {
+        gap: 6px;
+      }
+
+      .video-text {
+        font-size: 13px;
+        line-height: normal;
+        letter-spacing: normal;
+      }
+
+      .video-text::after {
+        font-size: 15px;
+        margin-left: 7px;
+      }
+
+      .video-content {
+        margin-top: 14px;
+      }
+
+      .image-row {
+        gap: 8px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <main>
+
+    <!-- =====================================
+         12. 프로젝트 제목
+    ===================================== -->
+
+    <h1 class="project-heading">
+
+      <span class="project-heading-category">
+        INFLUENCER MARKETING
+      </span>
+
+      <span class="project-heading-title">
+        튜드먼트 인스타그램 PPL 콘텐츠 바이럴
+      </span>
+
+    </h1>
+
+
+    <!-- =====================================
+         13. 프로젝트 소개
+    ===================================== -->
+
+    <p class="description">시즌에 맞춰 인플루언서와 협업한 인스타그램 피드 및 릴스 PPL 콘텐츠 기획·제작 및 확산
+인플루언서의 개성과 일상에 자연스럽게 녹아든 제품 노출을 통해 브랜드 인지도 제고 및 상품 구매 전환 유도</p>
+
+
+    <!-- =====================================
+         14. 인스타그램 PPL 콘텐츠
+
+         기존 8개 게시물 유지
+
+         ✏️ 프로젝트 추가 방법
+
+         1. video-item 한 덩어리 복사
+
+         2. 인플루언서명 / 캠페인명 수정
+
+         3. 인스타그램 게시물 URL 수정
+
+         4. aria-controls와 id를
+            같은 번호로 수정
+
+         예:
+         aria-controls="instagram-09"
+         id="instagram-09"
+
+         CSS / JavaScript는
+         다시 추가하지 않아도 됩니다.
+    ===================================== -->
+
+    <div class="gallery">
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 01
+
+           김가을
+           튜드먼트 25FW 발매
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-01">
+
+          김가을 @kimmfall X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-01"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DQv3kX0E7ta/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 02
+
+           고민영
+           튜드먼트 25FW 발매
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-02">
+
+          고민영 @lamuzes X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-02"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DV5pbtckZbm/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 03
+
+           유니
+           튜드먼트 25FW 발매
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-03">
+
+          유니 @yunnnie X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-03"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DU-Q_mBkQGc/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 04
+
+           이나연
+           튜드먼트 이구위크
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-04">
+
+          이나연 @inayommi X 튜드먼트 이구위크 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-04"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DQlyYdykzqE/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 05
+
+           곰송이
+           튜드먼트 26SS 29라이브
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-05">
+
+          곰송이 @gomsongyi X 튜드먼트 26SS 29라이브 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-05"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DaKuLxKhog8/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 06
+
+           여울
+           튜드먼트 26SS 29라이브
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-06">
+
+          여울 @nijihoey X 튜드먼트 26SS 29라이브 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-06"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DaKh4zRycpB/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           INSTAGRAM PPL 07
+
+           이나연
+           튜드먼트 26SS 써머 드랍
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-07">
+
+          이나연 @inayommi X 튜드먼트 26SS 써머 드랍 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-07"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DZwyVhRTD1p/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+<div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-18">
+
+          이주미 @2dumi X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-18"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DQteya8CfCH/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>     
+      <!-- =====================================
+           INSTAGRAM PPL 08
+
+           주미니
+           튜드먼트 26SS 무진장
+      ===================================== -->
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-08">
+
+          주미니 @__jumini X 튜드먼트 26SS 무진장 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-08"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DZkEmobxIaW/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-09">
+
+          퀸지 @keemzye X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-09"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DYUKCVuIUGC/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-10">
+
+          꼬민지 @by_minzi X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-10"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DYPSFzsmV_K/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-11">
+
+          유니 @yunnnie X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-11"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DXqxfWdEew3/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-12">
+
+          은현 @aneunhyeon__ X 튜드먼트 50s 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-12"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DXWmU-Fk5QH/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+ <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-13">
+
+          여울 @nijihoey X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-13"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DXWUM5XErln/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+      
+ <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-14">
+
+          김가을 @kimmfall X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-14"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DXG6hnBE8-F/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+ <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-15">
+
+          남영서 @0west_ X 튜드먼트 26SS 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-15"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DVDeykuEj9n/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+ <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-16">
+
+          박민주 @mjbypp X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-16"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DNfukLIJ5pm/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+<div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-17">
+
+          여울 @nijihoey X 튜드먼트 25FW 29라이브 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-17"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/reel/DRcPMQUEkVt/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>      
+
+ <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-19">
+
+          민하 @blossomh_ X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-19"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DQBuOwKEjHw/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+       <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-20">
+
+          하누 @woorihh X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-20"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DN0G5RNwlUe/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+       <div class="video-item">
+
+        <button
+          type="button"
+          class="video-text"
+          aria-expanded="false"
+          aria-controls="instagram-21">
+
+          문정윤 @l7mz4 X 튜드먼트 25FW 발매 바이럴
+
+        </button>
+
+        <div
+          class="video-content"
+          id="instagram-21"
+          hidden>
+
+          <div class="instagram-embed">
+
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="https://www.instagram.com/p/DVLNGgnEo1Y/"
+              data-instgrm-version="14">
+            </blockquote>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    <!-- gallery 끝 -->      
+    </div>
+
+
+  </main>
+
+
+  <!-- =====================================
+       15. 인스타그램 임베드 기능
+
+       제목 클릭 → 펼치기
+       다시 클릭 → 접기
+
+       스크립트는 한 번만 추가
+
+       새 게시물이 추가되어도
+       JavaScript 수정할 필요 없음
+  ===================================== -->
+
+  <script>
+
+    /* =====================================
+       인스타그램 공식 임베드 처리
+    ===================================== */
+
+    function loadInstagramEmbeds() {
+
+      if (
+        window.instgrm &&
+        window.instgrm.Embeds &&
+        typeof window.instgrm.Embeds.process === 'function'
+      ) {
+
+        window.instgrm.Embeds.process();
+
+      }
+
+    }
+
+
+    /* =====================================
+       임베드 로딩 및 크기 변경 알림
+
+       EXPERIENCE 오른쪽 iframe의
+       높이 재계산을 돕는 코드
+    ===================================== */
+
+    function notifyContentResize() {
+
+      window.dispatchEvent(
+        new Event('resize')
+      );
+
+    }
+
+
+    /* =====================================
+       제목 클릭 기능
+    ===================================== */
+
+    document.querySelectorAll('.video-text').forEach(button => {
+
+      button.addEventListener('click', () => {
+
+        const panel = document.getElementById(
+          button.getAttribute('aria-controls')
+        );
+
+        if (!panel) return;
+
+        const isOpen =
+          button.getAttribute('aria-expanded') === 'true';
+
+
+        /* 열려 있으면 닫기 */
+
+        if (isOpen) {
+
+          panel.hidden = true;
+
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+        } else {
+
+          /* 닫혀 있으면 펼치기 */
+
+          panel.hidden = false;
+
+          button.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          /* 인스타그램 임베드 실행 */
+
+          loadInstagramEmbeds();
+
+        }
+
+        notifyContentResize();
+
+      });
+
+    });
+
+
+    /* =====================================
+       콘텐츠 크기 변경 감지
+
+       인스타그램 임베드가 로딩되면
+       높이가 달라질 수 있습니다.
+
+       ResizeObserver를 통해
+       높이 변경 감지
+    ===================================== */
+
+    if ('ResizeObserver' in window) {
+
+      const main = document.querySelector('main');
+
+      if (main) {
+
+        const observer = new ResizeObserver(() => {
+          notifyContentResize();
+        });
+
+        observer.observe(main);
+
+      }
+
+    }
+
+  </script>
+
+
+  <!-- =====================================
+       16. 인스타그램 공식 임베드
+
+       한 번만 불러오면 됩니다.
+  ===================================== -->
+
+  <script
+    async
+    src="https://www.instagram.com/embed.js"
+    onload="loadInstagramEmbeds()">
+  </script>
+
+</body>
+
+</html>
