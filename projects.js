@@ -80,11 +80,13 @@ const projects = [
   },  
   /* VISUAL — GIO */
 
-  {
-    id: "graphic design youhee-01",
-    category: "Graphic Design",
-    title: "26SS graphic",
-    link: "projects/youhee tshirt.html"
-  }
+  
+    {
+      id: "graphic design youhee-01",
+      category: "Graphic Design",
+      title: "CP1 PACE&POUR POP-UP",
+      link: "projects/cp1-pace-pour-pop-up.html"
+    }
+
 
 ];
