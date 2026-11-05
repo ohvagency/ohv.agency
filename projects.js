@@ -78,6 +78,13 @@ const projects = [
     title: "[YOUHEE] 인스타그램 PPL 바이럴",
     link: "projects/marketing-03.html"
   },  
+  {
+    id: "gifting",
+    category: "Influencer Marketing",
+    title: "[기프팅] 인플루언서 오가닉 바이럴",
+    link: "projects/gifting.html"
+  },  
+   
   /* VISUAL — GIO */
 
   
