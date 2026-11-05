@@ -85,15 +85,23 @@ const projects = [
     link: "projects/gifting.html"
   },  
    
-  /* VISUAL — GIO */
+    /* VISUAL — GIO */
 
-  
-    {
-      id: "graphic design youhee-01",
-      category: "Graphic Design",
-      title: "CP1 PACE&POUR POP-UP",
-      link: "projects/cp1-pace-pour-pop-up.html"
-    }
+  {
+    id: "graphic design youhee-01",
+    category: "Graphic Design",
+    title: "CP1 PACE&POUR POP-UP",
+    link: "projects/cp1-pace-pour-pop-up.html"
+  },
+
+  {
+    id: "graphic design ttudement-02",
+    category: "Graphic Design",
+    title: "TTUDEMENT 26SS",
+    link: "projects/ttudement-26ss.html"
+  }
+
+];
 
 
 ];
