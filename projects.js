@@ -81,7 +81,7 @@ const projects = [
   {
     id: "gifting",
     category: "Influencer Marketing",
-    title: "[기프팅] 인플루언서 오가닉 바이럴",
+    title: "인플루언서 무가 기프팅 오가닉 바이럴",
     link: "projects/gifting.html"
   },  
    
