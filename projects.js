@@ -94,11 +94,26 @@ const projects = [
     link: "projects/cp1-pace-pour-pop-up.html"
   },
 
+  
   {
     id: "graphic design ttudement-02",
     category: "Graphic Design",
     title: "TTUDEMENT 26SS",
     link: "projects/ttudement-26ss.html"
+  },
+
+  {
+    id: "molip-03",
+    category: "Graphic Design",
+    title: "MOLIP — Cafe Branding",
+    link: "projects/molip.html"
+  },
+
+  {
+    id: "riize-04",
+    category: "Graphic Design",
+    title: "RIIZE — Sunrise Bite",
+    link: "projects/riize-sunrise-bite.html"
   }
 
 ];
