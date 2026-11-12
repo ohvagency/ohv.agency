@@ -114,6 +114,12 @@ const projects = [
     category: "Graphic Design",
     title: "RIIZE — Sunrise Bite",
     link: "projects/riize-sunrise-bite.html"
-  }
+  },
 
-];
+   {
+  id: "youhee-05",
+  category: "Contents",
+  title: "YOUHEE — Seasonal Contents",
+  link: "projects/youhee-seasonal-contents.html"
+}
+   ];
