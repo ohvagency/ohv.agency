@@ -148,6 +148,12 @@ const projects = [
     category: "Graphic Design",
     title: "YOUHEE — 25SS Seasonal Graphics",
     link: "projects/youhee-25ss-graphics.html"
+  },
+     {
+    id: "youhee-09",
+    category: "Graphic Design",
+    title: "YOUHEE — 25FW Stripe Graphics",
+    link: "projects/youhee-25fw-stripe-graphics.html"
   }
 
 ];
