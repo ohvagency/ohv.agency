@@ -1,177 +1,458 @@
+
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- OHV 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- OHV NEW 파비콘 -->
+  <link rel="icon" type="image/png" href="favicon.png?v=2">
+
+  <!-- 공통 폰트 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- 공통 네비게이션 -->
   <link rel="stylesheet" href="navigation.css">
-  <link rel="icon" type="image/png" href="favicon.png">
+
   <title>MAGAZINE — OHV AGENCY</title>
+
   <style>
-    /* MAGAZINE 게시물 4:5 비율 */
-.feed-grid img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-}
-    * { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: #F1F1F1;
-  color: #939393;
-  font-family: 'Pretendard', sans-serif;
-}    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    main { max-width: 1440px; min-height: 100vh; margin: auto; padding: 165px 6% 120px; }
-    .eyebrow {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: #939393;
-}
-    h1 { font-size: clamp(24px, 3vw, 42px); font-weight: 400; letter-spacing: -.065em; margin: 24px 0 12px; }
-    .description {
-  max-width: 620px;
-  font-size: 15px;
-  line-height: 1.8;
-  margin: 0 0 55px;
-  color: #939393;
-  word-break: keep-all;
-}
-    .topline { border-top: 1px solid #111; padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 12px; letter-spacing: 1px; }
-    .topline a { text-decoration: underline; text-underline-offset: 4px; }
-    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-/* 매거진 게시물 4:5 비율 */
-.post {
-  display: block;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background: #f2f2f2;
-}
 
-.post img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .4s ease, opacity .3s ease;
-}
-    .post:hover img { transform: scale(1.035); opacity: .83; }
-    .post:focus-visible { outline: 2px solid #111; outline-offset: 3px; }
-    .empty { padding: 40px 0; color: #777; font-size: 13px; }
-.loadmore {
-  display: block;
-  margin: 55px auto 0;
-  padding: 12px 32px;
-  border: 1px solid #939393;
-  background: #F1F1F1;
-  color: #939393;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-}
-
-.loadmore:hover {
-  background: #939393;
-  color: #F1F1F1;
-}
-    .loadmore[hidden] { display: none; }
-    footer { padding: 35px 5%; border-top: 1px solid #eee; font-size: 12px; }
-    @media (max-width: 650px) { main { padding: 140px 6% 80px; } .gallery { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 7px; } .description { font-size: 13px; } }
-    @media (prefers-reduced-motion: reduce) { .post img { transition: none; } }
     /* =====================================
-   MAGAZINE 컬러 통일
-===================================== */
+       01. 기본 디자인 설정
+    ===================================== */
 
-main,
-main h1,
-main .topline,
-main .topline a,
-main .empty,
-footer {
-  color: #939393;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* 구분선 */
-.topline {
-  border-top-color: #939393;
-}
+    body {
+      margin: 0;
+      background: #FFFFFF;
+      color: #000000;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* 게시물 이미지 로딩 영역 */
-.post {
-  background: #F1F1F1;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* 키보드 포커스 */
-.post:focus-visible {
-  outline-color: #939393;
-}
+    button {
+      font: inherit;
+    }
+
+
+    /* =====================================
+       02. 페이지 전체 여백
+
+       다른 OHV 페이지와 동일한 좌우 여백
+       상단 115px / 좌우 4%
+    ===================================== */
+
+    main {
+      width: 100%;
+      min-height: 100vh;
+      padding: 115px 4% 80px;
+    }
+
+
+    /* =====================================
+       03. 매거진 제목 및 소개 문구
+    ===================================== */
+
+    .eyebrow {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      margin: 0 0 12px;
+    }
+
+    .description {
+      max-width: 800px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      letter-spacing: -0.05em;
+      margin: 0 0 40px;
+      word-break: keep-all;
+    }
+
+
+    /* =====================================
+       04. 인스타그램 링크 및 구분선
+    ===================================== */
+
+    .topline {
+      border-top: 1px solid #AAAAAA;
+      padding: 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    .topline a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .topline a:hover {
+      opacity: 0.5;
+    }
+
+
+    /* =====================================
+       05. 인스타그램 게시물 그리드
+
+       PC : 3열
+       이미지 간격 : 12px
+       이미지 비율 : 4:5
+    ===================================== */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .post {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: #F5F5F5;
+    }
+
+    .post img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease, opacity .3s ease;
+    }
+
+    /* 게시물 마우스 오버 */
+
+    .post:hover img {
+      transform: scale(1.035);
+      opacity: .83;
+    }
+
+    .post:focus-visible {
+      outline: 2px solid #000000;
+      outline-offset: 3px;
+    }
+
+
+    /* =====================================
+       06. 게시물 로딩 안내
+    ===================================== */
+
+    .empty {
+      padding: 30px 0;
+      color: #777777;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .empty:empty {
+      display: none;
+    }
+
+
+    /* =====================================
+       07. MORE 버튼
+
+       기본 : 흰 배경 / 검정 글자
+       호버 : 검정 배경 / 흰 글자
+    ===================================== */
+
+    .loadmore {
+      display: block;
+      margin: 45px auto 0;
+      padding: 14px 36px;
+      border: 1px solid #000000;
+      border-radius: 0;
+      background: #FFFFFF;
+      color: #000000;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease;
+    }
+
+    .loadmore:hover {
+      background: #000000;
+      color: #FFFFFF;
+    }
+
+    .loadmore[hidden] {
+      display: none;
+    }
+
+
+    /* =====================================
+       08. 푸터
+    ===================================== */
+
+    footer {
+      padding: 25px 4%;
+      border-top: 1px solid #D8D8D8;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+
+    /* =====================================
+       09. 모바일 반응형
+
+       모바일 : 게시물 2열
+       좌우 여백 : 16px
+    ===================================== */
+
+    @media (max-width: 650px) {
+
+      main {
+        padding: 90px 16px 60px;
+      }
+
+      .eyebrow {
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 16px;
+      }
+
+      .description {
+        font-size: 13px;
+        margin-bottom: 30px;
+      }
+
+      .topline {
+        font-size: 12px;
+        padding: 12px 0;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      footer {
+        padding: 20px 16px;
+        font-size: 10px;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .post img {
+        transition: none;
+      }
+    }
+
   </style>
 </head>
+
+
 <body>
+
+  <!-- 공통 네비게이션 -->
   <div id="site-navigation"></div>
+
+
   <main>
-    <div class="eyebrow">03 / MAGAZINE</div>
-    <h1>@nicemechew.mag</h1>
+
+    <!-- =====================================
+         10. 매거진 소개
+
+         제목 및 소개 문구 수정 가능
+    ===================================== -->
+
+    <div class="eyebrow">
+      Our magazine...
+    </div>
+
+    <h1>
+      <a href="https://www.instagram.com/nicemechew.mag/"
+         target="_blank"
+         rel="noopener noreferrer">
+        @nicemechew.mag
+      </a>
+    </h1>
+
     <p class="description">
       새로운 무드를 한 입에💋 <br>
-패션 마케터&디자이너가 말아주는 최신 트렌드</p>
-    <div class="topline"><a href="https://www.instagram.com/nicemechew.mag/" target="_blank" rel="noopener noreferrer">INSTAGRAM ↗</a></div>
-    <div class="gallery" id="gallery" aria-live="polite"></div>
-    <p class="empty" id="feed-status" role="status">게시물을 불러오는 중입니다...</p>
-    <button class="loadmore" id="load-more" type="button" hidden>MORE ↓</button>
+      패션 마케터&디자이너가 말아주는 최신 트렌드
+    </p>
+
+
+    <!-- 인스타그램 바로가기 -->
+
+    <div class="topline">
+      <a href="https://www.instagram.com/nicemechew.mag/"
+         target="_blank"
+         rel="noopener noreferrer">
+        INSTAGRAM ↗
+      </a>
+    </div>
+
+
+    <!-- =====================================
+         11. 인스타그램 자동 업데이트 영역
+
+         instagram-feed.json에서 자동으로
+         최신 게시물을 불러옵니다.
+
+         직접 수정하지 않아도 됩니다.
+    ===================================== -->
+
+    <div class="gallery"
+         id="gallery"
+         aria-live="polite">
+    </div>
+
+    <p class="empty"
+       id="feed-status"
+       role="status">
+      게시물을 불러오는 중입니다...
+    </p>
+
+    <button class="loadmore"
+            id="load-more"
+            type="button"
+            hidden>
+      MORE ↓
+    </button>
+
   </main>
-  <footer>© OHV AGENCY. ALL RIGHTS RESERVED.</footer>
+
+
+  <!-- 푸터 -->
+
+  <footer>
+    © OHV AGENCY. ALL RIGHTS RESERVED.
+  </footer>
+
+
+  <!-- 공통 네비게이션 기능 -->
+
   <script src="navigation.js"></script>
+
+
+  <!-- =====================================
+       12. 인스타그램 자동 연동 기능
+
+       기존 코드 그대로 유지
+
+       최신 게시물 순서대로 표시
+       한 번에 12개 게시물 불러오기
+       MORE 클릭 시 추가 게시물 표시
+  ===================================== -->
+
   <script>
+
     const PAGE_SIZE = 12;
     let posts = [];
     let displayed = 0;
+
     const gallery = document.getElementById('gallery');
     const more = document.getElementById('load-more');
     const status = document.getElementById('feed-status');
 
     function renderMore() {
+
       const batch = posts.slice(displayed, displayed + PAGE_SIZE);
+
       for (const item of batch) {
+
         const link = document.createElement('a');
+
         link.className = 'post';
         link.href = item.permalink;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        link.setAttribute('aria-label', (item.caption || 'Instagram 게시물').slice(0, 100));
+
+        link.setAttribute(
+          'aria-label',
+          (item.caption || 'Instagram 게시물').slice(0, 100)
+        );
+
         const img = document.createElement('img');
+
         img.src = item.image;
-        img.alt = (item.caption || '나이스미츄매거진 게시물').slice(0, 120);
+
+        img.alt =
+          (item.caption || '나이스미츄매거진 게시물').slice(0, 120);
+
         img.loading = 'lazy';
         img.decoding = 'async';
+
         link.append(img);
         gallery.append(link);
+
       }
+
       displayed += batch.length;
       more.hidden = displayed >= posts.length;
+
     }
 
     more.addEventListener('click', renderMore);
 
     fetch('instagram-feed.json', { cache: 'no-store' })
+
       .then(response => {
+
         if (!response.ok) throw new Error('Feed not ready');
+
         return response.json();
+
       })
+
       .then(data => {
+
         if (!Array.isArray(data)) throw new Error('Invalid feed');
+
         posts = data.filter(p => p.image && p.permalink)
-          .sort((a, b) => (b.timestamp || '').localeCompare(a.timestamp || ''));
-        status.textContent = posts.length ? '' : '게시물 준비 중입니다.';
+          .sort((a, b) =>
+            (b.timestamp || '').localeCompare(a.timestamp || '')
+          );
+
+        status.textContent =
+          posts.length ? '' : '게시물 준비 중입니다.';
+
         renderMore();
+
       })
+
       .catch(() => {
-        status.textContent = '매거진 게시물을 준비 중입니다. Instagram에서 먼저 만나보세요.';
+
+        status.textContent =
+          '매거진 게시물을 준비 중입니다. Instagram에서 먼저 만나보세요.';
+
       });
+
   </script>
+
 </body>
 </html>
