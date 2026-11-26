@@ -9,8 +9,8 @@
   <!-- =====================================
        01. OHV 공통 설정
 
-       EXPERIENCE 3단 구조
-       오른쪽 프로젝트 상세 페이지용
+       배경 / 글자 / 폰트 / 제목 / 본문
+       → project.css에서 공통 관리
   ===================================== -->
 
   <link rel="icon" type="image/png" href="../favicon.png">
@@ -24,27 +24,8 @@
   <style>
 
     /* =====================================
-       02. 기본 디자인
-
-       배경 : #F1F1F1
-       글자 : #939393
-       폰트 : Pretendard
+       02. 기본 설정
     ===================================== */
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      background: #F1F1F1;
-      color: #939393;
-      font-family: 'Pretendard', sans-serif;
-      -webkit-font-smoothing: antialiased;
-      color-scheme: light;
-    }
 
     button,
     a {
@@ -56,70 +37,23 @@
       text-decoration: none;
     }
 
-    main {
-      width: 100%;
-      max-width: none;
-      min-height: 0;
-      margin: 0;
-      padding: 0;
-    }
-
 
     /* =====================================
        03. 프로젝트 메인 제목
 
-       카테고리 : Bold
-       프로젝트명 : Regular
+       공통 디자인은 project.css에서 관리
     ===================================== */
-
-    .project-heading {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-
-      column-gap: 8px;
-      row-gap: 4px;
-
-      margin: 0 0 20px;
-
-      color: #939393;
-      line-height: 1.4;
-      word-break: keep-all;
-    }
-
-    .project-heading-category {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: -0.065em;
-    }
-
-    .project-heading-title {
-      font-size: 19px;
-      font-weight: 400;
-      letter-spacing: -0.035em;
-    }
 
 
     /* =====================================
        04. 프로젝트 소개
 
-       margin-bottom
-       → 설명과 콘텐츠 사이 간격
+       설명 영역 최대 너비 및 줄바꿈
     ===================================== */
 
     .description {
       max-width: 760px;
-      margin: 0 0 65px;
-
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: normal;
-      line-height: 1.8;
-
-      color: #939393;
-
       white-space: pre-line;
-      word-break: keep-all;
     }
 
 
@@ -148,23 +82,17 @@
 
     .content-toggle {
       display: inline-block;
-
       margin: 0;
       padding: 0;
-
       border: none;
       background: transparent;
-
-      color: #939393;
-
+      color: #000000;
       font-size: 15px;
       font-weight: 700;
       letter-spacing: normal;
       line-height: normal;
-
       text-align: left;
       word-break: keep-all;
-
       cursor: pointer;
       transition: opacity 0.2s ease;
     }
@@ -174,7 +102,7 @@
     }
 
     .content-toggle:focus-visible {
-      outline: 1px solid #939393;
+      outline: 1px solid #000000;
       outline-offset: 4px;
     }
 
@@ -189,9 +117,7 @@
     .content-toggle::after {
       content: "+";
       display: inline-block;
-
       margin-left: 7px;
-
       font-size: 15px;
       font-weight: 400;
       letter-spacing: normal;
@@ -226,7 +152,7 @@
     .edition-embed {
       width: 100%;
       height: 650px;
-      background: #F1F1F1;
+      background: #FFFFFF;
     }
 
     .edition-embed iframe {
@@ -238,15 +164,11 @@
 
     .external-link {
       display: inline-block;
-
       margin-top: 12px;
-
       font-size: 11px;
       font-weight: 400;
-
-      color: #939393;
+      color: #000000;
       text-decoration: none;
-
       transition: opacity 0.2s ease;
     }
 
@@ -259,10 +181,8 @@
        10. 곰송이 이미지 슬라이드
 
        이미지 총 9장
-
        이미지 위에 좌우 화살표 표시
        이미지 숫자 카운터 없음
-
        한 번에 이미지 1장씩
     ===================================== */
 
@@ -277,7 +197,7 @@
       position: relative;
       width: 100%;
       overflow: hidden;
-      background: #F1F1F1;
+      background: #FFFFFF;
     }
 
     /* 이미지 가로 배열 */
@@ -285,7 +205,6 @@
       display: flex;
       width: 100%;
       align-items: flex-start;
-
       transition: transform 0.35s ease;
       will-change: transform;
     }
@@ -309,7 +228,7 @@
 
        이미지 중앙 높이에 겹쳐서 표시
 
-       ✏️ left / right
+       left / right
        → 이미지 가장자리와의 거리
     ===================================== */
 
@@ -319,29 +238,21 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       width: 40px;
       height: 40px;
-
       padding: 0;
       margin: 0;
-
       border: none;
       background: transparent;
-
-      color: #939393;
-
-      font-family: 'Pretendard', sans-serif;
+      color: #000000;
+      font-family: inherit;
       font-size: 27px;
       font-weight: 400;
       line-height: 1;
-
       cursor: pointer;
-
       transition: opacity 0.2s ease;
     }
 
@@ -362,7 +273,7 @@
 
     .slider-prev:focus-visible,
     .slider-next:focus-visible {
-      outline: 1px solid #939393;
+      outline: 1px solid #000000;
       outline-offset: 2px;
     }
 
@@ -371,20 +282,16 @@
        12. 유튜브 영상
 
        이미지 슬라이드 아래에 표시
-
        클릭해서 펼치는 기능 없음
        처음부터 영상 표시
-
        영상 비율 16:9
     ===================================== */
 
     .youtube-embed {
       width: 100%;
       aspect-ratio: 16 / 9;
-
       margin-top: 25px;
-
-      background: #F1F1F1;
+      background: #FFFFFF;
     }
 
     .youtube-embed iframe {
@@ -431,29 +338,34 @@
 
 
     /* =====================================
+       프로젝트 콘텐츠 하이퍼링크
+    ===================================== */
+
+    .project-link {
+      display: inline-block;
+      align-self: flex-start;
+      margin-top: 6px;
+      margin-bottom: 18px;
+      color: #000000;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s ease;
+    }
+
+    .project-link:hover {
+      opacity: 0.5;
+    }
+
+
+    /* =====================================
        14. 모바일 화면
     ===================================== */
 
     @media (max-width: 650px) {
-
-      .project-heading {
-        column-gap: 6px;
-        margin-bottom: 16px;
-      }
-
-      .project-heading-category {
-        font-size: 12px;
-      }
-
-      .project-heading-title {
-        font-size: 17px;
-      }
-
-      .description {
-        font-size: 12px;
-        line-height: 1.8;
-        margin-bottom: 45px;
-      }
 
       .gallery {
         gap: 6px;
@@ -507,43 +419,21 @@
         gap: 8px;
       }
 
+      /* 프로젝트 링크 */
+      .project-link {
+        font-size: 10px;
+        margin-bottom: 14px;
+      }
+
     }
 
-/* =====================================
-   프로젝트 콘텐츠 하이퍼링크
-===================================== */
-
-.project-link {
-  display: inline-block;
-  align-self: flex-start;
-
-  margin-top: 6px;
-  margin-bottom: 18px;
-
-  color: #939393;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0;
-
-  text-decoration: underline;
-  text-underline-offset: 3px;
-
-  transition: opacity 0.2s ease;
-}
-
-.project-link:hover {
-  opacity: 0.5;
-}
-
-@media (max-width: 650px) {
-  .project-link {
-    font-size: 10px;
-    margin-bottom: 14px;
-  }
-}
   </style>
+
+  <!-- OHV 공통 디자인 불러오기 -->
+  <link rel="stylesheet" href="../project.css">
+
 </head>
+
 
 
 <body>
