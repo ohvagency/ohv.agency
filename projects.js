@@ -122,4 +122,33 @@ const projects = [
   title: "YOUHEE — Seasonal Contents",
   link: "projects/youhee-seasonal-contents.html"
 }
-   ];
+  {
+    id: "youhee-05",
+    category: "Contents",
+    title: "YOUHEE — Seasonal Contents",
+    link: "projects/youhee-seasonal-contents.html"
+  },
+
+  {
+    id: "youhee-06",
+    category: "Graphic Design",
+    title: "YOUHEE — 24FW Seasonal Graphics",
+    link: "projects/youhee-24fw-graphics.html"
+  },
+
+  {
+    id: "youhee-07",
+    category: "Graphic Design",
+    title: "YOUHEE — 25FW Seasonal Graphics",
+    link: "projects/youhee-25fw-graphics.html"
+  },
+
+  {
+    id: "youhee-08",
+    category: "Graphic Design",
+    title: "YOUHEE — 25SS Seasonal Graphics",
+    link: "projects/youhee-25ss-graphics.html"
+  }
+
+];  
+
