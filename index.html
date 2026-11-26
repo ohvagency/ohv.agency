@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -8,26 +7,21 @@
 
   <title>OHV AGENCY</title>
 
-<!-- OHV NEW 파비콘 -->
-<link rel="icon" type="image/png" href="favicon.png?v=2">
+  <!-- 파비콘 -->
+  <link rel="icon" type="image/png" href="favicon.png?v=2">
 
   <!-- 공통 폰트 -->
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <!-- 기존 네비게이션 디자인 유지 -->
+  <!-- 공통 네비게이션 -->
   <link rel="stylesheet" href="navigation.css">
 
   <style>
 
     /* =====================================
-       01. 메인 페이지 기본 디자인
-
-       배경 : 순백색
-       글자 : 검정색
-       폰트 : Pretendard Bold
-       자간 : -50
-       ===================================== */
+       01. 기본 설정
+    ===================================== */
 
     * {
       box-sizing: border-box;
@@ -38,727 +32,307 @@
       margin: 0;
       background: #FFFFFF;
       color: #000000;
-
       font-family: 'Pretendard', sans-serif;
       -webkit-font-smoothing: antialiased;
     }
 
-
-    /* =====================================
-       02. 메인 3열 레이아웃
-
-       첫 번째 열 : 카테고리
-       두 번째 열 : 프로젝트 목록
-       세 번째 열 : 프로젝트 미리보기
-
-       padding : 상단 / 우측 / 하단 / 좌측
-       ===================================== */
-
-    .home-index {
-      min-height: 100vh;
-      min-height: 100svh;
-
-      padding: 118px 3.2% 40px;
-
-      display: grid;
-
-      grid-template-columns:
-        19.5%
-        32%
-        minmax(0, 1fr);
-
-      align-items: start;
-
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      line-height: 1.2;
-    }
-
-
-    /* =====================================
-       03. 카테고리 및 프로젝트 공통 스타일
-
-       font-size : 글자 크기
-       line-height : 줄 간격
-       ===================================== */
-
-    .home-index button,
-    .home-index a {
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      letter-spacing: inherit;
-      line-height: inherit;
-
+    a {
       color: inherit;
       text-decoration: none;
     }
 
-    .category-list,
-    .project-list {
+
+    /* =====================================
+       02. 메인 화면 전체 레이아웃
+
+       상단 여백 : 95px
+       좌우 여백 : 2.5%
+    ===================================== */
+
+    .home {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: 95px 2.5% 40px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+
+    /* =====================================
+       03. 왼쪽 그래픽 이미지
+
+       화면 너비의 약 23%
+       최대 너비 380px
+       이미지 비율 4:5
+    ===================================== */
+
+    .visual {
+      position: relative;
+      display: block;
+      width: 23vw;
+      max-width: 380px;
+      flex-shrink: 0;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      transition:
+        opacity 0.5s ease,
+        filter 0.5s ease;
+    }
+
+
+    /* 기본 이미지 */
+
+    .visual .image-default {
+      opacity: 1;
+    }
+
+
+    /* 호버 이미지 */
+
+    .visual .image-hover {
+      opacity: 0;
+    }
+
+
+    /* 마우스를 올렸을 때 이미지 전환 */
+
+    @media (hover: hover) {
+
+      .visual:hover .image-default {
+        opacity: 0;
+      }
+
+      .visual:hover .image-hover {
+        opacity: 1;
+        filter: brightness(1.05);
+      }
+
+    }
+
+    .visual:focus-visible .image-hover {
+      opacity: 1;
+    }
+
+
+    /* =====================================
+       04. 카테고리 리스트
+
+       폰트 : Pretendard Bold
+       크기 : 15px
+       자간 : -50
+    ===================================== */
+
+    .category-list {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
 
-      min-width: 0;
-      padding-right: 24px;
-    }
-
-
-    /* =====================================
-       04. 왼쪽 카테고리 디자인
-       ===================================== */
-
-    .category-button {
-      display: block;
-
-      background: none;
-      border: none;
-      padding: 0;
-      margin: 0;
-
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .category-button:hover {
-      color: #939393;
-    }
-
-    .category-button.active:not([data-category="All"]) {
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-
-    /* =====================================
-       05. 중앙 프로젝트 리스트 디자인
-
-       프로젝트명에 마우스를 올리면
-       회색으로 변경됩니다.
-       ===================================== */
-
-    .project-link {
-      display: block;
-      width: fit-content;
-      max-width: 100%;
-
-      cursor: pointer;
-      overflow-wrap: anywhere;
-    }
-
-    .project-link:hover,
-    .project-link:focus-visible {
-      color: #939393;
-    }
-
-    .empty-message {
-      color: #939393;
-    }
-
-
-    /* =====================================
-       06. 오른쪽 프로젝트 미리보기
-
-       기본 상태에서는 빈 공간으로 유지
-       ===================================== */
-
-    .preview-panel {
-      min-width: 0;
-      padding-left: 20px;
-    }
-
-    .preview-panel[hidden] {
-      display: none;
-    }
-
-    .preview-image {
-      display: block;
-
-      width: 100%;
-      max-height: 60vh;
-
-      object-fit: contain;
-      object-position: left top;
-
-      margin-bottom: 20px;
-    }
-
-    .preview-image[hidden] {
-      display: none;
-    }
-
-    .preview-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      margin: 0 0 6px;
+      letter-spacing: -0.05em;
+      line-height: 1.3;
     }
 
-    .preview-category {
-      color: #939393;
-      margin: 0 0 16px;
+    .category-list a {
+      transition: opacity 0.2s ease;
     }
 
-    .preview-description {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.6;
-      letter-spacing: -0.03em;
-
-      max-width: 460px;
-      margin: 0 0 20px;
-
-      white-space: pre-line;
-    }
-
-    .preview-link:hover {
-      color: #939393;
+    .category-list a:hover {
+      opacity: 0.4;
     }
 
 
     /* =====================================
-       07. 태블릿 화면
-       ===================================== */
+       05. 오른쪽 하단 OHV 로고
 
-    @media (max-width: 1000px) {
+       너비 : 화면의 25%
+       최대 너비 : 400px
 
-      .home-index {
-        grid-template-columns:
-          24%
-          38%
-          minmax(0, 1fr);
+       크기 변경 시 width 값을 수정
+    ===================================== */
 
+    .bottom-logo {
+      display: block;
+      width: 25vw;
+      max-width: 400px;
+      height: auto;
+
+      margin-top: auto;
+      margin-left: auto;
+      margin-right: 2%;
+
+      padding-top: 35px;
+    }
+
+
+    /* =====================================
+       06. 태블릿 화면
+    ===================================== */
+
+    @media (max-width: 1024px) {
+
+      .visual {
+        width: 30vw;
+      }
+
+      .bottom-logo {
+        width: 30vw;
+      }
+
+      .category-list {
         font-size: 14px;
       }
 
-      .preview-panel {
-        padding-left: 10px;
-      }
-
     }
 
 
     /* =====================================
-       08. 모바일 화면
-
-       카테고리와 프로젝트 목록을
-       위아래로 배치합니다.
-
-       모바일에서는 프로젝트 클릭 시
-       바로 상세 페이지로 이동합니다.
-       ===================================== */
+       07. 모바일 화면
+    ===================================== */
 
     @media (max-width: 650px) {
 
-      .home-index {
-        display: flex;
+      .home {
+        padding: 80px 16px 24px;
+      }
+
+      .home-content {
         flex-direction: column;
+        gap: 20px;
+      }
 
-        padding: 85px 16px 40px;
-        gap: 36px;
+      .visual {
+        width: 65%;
+        max-width: 320px;
+      }
 
+      .category-list {
         font-size: 14px;
-        line-height: 1.35;
+        line-height: 1.4;
       }
 
-      .category-list,
-      .project-list {
-        width: 100%;
-        padding-right: 0;
+      .bottom-logo {
+        width: 45%;
+        max-width: 220px;
+        margin-right: 0;
+        padding-top: 60px;
       }
 
-      .preview-panel {
-        display: none;
+    }
+
+
+    /* 모션 최소화 설정 */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .visual img,
+      .category-list a {
+        transition: none;
       }
 
     }
 
   </style>
-
 </head>
 
 <body>
 
-  <!-- =====================================
-       09. 기존 공통 네비게이션
-       ===================================== -->
-
+  <!-- 공통 네비게이션 -->
   <div id="site-navigation"></div>
 
 
-  <main class="home-index">
+  <main class="home">
 
-    <!-- =====================================
-         10. 첫 번째 열 : 카테고리
+    <div class="home-content">
 
-         카테고리 이름은 projects.js의
-         category 값과 동일해야 합니다.
-         ===================================== -->
+      <!-- 왼쪽 브랜드 그래픽 -->
 
-    <div class="category-list"
-         id="category-list"
-         aria-label="Project categories">
+      <a class="visual" href="experience.html">
 
-      <button type="button"
-              class="category-button active"
-              data-category="All"
-              aria-pressed="true">
-        All
-      </button>
+        <img
+          class="image-default"
+          src="feed1.jpg"
+          alt="OHV Agency Brand Identity">
 
-      <button type="button"
-              class="category-button"
-              data-category="Graphic Design"
-              aria-pressed="false">
-        Graphic Design
-      </button>
+        <img
+          class="image-hover"
+          src="feed2.jpg"
+          alt=""
+          aria-hidden="true">
 
-      <button type="button"
-              class="category-button"
-              data-category="Contents"
-              aria-pressed="false">
-        Contents
-      </button>
-
-      <button type="button"
-              class="category-button"
-              data-category="Pop-up & Exhibition"
-              aria-pressed="false">
-        Pop-up & Exhibition
-      </button>
-
-      <button type="button"
-              class="category-button"
-              data-category="Lookbook Retouching"
-              aria-pressed="false">
-        Lookbook Retouching
-      </button>
-
-      <button type="button"
-              class="category-button"
-              data-category="Influencer Marketing"
-              aria-pressed="false">
-        Influencer Marketing
-      </button>
-
-      <button type="button"
-              class="category-button"
-              data-category="Influencer Collaboration"
-              aria-pressed="false">
-        Influencer Collaboration
-      </button>
-
-      <button type="button"
-              class="category-button"
-              data-category="Other Works"
-              aria-pressed="false">
-        Other Works
-      </button>
-
-    </div>
-
-
-    <!-- =====================================
-         11. 두 번째 열 : 프로젝트 목록
-
-         projects.js의 데이터를 자동으로
-         불러오므로 직접 작성하지 않습니다.
-         ===================================== -->
-
-    <div class="project-list"
-         id="project-list"
-         aria-live="polite">
-    </div>
-
-
-    <!-- =====================================
-         12. 세 번째 열 : 프로젝트 미리보기
-
-         프로젝트에 마우스를 올렸을 때
-         이미지와 설명이 표시됩니다.
-         ===================================== -->
-
-    <aside class="preview-panel"
-           id="preview-panel"
-           hidden>
-
-      <img class="preview-image"
-           id="preview-image"
-           alt=""
-           hidden>
-
-      <h2 class="preview-title"
-          id="preview-title">
-      </h2>
-
-      <p class="preview-category"
-         id="preview-category">
-      </p>
-
-      <p class="preview-description"
-         id="preview-description">
-      </p>
-
-      <a class="preview-link"
-         id="preview-link">
-        View project ↗
       </a>
 
-    </aside>
+
+      <!-- 카테고리 리스트 -->
+
+      <div class="category-list">
+
+        <a href="experience.html">All</a>
+
+        <a href="experience.html?category=Graphic%20Design">
+          Graphic Design
+        </a>
+
+        <a href="experience.html?category=Contents">
+          Contents
+        </a>
+
+        <a href="experience.html?category=Pop-up%20%26%20Exhibition">
+          Pop-up & Exhibition
+        </a>
+
+        <a href="experience.html?category=Lookbook%20Retouching">
+          Lookbook Retouching
+        </a>
+
+        <a href="experience.html?category=Influencer%20Marketing">
+          Influencer Marketing
+        </a>
+
+        <a href="experience.html?category=Influencer%20Collaboration">
+          Influencer Collaboration
+        </a>
+
+        <a href="experience.html?category=Other%20Works">
+          Other Works
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- 오른쪽 하단 OHV 로고 -->
+
+    <img
+      class="bottom-logo"
+      src="homepage%20logo.png"
+      alt="OHV Agency">
 
   </main>
 
 
-  <!-- =====================================
-       13. 기존 공통 네비게이션 기능
-       ===================================== -->
+  <!-- 공통 네비게이션 기능 -->
 
   <script src="navigation.js"></script>
-
-
-  <!-- =====================================
-       14. 기존 프로젝트 데이터 불러오기
-
-       projects.js 파일은 수정하지 않습니다.
-       ===================================== -->
-
-  <script src="projects.js"></script>
-
-
-  <script>
-
-    /* =====================================
-       15. 프로젝트 리스트 및 미리보기 설정
-       ===================================== */
-
-    const projectList =
-      document.getElementById("project-list");
-
-    const categoryButtons =
-      document.querySelectorAll(".category-button");
-
-    const previewPanel =
-      document.getElementById("preview-panel");
-
-    const previewImage =
-      document.getElementById("preview-image");
-
-    const previewTitle =
-      document.getElementById("preview-title");
-
-    const previewCategory =
-      document.getElementById("preview-category");
-
-    const previewDescription =
-      document.getElementById("preview-description");
-
-    const previewLink =
-      document.getElementById("preview-link");
-
-    const previewCache = new Map();
-
-    let previewRequest = 0;
-
-
-    /* =====================================
-       16. 프로젝트 미리보기 초기화
-       ===================================== */
-
-    function hidePreview() {
-
-      previewRequest++;
-
-      previewPanel.hidden = true;
-      previewImage.hidden = true;
-
-      previewImage.removeAttribute("src");
-
-      previewTitle.textContent = "";
-      previewCategory.textContent = "";
-      previewDescription.textContent = "";
-
-    }
-
-
-    /* =====================================
-       17. 기존 프로젝트 HTML에서
-       이미지와 설명 가져오기
-
-       프로젝트 상세 페이지의 내용을
-       자동으로 읽어옵니다.
-       ===================================== */
-
-    async function getProjectDetails(project) {
-
-      if (previewCache.has(project.link)) {
-        return previewCache.get(project.link);
-      }
-
-      const request = (async () => {
-
-        const response = await fetch(project.link);
-
-        if (!response.ok) {
-          throw new Error("Project page unavailable");
-        }
-
-        const html = await response.text();
-
-        const doc = new DOMParser()
-          .parseFromString(html, "text/html");
-
-        const pageURL = response.url;
-
-        const content =
-          doc.querySelector("main") ||
-          doc.body;
-
-
-        /* 대표 이미지 찾기 */
-
-        const images = Array.from(
-          content.querySelectorAll("img")
-        );
-
-        const image = images.find(img => {
-
-          const src =
-            img.getAttribute("data-src") ||
-            img.getAttribute("src") ||
-            "";
-
-          return src &&
-            !/logo|favicon|icon/i.test(src) &&
-            !img.closest(
-              "header, nav, footer, #site-navigation"
-            );
-
-        });
-
-        let imageURL = "";
-
-        if (image) {
-
-          const src =
-            image.getAttribute("data-src") ||
-            image.getAttribute("src");
-
-          imageURL = new URL(src, pageURL).href;
-
-        }
-
-
-        /* 프로젝트 설명 찾기 */
-
-        const paragraphs = Array.from(
-          content.querySelectorAll("p")
-        );
-
-        const description = paragraphs
-          .filter(p =>
-            !p.closest(
-              "header, nav, footer, #site-navigation"
-            )
-          )
-          .map(p => p.textContent.trim())
-          .filter(text => text.length > 15)
-          .slice(0, 2)
-          .join("\n\n");
-
-
-        return {
-          image: imageURL,
-          description: description
-        };
-
-      })();
-
-      previewCache.set(project.link, request);
-
-      try {
-        return await request;
-      } catch (error) {
-        previewCache.delete(project.link);
-        throw error;
-      }
-
-    }
-
-
-    /* =====================================
-       18. 마우스 Hover 시 미리보기 표시
-       ===================================== */
-
-    async function showPreview(project) {
-
-      if (window.matchMedia(
-        "(max-width: 650px)"
-      ).matches) {
-        return;
-      }
-
-      const currentRequest = ++previewRequest;
-
-      previewPanel.hidden = false;
-
-      previewImage.hidden = true;
-      previewImage.removeAttribute("src");
-
-      previewTitle.textContent = project.title;
-      previewCategory.textContent = project.category;
-      previewDescription.textContent = "";
-
-      previewLink.href = project.link;
-
-      try {
-
-        const details =
-          await getProjectDetails(project);
-
-        /* 다른 프로젝트로 이동했는지 확인 */
-
-        if (currentRequest !== previewRequest) {
-          return;
-        }
-
-        if (details.image) {
-
-          previewImage.alt = project.title;
-
-          previewImage.onload = function () {
-            if (currentRequest === previewRequest) {
-              previewImage.hidden = false;
-            }
-          };
-
-          previewImage.onerror = function () {
-            previewImage.hidden = true;
-          };
-
-          previewImage.src = details.image;
-
-        }
-
-        previewDescription.textContent =
-          details.description;
-
-      } catch (error) {
-
-        /* 상세 내용을 불러오지 못해도
-           프로젝트명과 링크는 유지합니다. */
-
-        console.warn(error);
-
-      }
-
-    }
-
-
-    /* =====================================
-       19. 프로젝트 목록 자동 생성
-
-       All : 모든 프로젝트
-       그 외 : 선택한 카테고리만 표시
-       ===================================== */
-
-    function renderProjects(category = "All") {
-
-      projectList.replaceChildren();
-
-      hidePreview();
-
-      const filteredProjects =
-        category === "All"
-          ? projects
-          : projects.filter(
-              project => project.category === category
-            );
-
-      if (filteredProjects.length === 0) {
-
-        const message =
-          document.createElement("span");
-
-        message.className = "empty-message";
-        message.textContent = "Coming soon.";
-
-        projectList.appendChild(message);
-
-        return;
-
-      }
-
-      filteredProjects.forEach(project => {
-
-        const link = document.createElement("a");
-
-        link.className = "project-link";
-        link.textContent = project.title;
-        link.href = project.link;
-
-        /* 마우스를 올리면 미리보기 표시 */
-
-        link.addEventListener(
-          "mouseenter",
-          () => showPreview(project)
-        );
-
-        /* 키보드로 선택해도 미리보기 표시 */
-
-        link.addEventListener(
-          "focus",
-          () => showPreview(project)
-        );
-
-        projectList.appendChild(link);
-
-      });
-
-    }
-
-
-    /* =====================================
-       20. 카테고리 클릭 기능
-       ===================================== */
-
-    categoryButtons.forEach(button => {
-
-      button.addEventListener("click", () => {
-
-        categoryButtons.forEach(item => {
-
-          item.classList.remove("active");
-          item.setAttribute("aria-pressed", "false");
-
-        });
-
-        button.classList.add("active");
-        button.setAttribute("aria-pressed", "true");
-
-        renderProjects(button.dataset.category);
-
-      });
-
-    });
-
-
-    /* =====================================
-       21. 첫 접속 시 전체 프로젝트 표시
-       ===================================== */
-
-    if (typeof projects !== "undefined") {
-
-      renderProjects("All");
-
-    } else {
-
-      projectList.textContent =
-        "Projects could not be loaded.";
-
-    }
-
-  </script>
 
 </body>
 </html>
