@@ -3,133 +3,255 @@
 <html lang="ko">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- OHV 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  
-  <!-- 폰트 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-  <!-- 공통 네비게이션 -->
+  <!-- OHV 파비콘 -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- OHV 공통 폰트 -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- OHV 공통 네비게이션 -->
   <link rel="stylesheet" href="navigation.css">
-
-  <!-- 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
 
   <title>CONTACT — OHV AGENCY</title>
 
   <style>
 
-    /* 기본 설정 */
+    /* =====================================
+       01. 기본 디자인
+
+       배경색 : 흰색
+       글자색 : 검정
+       폰트 : Pretendard Bold
+       자간 : -50
+       ===================================== */
+
     * {
       box-sizing: border-box;
     }
 
-body {
-  margin: 0;
-  background: #F1F1F1;
-  color: #939393;
-  font-family: 'Pretendard', sans-serif;
-}
+    html,
+    body {
+      margin: 0;
+      background: #FFFFFF;
+      color: #000000;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      -webkit-font-smoothing: antialiased;
+    }
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
-    button, input, textarea, select {
-      font-family: 'Pretendard', sans-serif;
+    button,
+    input,
+    textarea,
+    select {
+      font-family: inherit;
+      letter-spacing: inherit;
     }
 
-    /* CONTACT 페이지 */
 
-    main {
-      max-width: 1120px;
+    /* =====================================
+       02. 페이지 전체 여백
+
+       About / Services와 동일하게 설정
+       상단 : 120px
+       좌우 : 4%
+       ===================================== */
+
+    .contact-page {
       min-height: 100vh;
-      margin: 0 auto;
-      padding: 180px 6% 110px;
+      padding: 120px 4% 80px;
     }
 
-    /* 페이지 제목 */
 
-    .eyebrow {
-      font-size: 11px;
-      color: #777;
-      letter-spacing: 2px;
-      margin-bottom: 40px;
+    /* =====================================
+       03. 페이지 제목
+       ===================================== */
+
+    .contact-title {
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 12px;
     }
 
-    /* 문의 폼 */
+    .contact-subtitle {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      margin: 0 0 40px;
+    }
 
-    form {
-      max-width: 760px;
+
+    /* =====================================
+       04. 문의 양식 레이아웃
+
+       PC : 좌우 2열
+       column-gap : 좌우 열 사이 간격
+       row-gap : 위아래 항목 사이 간격
+       ===================================== */
+
+    #contact-form {
+      width: 100%;
+      margin: 0;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 40px;
+      row-gap: 32px;
     }
 
     .field {
-      margin-bottom: 32px;
+      min-width: 0;
     }
 
-    label {
+    /* 전체 너비를 사용하는 항목 */
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+
+    /* =====================================
+       05. 입력 항목 제목
+       ===================================== */
+
+    .field label {
       display: block;
-      font-size: 13px;
-      margin-bottom: 11px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 10px;
     }
 
     .optional {
-      color: #888;
-      font-size: 11px;
+      color: #939393;
+      font-size: 12px;
+      font-weight: 500;
     }
 
-    input,
-    select,
-    textarea {
+
+    /* =====================================
+       06. 입력창 디자인
+
+       흰색 배경
+       검정 글씨
+       하단에만 얇은 회색 구분선
+       ===================================== */
+
+    .field input,
+    .field select,
+    .field textarea {
       display: block;
       width: 100%;
-      padding: 14px 2px;
+      padding: 14px 0;
+
       border: 0;
-      border-bottom: 1px solid #bbb;
+      border-bottom: 1px solid #939393;
       border-radius: 0;
-      background: #fff;
-      color: #111;
-      font-size: 15px;
-      outline: 0;
+
+      background: #FFFFFF;
+      color: #000000;
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+
+      outline: none;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-bottom-color: #111;
+    /* 입력 전 안내 문구 */
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #939393;
+      opacity: 1;
     }
 
-    textarea {
-      min-height: 135px;
+    /* 선택하기 전 안내 문구 */
+
+    .field select:invalid {
+      color: #939393;
+    }
+
+    .field select option {
+      color: #000000;
+    }
+
+    /* 입력창 클릭 시 */
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-bottom-color: #000000;
+      box-shadow: 0 1px 0 #000000;
+    }
+
+    /* 프로젝트 상세 내용 입력창 */
+
+    .field textarea {
+      min-height: 140px;
       resize: vertical;
     }
 
+
+    /* =====================================
+       07. 개인정보 안내 문구
+       ===================================== */
+
     .hint {
+      color: #777777;
       font-size: 12px;
-      color: #777;
+      font-weight: 400;
       line-height: 1.7;
-      margin: 18px 0 28px;
+      margin: 20px 0 24px;
+      word-break: keep-all;
     }
 
-    /* 전송 버튼 */
+
+    /* =====================================
+       08. 문의 전송 버튼
+
+       기본 : 검정 배경 / 흰색 글씨
+       호버 : 흰색 배경 / 검정 글씨
+       ===================================== */
 
     .submit {
-      border: 1px solid #111;
-      background: #111;
-      color: #fff;
-      padding: 17px 36px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
+      display: inline-block;
+
+      border: 1px solid #000000;
+      border-radius: 0;
+
+      background: #000000;
+      color: #FFFFFF;
+
+      padding: 14px 32px;
+
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+
       cursor: pointer;
-      transition: 0.2s ease;
+
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
     }
 
-    .submit:hover {
-      background: #fff;
-      color: #111;
+    .submit:hover:not(:disabled) {
+      background: #FFFFFF;
+      color: #000000;
     }
 
     .submit:disabled {
@@ -137,312 +259,342 @@ body {
       cursor: not-allowed;
     }
 
+
+    /* =====================================
+       09. 문의 전송 상태 안내
+       ===================================== */
+
     .status {
       font-size: 13px;
+      font-weight: 500;
+      line-height: 1.6;
       margin-top: 18px;
+    }
+
+
+    /* =====================================
+       10. 하단 연락처 정보
+
+       기존 이메일 / 담당자 / 매거진 정보 유지
+       ===================================== */
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px 40px;
+
+      border-top: 1px solid #939393;
+      margin-top: 80px;
+      padding-top: 24px;
+
+      font-size: 15px;
+      font-weight: 700;
       line-height: 1.6;
     }
 
-    /* 하단 연락처 */
-
-    .info {
-      border-top: 1px solid #ddd;
-      margin-top: 120px;
-      padding-top: 38px;
-      font-size: 14px;
-      line-height: 2.2;
+    .info-title {
+      font-size: 13px;
+      color: #939393;
+      margin-bottom: 8px;
     }
 
     .info a {
       text-decoration: underline;
       text-underline-offset: 3px;
+      overflow-wrap: anywhere;
     }
 
-    /* 푸터 */
+    .info a:hover {
+      opacity: 0.5;
+    }
 
-    footer {
-      border-top: 1px solid #eee;
-      padding: 30px 5%;
+
+    /* =====================================
+       11. 푸터
+       ===================================== */
+
+    .contact-footer {
       display: flex;
       justify-content: space-between;
       gap: 15px;
-      font-size: 12px;
+
+      padding: 24px 4%;
+      border-top: 1px solid #D8D8D8;
+
+      font-size: 11px;
+      font-weight: 500;
+      color: #939393;
     }
 
-    footer a {
-      text-decoration: underline;
-      text-underline-offset: 3px;
+    .contact-footer a:hover {
+      color: #000000;
     }
 
-    /* 모바일 */
+
+    /* =====================================
+       12. 모바일 화면
+
+       700px 이하에서 2열 → 1열
+       ===================================== */
 
     @media (max-width: 700px) {
 
-      main {
-        padding: 150px 6% 80px;
+      .contact-page {
+        padding: 85px 16px 50px;
       }
 
-      .eyebrow {
-        margin-bottom: 35px;
+      .contact-title {
+        font-size: 22px;
+      }
+
+      .contact-subtitle {
+        font-size: 14px;
+        margin-bottom: 32px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+      }
+
+      .field label {
+        font-size: 14px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        font-size: 16px;
+      }
+
+      .field textarea {
+        min-height: 120px;
       }
 
       .info {
-        margin-top: 80px;
+        grid-template-columns: 1fr;
+        margin-top: 60px;
+        gap: 24px;
+        font-size: 14px;
       }
 
-      footer {
+      .contact-footer {
+        padding: 20px 16px;
         flex-wrap: wrap;
       }
 
     }
 
-/* =====================================
-   CONTACT 페이지 컬러 통일
-
-   배경색 : #F1F1F1
-   글자색 : #939393
-===================================== */
-
-/* CONTACT 제목, 폼, 안내 문구, 연락처, 푸터 */
-main,
-main .eyebrow,
-main label,
-main .optional,
-main .hint,
-main .status,
-main .info,
-main .info a,
-footer,
-footer a {
-  color: #939393;
-}
-
-/* 입력창 및 선택창 */
-input,
-select,
-textarea {
-  background: #F1F1F1;
-  color: #939393;
-  border-bottom-color: #939393;
-}
-
-/* 입력 전 안내 문구 */
-input::placeholder,
-textarea::placeholder {
-  color: #939393;
-  opacity: 1;
-}
-
-/* 입력창 클릭 시 구분선 */
-input:focus,
-select:focus,
-textarea:focus {
-  border-bottom-color: #939393;
-}
-
-/* 전송 버튼 */
-.submit {
-  background: #939393;
-  color: #F1F1F1;
-  border-color: #939393;
-}
-
-/* 전송 버튼 마우스 오버 */
-.submit:hover {
-  background: #F1F1F1;
-  color: #939393;
-}
-
-/* 하단 연락처 구분선 */
-.info {
-  border-top-color: #939393;
-}
-
-/* 푸터 구분선 */
-footer {
-  border-top-color: #D8D8D8;
-}
-
-/* =====================================
-   CONTACT - SEND INQUIRY 버튼
-
-   기본 : 연회색 배경 + 회색 테두리/글자
-   호버 : 회색 배경 + 밝은 글자
-===================================== */
-
-/* 기본 상태 */
-.submit {
-  display: inline-block;
-  background: #F1F1F1;
-  color: #939393;
-  border: 1px solid #939393;
-
-  padding: 17px 36px;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* 마우스를 올렸을 때 */
-.submit:hover:not(:disabled) {
-  background: #939393;
-  color: #F1F1F1;
-  border-color: #939393;
-}
-
-/* 전송 중 비활성화 */
-.submit:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
   </style>
+
 </head>
+
 
 <body>
 
-  <!-- 공통 네비게이션 -->
+  <!-- OHV 공통 네비게이션 -->
+
   <div id="site-navigation"></div>
 
-  <main>
 
-    <!-- CONTACT 제목 -->
-    <div class="eyebrow">
-      04 / Contact.
-    </div>
+  <main class="contact-page">
 
-    <!-- 프로젝트 문의 폼 -->
+
+    <!-- =====================================
+         13. 페이지 제목 및 소개 문구
+
+         아래 텍스트를 수정하면 됩니다.
+         ===================================== -->
+
+    <h1 class="contact-title">
+      Contact us... Let's work together.
+    </h1>
+
+    <p class="contact-subtitle">
+      Tell us about your project.
+    </p>
+
+
+    <!-- =====================================
+         14. 프로젝트 문의 양식
+
+         기존 문의 항목 및 전송 데이터 유지
+         ===================================== -->
+
     <form id="contact-form">
 
-      <!-- 01. 브랜드명 -->
-      <div class="field">
-        <label for="brand">
-          01. 브랜드명 / 회사명 *
-        </label>
+      <div class="form-grid">
 
-        <input
-          id="brand"
-          name="브랜드명/회사명"
-          required
-          placeholder="브랜드 또는 회사명을 입력해 주세요"
-        >
+
+        <!-- 01. 브랜드명 / 회사명 -->
+
+        <div class="field">
+
+          <label for="brand">
+            01. 브랜드명 / 회사명 *
+          </label>
+
+          <input
+            id="brand"
+            name="브랜드명/회사명"
+            required
+            placeholder="브랜드 또는 회사명을 입력해 주세요"
+          >
+
+        </div>
+
+
+        <!-- 02. 담당자명 -->
+
+        <div class="field">
+
+          <label for="person">
+            02. 담당자명 *
+          </label>
+
+          <input
+            id="person"
+            name="담당자명"
+            required
+            placeholder="성함을 입력해 주세요"
+          >
+
+        </div>
+
+
+        <!-- 03. 이메일 -->
+
+        <div class="field">
+
+          <label for="email">
+            03. 이메일 *
+          </label>
+
+          <input
+            id="email"
+            type="email"
+            name="email"
+            required
+            placeholder="회신받을 이메일을 입력해 주세요"
+          >
+
+        </div>
+
+
+        <!-- 04. 문의 분야 -->
+
+        <div class="field">
+
+          <label for="service">
+            04. 문의 분야 *
+          </label>
+
+          <select
+            id="service"
+            name="문의 분야"
+            required
+          >
+
+            <option value="" selected disabled>
+              선택해 주세요
+            </option>
+
+            <option>Branding</option>
+            <option>Marketing Strategy</option>
+            <option>Lookbook & Campaign</option>
+            <option>Content</option>
+            <option>Influencer Marketing</option>
+            <option>Pop-up & Experience</option>
+            <option>Multiple Services / Other</option>
+
+          </select>
+
+        </div>
+
+
+        <!-- 05. 예상 예산 -->
+
+        <div class="field">
+
+          <label for="budget">
+            05. 예상 예산
+            <span class="optional">(선택)</span>
+          </label>
+
+          <select
+            id="budget"
+            name="예상 예산"
+          >
+
+            <option>미정 / 협의</option>
+            <option>100만 원 미만</option>
+            <option>100~300만 원</option>
+            <option>300~500만 원</option>
+            <option>500~1,000만 원</option>
+            <option>1,000만 원 이상</option>
+
+          </select>
+
+        </div>
+
+
+        <!-- 06. 희망 일정 -->
+
+        <div class="field">
+
+          <label for="schedule">
+            06. 희망 일정
+            <span class="optional">(선택)</span>
+          </label>
+
+          <input
+            id="schedule"
+            name="희망 일정"
+            placeholder="예: 2026년 12월 중 / 일정 협의"
+          >
+
+        </div>
+
+
+        <!-- 07. 프로젝트 상세 내용 -->
+
+        <div class="field field-full">
+
+          <label for="message">
+            07. 프로젝트 상세 내용 *
+          </label>
+
+          <textarea
+            id="message"
+            name="프로젝트 상세 내용"
+            required
+            placeholder="프로젝트 목적, 요청 업무, 참고사항 등을 자유롭게 작성해 주세요."
+          ></textarea>
+
+        </div>
+
       </div>
 
-      <!-- 02. 담당자명 -->
-      <div class="field">
-        <label for="person">
-          02. 담당자명 *
-        </label>
-
-        <input
-          id="person"
-          name="담당자명"
-          required
-          placeholder="성함을 입력해 주세요"
-        >
-      </div>
-
-      <!-- 03. 이메일 -->
-      <div class="field">
-        <label for="email">
-          03. 이메일 *
-        </label>
-
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required
-          placeholder="회신받을 이메일을 입력해 주세요"
-        >
-      </div>
-
-      <!-- 04. 문의 분야 -->
-      <div class="field">
-        <label for="service">
-          04. 문의 분야 *
-        </label>
-
-        <select
-          id="service"
-          name="문의 분야"
-          required
-        >
-          <option value="" selected disabled>
-            선택해 주세요
-          </option>
-
-          <option>Branding</option>
-          <option>Marketing Strategy</option>
-          <option>Lookbook & Campaign</option>
-          <option>Content</option>
-          <option>Influencer Marketing</option>
-          <option>Pop-up & Experience</option>
-          <option>Multiple Services / Other</option>
-        </select>
-      </div>
-
-      <!-- 05. 예상 예산 -->
-      <div class="field">
-        <label for="budget">
-          05. 예상 예산
-          <span class="optional">(선택)</span>
-        </label>
-
-        <select
-          id="budget"
-          name="예상 예산"
-        >
-          <option>미정 / 협의</option>
-          <option>100만 원 미만</option>
-          <option>100~300만 원</option>
-          <option>300~500만 원</option>
-          <option>500~1,000만 원</option>
-          <option>1,000만 원 이상</option>
-        </select>
-      </div>
-
-      <!-- 06. 희망 일정 -->
-      <div class="field">
-        <label for="schedule">
-          06. 희망 일정
-          <span class="optional">(선택)</span>
-        </label>
-
-        <input
-          id="schedule"
-          name="희망 일정"
-          placeholder="예: 2026년 12월 중 / 일정 협의"
-        >
-      </div>
-
-      <!-- 07. 프로젝트 상세 -->
-      <div class="field">
-        <label for="message">
-          07. 프로젝트 상세 내용 *
-        </label>
-
-        <textarea
-          id="message"
-          name="프로젝트 상세 내용"
-          required
-          placeholder="프로젝트 목적, 요청 업무, 참고사항 등을 자유롭게 작성해 주세요."
-        ></textarea>
-      </div>
 
       <!-- 개인정보 안내 -->
+
       <p class="hint">
         제출한 정보는 프로젝트 문의 확인 및 회신을 위해 사용됩니다.
         민감한 개인정보는 작성하지 말아 주세요.
       </p>
 
-      <!-- 전송 버튼 -->
+
+      <!-- 문의 전송 버튼 -->
+
       <button
         class="submit"
         type="submit"
       >
-        SEND INQUIRY ↗
+        Send inquiry. ↗
       </button>
+
+
+      <!-- 문의 전송 상태 -->
 
       <p
         class="status"
@@ -453,22 +605,44 @@ footer {
 
     </form>
 
-    <!-- 연락처 정보 -->
+
+    <!-- =====================================
+         15. 하단 연락처 정보
+         ===================================== -->
+
     <section class="info">
 
       <div>
-        Contact:
+
+        <div class="info-title">
+          Contact.
+        </div>
+
         <a href="mailto:ohv.agency@gmail.com">
           ohv.agency@gmail.com
         </a>
+
       </div>
 
-      <div>
-        Graphic Designer Gio, Marketer Sunny
-      </div>
 
       <div>
-        Edit Magazine
+
+        <div class="info-title">
+          Team.
+        </div>
+
+        Graphic Designer Gio<br>
+        Marketer Sunny
+
+      </div>
+
+
+      <div>
+
+        <div class="info-title">
+          Edit Magazine.
+        </div>
+
         <a
           href="https://www.instagram.com/nicemechew.mag/"
           target="_blank"
@@ -476,18 +650,31 @@ footer {
         >
           @nicemechew.mag
         </a>
+
       </div>
 
+
       <div>
+
+        <div class="info-title">
+          Location.
+        </div>
+
         Based in South Korea.
+
       </div>
 
     </section>
 
   </main>
 
-  <!-- 푸터 -->
-  <footer>
+
+  <!-- =====================================
+       16. 푸터
+       ===================================== -->
+
+  <footer class="contact-footer">
+
     <span>
       © OHV AGENCY. ALL RIGHTS RESERVED.
     </span>
@@ -499,16 +686,28 @@ footer {
     >
       Instagram ↗
     </a>
+
   </footer>
 
-  <!-- Formspree 문의 전송 -->
+
+  <!-- =====================================
+       17. Formspree 문의 전송 기능
+
+       기존 코드 그대로 유지
+
+       이메일 전송에 필요한 부분이므로
+       임의로 삭제하거나 수정하지 마세요.
+       ===================================== -->
+
   <script>
+
     const FORM_ENDPOINT = "https://formspree.io/f/mnppavzz";
 
     const form = document.getElementById("contact-form");
     const status = document.getElementById("status");
 
     form.addEventListener("submit", async function(event) {
+
       event.preventDefault();
 
       const button = form.querySelector('button[type="submit"]');
@@ -517,6 +716,7 @@ footer {
       status.textContent = "문의 내용을 전송 중입니다...";
 
       try {
+
         const response = await fetch(FORM_ENDPOINT, {
           method: "POST",
           body: new FormData(form),
@@ -540,13 +740,20 @@ footer {
           "전송에 실패했습니다. 잠시 후 다시 시도하거나 이메일로 직접 문의해 주세요.";
 
       } finally {
+
         button.disabled = false;
+
       }
+
     });
+
   </script>
 
-  <!-- 공통 네비게이션 기능 -->
+
+  <!-- OHV 공통 네비게이션 기능 -->
+
   <script src="navigation.js"></script>
 
 </body>
+
 </html>
