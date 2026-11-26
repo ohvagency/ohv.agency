@@ -599,131 +599,24 @@
           previousStyle.remove();
         }
 
-        const detailStyle = doc.createElement('style');
+      /* =====================================
+   프로젝트 공통 디자인 불러오기
 
-        detailStyle.id = 'ohv-detail-style';
+   글씨 크기, 색상, 여백을 변경할 때는
+   최상위 폴더의 project.css를 수정하세요.
+===================================== */
 
-        detailStyle.textContent = `
+const detailStyle = doc.createElement('link');
 
-          * {
-            box-sizing: border-box;
-          }
+detailStyle.id = 'ohv-detail-style';
+detailStyle.rel = 'stylesheet';
+detailStyle.href = new URL('project.css', window.location.href).href;
 
-          html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            background: #FFFFFF !important;
-            color: #000000 !important;
-            font-family: 'Pretendard', sans-serif !important;
-            -webkit-font-smoothing: antialiased;
-            color-scheme: light;
-          }
+detailStyle.addEventListener('load', () => {
+  updateFrameHeight();
+});
 
-          main {
-            width: 100% !important;
-            max-width: none !important;
-            min-height: 0 !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: #FFFFFF !important;
-            color: #000000 !important;
-            font-weight: 400;
-          }
-
-          main h1,
-          main h2,
-          main h3,
-          main p,
-          main a,
-          main span,
-          main button,
-          main summary,
-          main div {
-            color: #000000 !important;
-          }
-
-          /* 프로젝트 제목 */
-
-          .project-heading {
-            display: flex !important;
-            flex-wrap: wrap;
-            align-items: baseline;
-            column-gap: 8px;
-            row-gap: 4px;
-            margin: 0 0 20px !important;
-            line-height: 1.4 !important;
-            background: transparent !important;
-          }
-
-          /* 프로젝트 카테고리 */
-
-          .project-heading-category {
-            font-size: 14px !important;
-            font-weight: 700 !important;
-            letter-spacing: -0.065em !important;
-            color: #000000 !important;
-          }
-
-          /* 프로젝트 이름 */
-
-          .project-heading-title {
-            font-size: 19px !important;
-            font-weight: 400 !important;
-            letter-spacing: -0.035em !important;
-            color: #000000 !important;
-          }
-
-          /* 프로젝트 설명 */
-
-          .description {
-            font-size: 13px !important;
-            font-weight: 400 !important;
-            line-height: 1.8 !important;
-            letter-spacing: normal !important;
-            margin: 0 0 65px !important;
-            color: #000000 !important;
-            background: transparent !important;
-            word-break: keep-all;
-          }
-
-          /* 이미지 및 영상 */
-
-          main img {
-            max-width: 100%;
-          }
-
-          main video {
-            display: block;
-            max-width: 100%;
-            height: auto;
-          }
-
-          #site-navigation,
-          footer,
-          .back {
-            display: none !important;
-          }
-
-          @media (max-width: 650px) {
-
-            .project-heading-category {
-              font-size: 12px !important;
-            }
-
-            .project-heading-title {
-              font-size: 17px !important;
-            }
-
-            .description {
-              font-size: 12px !important;
-              margin-bottom: 45px !important;
-            }
-
-          }
-
-        `;
-
-        doc.head.appendChild(detailStyle);
+doc.head.appendChild(detailStyle);
 
         /* =====================================
            12. 상세 페이지 높이 자동 조절
