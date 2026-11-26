@@ -24,70 +24,70 @@ const projects = [
   {
     id: "marketing-01",
     category: "Influencer Marketing",
-    title: "유튜버 브랜디드 콘텐츠 바이럴",
+    title: "YouTube — Branded Content",
     link: "projects/marketing-01.html"
   },
 
   {
     id: "edition-01",
     category: "Influencer Collaboration",
-    title: "곰송이 튜드먼트 공동개발(제작) 에디션",
+    title: "TTUDEMENT — Gomsongi Edition",
     link: "projects/edition-01.html"
   },
 
   {
     id: "pop-up_influencer-01",
     category: "Pop-up & Exhibition",
-    title: "[INVITATION] Korilakkuma Vacation with YOUHEE",
+    title: "YOUHEE — Korilakkuma Vacation Invitation",
     link: "projects/pop-up_influencer-Korilakkuma Vacation with YOUHEE.html"
   },
 
   {
     id: "pop-up_influencer-02",
     category: "Pop-up & Exhibition",
-    title: "[INVITATION] Rosette of Youhee",
+    title: "YOUHEE — Rosette Invitation",
     link: "projects/pop-up_influencer-Rosette of Youhee.html"
   },
 
   {
     id: "pop-up_influencer-03",
     category: "Pop-up & Exhibition",
-    title: "[INVITATION] Your Wishlist",
+    title: "YOUHEE — Your Wishlist Invitation",
     link: "projects/pop-up_influencer-Your Wishlist.html"
   },
 
   {
     id: "pop-up_influencer-04",
     category: "Pop-up & Exhibition",
-    title: "[INVITATION] Youhee Basic Line POP-UP",
+    title: "YOUHEE — Basic Line Pop-up Invitation",
     link: "projects/pop-up_influencer-Youhee Basic Line POP-UP.html"
   },
 
   {
     id: "pop-up_influencer-05",
     category: "Pop-up & Exhibition",
-    title: "[INVITATION] TTUDEMENT 25FW POP-UP",
+    title: "TTUDEMENT — 25FW Pop-up Invitation",
     link: "projects/pop-up_influencer-TTUDEMENT 25FW POP-UP.html"
   },
 
   {
     id: "marketing-02",
     category: "Influencer Marketing",
-    title: "[TTUDEMENT] 인스타그램 PPL 바이럴",
+    title: "TTUDEMENT — Influencer Campaign",
     link: "projects/marketing-02.html"
   },
 
   {
     id: "marketing-03",
     category: "Influencer Marketing",
-    title: "[YOUHEE] 인스타그램 PPL 바이럴",
+    title: "YOUHEE — Influencer Campaign",
     link: "projects/marketing-03.html"
   },
 
   {
     id: "gifting",
     category: "Influencer Marketing",
-    title: "인플루언서 무가 기프팅 오가닉 바이럴",
+    title: "Influencer Gifting — Organic Campaign",
     link: "projects/gifting.html"
   },
 
@@ -97,14 +97,14 @@ const projects = [
   {
     id: "graphic design youhee-01",
     category: "Graphic Design",
-    title: "CP1 PACE&POUR POP-UP",
+    title: "CP1 — Pace & Pour Pop-up",
     link: "projects/cp1-pace-pour-pop-up.html"
   },
 
   {
     id: "graphic design ttudement-02",
     category: "Graphic Design",
-    title: "TTUDEMENT 26SS",
+    title: "TTUDEMENT — 26SS Seasonal Graphics",
     link: "projects/ttudement-26ss.html"
   },
 
