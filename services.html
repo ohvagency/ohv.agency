@@ -3,6 +3,7 @@
 <html lang="ko">
 
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,8 +11,7 @@
   <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- OHV 공통 폰트 -->
-  <link
-    rel="stylesheet"
+  <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
   <!-- OHV 공통 네비게이션 -->
@@ -22,29 +22,26 @@
   <style>
 
     /* =====================================
-       01. 기본 설정
-    ===================================== */
+       01. 기본 디자인
 
-    :root {
-      --ink: #939393;
-      --muted: #939393;
-      --line: #D8D8D8;
-      --paper: #F1F1F1;
-    }
+       배경색 : 흰색
+       글자색 : 검정
+       폰트 : Pretendard Bold
+       자간 : -50
+       ===================================== */
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html,
     body {
       margin: 0;
-      background: var(--paper);
-      color: var(--ink);
+      background: #FFFFFF;
+      color: #000000;
       font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.05em;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -53,262 +50,148 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    textarea,
-    select {
-      font-family: inherit;
+
+    /* =====================================
+       02. 페이지 전체 여백
+
+       ABOUT 페이지와 동일한 여백
+       상단 120px / 좌우 4%
+       ===================================== */
+
+    .services-page {
+      min-height: 100vh;
+      padding: 120px 4% 80px;
     }
 
 
     /* =====================================
-       02. 페이지 전체 영역
-    ===================================== */
+       03. 페이지 제목
+       ===================================== */
 
-    main {
-      max-width: 1420px;
-      margin: auto;
-      padding: 110px 7% 125px;
-    }
-
-    .eyebrow,
-    .meta {
-      font-size: 11px;
-      letter-spacing: .13em;
-      color: var(--muted);
+    .services-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1.2;
+      margin: 0 0 32px;
     }
 
 
     /* =====================================
-       03. 메인 제목
-    ===================================== */
+       04. 서비스 대분류
 
-    h1 {
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 400;
-      letter-spacing: -.075em;
-      line-height: 1.05;
-      margin: 28px 0 18px;
+       Graphic Design / Marketing
+       margin-bottom : 대분류 사이 간격
+       ===================================== */
+
+    .service-group {
+      margin-bottom: 24px;
     }
 
-    .intro {
-      font: italic 19px Georgia, serif;
-      color: var(--muted);
-      margin: 0 0 110px;
-    }
+    .service-heading {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
 
-
-    /* =====================================
-       04. SERVICES 카테고리 리스트
-
-       PC 글씨 : 22px
-       모바일 글씨 : 16px
-    ===================================== */
-
-    .group {
       margin: 0;
-    }
-
-    .group:last-child {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .group-heading {
-      margin-bottom: 0;
-    }
-
-    .group-heading h2 {
-      font-size: 22px;
-      font-weight: 400;
-      letter-spacing: -.04em;
-      margin: 0;
-      line-height: 1.35;
-      word-break: keep-all;
-    }
-
-
-    /* =====================================
-       05. 카테고리 펼치기 / 접기
-
-       버튼 간격
-       PC : 20px
-       모바일 : 17px
-    ===================================== */
-
-    .group-toggle {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 18px;
-      padding: 20px 0;
-
-      border: 0;
-      border-top: 1px solid #939393;
-
-      background: #F1F1F1;
-      color: #939393;
-
-      text-align: left;
-      cursor: pointer;
-      font: inherit;
-    }
-
-    .group-toggle:hover h2 {
-      opacity: .55;
-    }
-
-    .group-toggle:focus-visible {
-      outline: 2px solid #939393;
-      outline-offset: 4px;
-    }
-
-    /* 오른쪽 + 버튼 */
-
-    .group-toggle .toggle-right {
-      display: flex;
-      align-items: center;
-      gap: 26px;
-      flex-shrink: 0;
-    }
-
-    .group-toggle .symbol {
-      font-size: 30px;
-      font-weight: 300;
-      line-height: 1;
-
-      min-width: 24px;
-      text-align: center;
-
-      transition: transform .2s ease;
-    }
-
-    /* 펼쳤을 때 + 회전 */
-
-    .group-toggle[aria-expanded="true"] .symbol {
-      transform: rotate(45deg);
-    }
-
-    .group-content[hidden] {
-      display: none;
-    }
-
-    .group-content {
-      padding-bottom: 18px;
-    }
-
-
-    /* =====================================
-       06. 서비스 목록
-
-       기존 BUDGET 열 삭제
-
-       SERVICE / TIMELINE
-
-       ✏️ 열 너비
-       SERVICE  : 75%
-       TIMELINE : 25%
-    ===================================== */
-
-    .table-wrap {
-      width: 100%;
-      overflow-x: auto;
-    }
-
-    .service-table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: fixed;
-    }
-
-    /* 표 제목 */
-
-    .service-table th {
-      font-size: 11px;
-      letter-spacing: .1em;
-
-      color: #939393;
-      font-weight: 400;
-      text-align: left;
-
-      padding: 15px 16px 15px 0;
+      padding: 14px 20px;
 
       border-top: 1px solid #939393;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 3px double #939393;
     }
 
-    /* 표 내용 */
 
-    .service-table td {
-      padding: 20px 16px 20px 0;
+    /* =====================================
+       05. 서비스 테이블
 
-      border-bottom: 1px solid var(--line);
+       PC : 좌우 2열
+       각 열 내부 : 서비스명 / 소요기간
+       ===================================== */
 
-      vertical-align: top;
-
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.7;
-
-      color: #939393;
-      word-break: keep-all;
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    /* SERVICE */
+    .service-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 32%;
 
-    .service-table th:nth-child(1),
-    .service-table td:nth-child(1) {
-      width: 75%;
+      align-items: center;
+      gap: 16px;
+
+      min-height: 50px;
+      padding: 12px 24px;
+
+      border-bottom: 3px double #939393;
+
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.05em;
     }
 
-    /* TIMELINE */
+    /* 가운데 세로 구분선 */
 
-    .service-table th:nth-child(2),
-    .service-table td:nth-child(2) {
-      width: 25%;
+    .service-item:nth-child(odd) {
+      border-right: 1px solid #939393;
+    }
+
+    /* 서비스명 */
+
+    .service-name {
+      min-width: 0;
+      overflow-wrap: break-word;
+    }
+
+    /* 작업 소요기간 */
+
+    .service-duration {
       white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* 마지막 행 빈칸 */
+
+    .service-empty {
+      pointer-events: none;
     }
 
 
     /* =====================================
-       07. 안내 문구
-    ===================================== */
+       06. 소요기간 안내
+       ===================================== */
 
-    .note {
+    .timeline-note {
       font-size: 12px;
+      line-height: 1.6;
+      margin: 18px 0 0;
       color: #939393;
-      line-height: 1.8;
-      margin-top: 20px;
     }
 
 
     /* =====================================
-       08. PROJECT INFORMATION
+       07. 프로젝트 유의사항
 
-       가격 / VAT / 취소 수수료 안내 삭제
-
-       프로젝트 진행 관련 안내만 유지
-    ===================================== */
+       기존 안내 내용 유지
+       ===================================== */
 
     .policy {
-      padding-top: 35px;
+      margin-top: 90px;
+      padding-top: 24px;
       border-top: 1px solid #939393;
-      margin-top: 100px;
     }
 
-    .policy h2 {
-      font-size: clamp(28px, 3.5vw, 48px);
-      font-weight: 400;
-      letter-spacing: -.05em;
-      margin: 0 0 45px;
+    .policy-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0 0 32px;
     }
 
     .policy h3 {
-      font-size: 20px;
-      font-weight: 500;
-      margin: 55px 0 20px;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 32px 0 16px;
     }
 
     .policy ul {
@@ -318,146 +201,112 @@
     }
 
     .policy li {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+
+      padding: 14px 0;
+      border-bottom: 1px solid #D8D8D8;
 
       font-size: 14px;
-      line-height: 1.9;
-
+      line-height: 1.6;
       word-break: keep-all;
     }
 
     .policy li::before {
       content: '—';
-      margin-right: 12px;
       color: #939393;
+      flex-shrink: 0;
+    }
+
+    .policy-note {
+      font-size: 14px;
+      line-height: 1.6;
+      word-break: keep-all;
     }
 
 
     /* =====================================
-       09. 하단 CONTACT 버튼
-    ===================================== */
+       08. 하단 CONTACT 버튼
+       ===================================== */
 
     .closing {
-      margin-top: 100px;
-      text-align: center;
+      margin-top: 60px;
     }
 
     .closing a {
       display: inline-block;
+      padding: 14px 28px;
 
-      border: 1px solid #939393;
-      padding: 17px 30px;
+      border: 1px solid #000000;
+      background: #FFFFFF;
+      color: #000000;
 
-      font-size: 12px;
-      letter-spacing: .08em;
+      font-size: 14px;
+      font-weight: 700;
 
-      color: #939393;
-
-      transition: .2s;
+      transition: background .2s, color .2s;
     }
 
     .closing a:hover {
-      background: #939393;
-      color: #F1F1F1;
+      background: #000000;
+      color: #FFFFFF;
     }
 
 
     /* =====================================
-       10. 푸터
-    ===================================== */
+       09. 모바일 화면
 
-    footer {
-      border-top: 1px solid #D8D8D8;
-
-      padding: 32px 5%;
-
-      font-size: 11px;
-      color: #939393;
-    }
-
-
-    /* =====================================
-       11. 모바일 화면
-
-       700px 이하
-    ===================================== */
+       좌우 2열 → 1열
+       ===================================== */
 
     @media (max-width: 700px) {
 
-      main {
-        padding: 85px 5%;
+      .services-page {
+        padding: 85px 16px 50px;
       }
 
-      h1 {
-        font-size: 32px;
+      .services-title {
+        font-size: 22px;
+        margin-bottom: 28px;
       }
 
-      .intro {
-        margin-bottom: 75px;
-        font-size: 16px;
+      .service-heading {
+        font-size: 18px;
+        padding: 12px 8px;
       }
 
-      /* 리스트 간격 */
-
-      .group {
-        margin: 0;
+      .service-grid {
+        grid-template-columns: 1fr;
       }
 
-      .group-toggle {
-        padding: 17px 0;
-      }
-
-      .group-heading h2 {
-        font-size: 16px;
-      }
-
-      .group-toggle .toggle-right {
+      .service-item {
+        grid-template-columns: minmax(0, 1fr) 30%;
+        min-height: 46px;
+        padding: 12px 8px;
         gap: 10px;
+        font-size: 14px;
       }
 
-      .group-toggle .symbol {
-        font-size: 24px;
+      .service-item:nth-child(odd) {
+        border-right: none;
       }
 
-      /* 모바일 서비스 표 */
-
-      .service-table th {
-        font-size: 10px;
+      .service-empty {
+        display: none;
       }
 
-      .service-table td {
-        font-size: 12px;
-        padding: 17px 8px 17px 0;
+      .policy {
+        margin-top: 60px;
       }
 
-      .service-table th:nth-child(1),
-      .service-table td:nth-child(1) {
-        width: 65%;
+      .policy-title {
+        font-size: 18px;
       }
 
-      .service-table th:nth-child(2),
-      .service-table td:nth-child(2) {
-        width: 35%;
-        white-space: normal;
-      }
-
-      /* 모바일 유의사항 */
-
-      .policy h2 {
-        font-size: 30px;
-      }
-
-      .policy h3 {
-        font-size: 17px;
-      }
-
-      .policy li {
-        font-size: 12px;
-      }
-
-      .note {
-        font-size: 12px;
+      .policy li,
+      .policy-note {
+        font-size: 13px;
       }
 
     }
@@ -470,38 +319,49 @@
 <body>
 
   <!-- OHV 공통 네비게이션 -->
+
   <div id="site-navigation"></div>
 
 
-  <main>
-
-    <!-- SERVICES 상단 라벨 -->
-    <div class="eyebrow">
-      02 / Our Services.
-    </div>
+  <main class="services-page">
 
 
     <!-- =====================================
-         서비스 카테고리 자동 표시
+         10. 페이지 제목
 
-         서비스 수정은
-         아래 groups 데이터에서!
-    ===================================== -->
+         문구 수정 시 아래 텍스트 변경
+         ===================================== -->
+
+    <h1 class="services-title">
+      Our services... Things we do well.
+    </h1>
+
+
+    <!-- =====================================
+         11. 서비스 목록
+
+         아래 JavaScript 데이터에서
+         자동으로 불러옵니다.
+         ===================================== -->
 
     <div id="service-groups"></div>
 
 
-    <!-- =====================================
-         PROJECT INFORMATION
+    <p class="timeline-note">
+      * Estimated timeline in days.
+      Actual schedules may vary depending on the project scope.
+    </p>
 
-         가격 관련 정보 제거
-    ===================================== -->
+
+    <!-- =====================================
+         12. 프로젝트 유의사항
+         ===================================== -->
 
     <section class="policy" id="terms">
 
-      <div class="eyebrow">
-        PROJECT INFORMATION / Things to know.
-      </div>
+      <h2 class="policy-title">
+        Project information... Things to know.
+      </h2>
 
       <h3>유의사항</h3>
 
@@ -548,11 +408,9 @@
       </ul>
 
 
-      <!-- 프로젝트 취소 및 계약 해지 -->
-
       <h3>프로젝트 취소 및 계약 해지</h3>
 
-      <p class="note">
+      <p class="policy-note">
         프로젝트 취소 및 계약 해지 관련 사항은
         진행 상황과 계약 조건에 따라 별도 협의합니다.
       </p>
@@ -560,158 +418,116 @@
     </section>
 
 
-    <!-- =====================================
-         하단 CONTACT 버튼
-    ===================================== -->
+    <!-- 하단 CONTACT 버튼 -->
 
     <div class="closing">
-
-      <a href="contact.html">
-        CONTACT
-      </a>
-
+      <a href="contact.html">Contact.</a>
     </div>
 
+
   </main>
-
-
-  <!-- OHV 공통 푸터 -->
-
-  <footer>
-    © OHV AGENCY. ALL RIGHTS RESERVED.
-  </footer>
 
 
   <script>
 
     /* =====================================
-       12. SERVICES 데이터
+       13. 서비스 데이터
 
-       가격 / BUDGET 정보 삭제 완료
+       ★ 서비스명 및 소요기간 수정하는 곳 ★
 
-       ✏️ 서비스 추가 방법
+       ['서비스명', '소요기간'],
 
-       ['서비스명', '소요기간']
+       항목을 추가하거나 삭제할 수 있습니다.
 
-       예시:
-       ['브랜드 전략', 'D-30~45']
+       홀수 번째 항목 : 왼쪽
+       짝수 번째 항목 : 오른쪽
 
-       카테고리와 서비스명은
-       아래에서 직접 수정하세요.
-    ===================================== */
+       d = days (소요 일수)
+       ===================================== */
 
     const groups = [
 
       /* =====================================
-         01. BRANDING
-      ===================================== */
+         GRAPHIC DESIGN
+         ===================================== */
 
       {
-        name: 'Branding',
+        name: 'Graphic Design',
 
         rows: [
-          ['브랜드 전략', 'D-30~45'],
-          ['네이밍 및 슬로건', 'D-14~21'],
-          ['BX 디자인', 'D-30~45'],
-          ['리브랜딩', 'D-45~60'],
-          ['패키지 디자인', 'D-14~30'],
-          ['브랜드 소개서 및 템플릿', 'D-7~14']
+
+          ['Brand Strategy', 'd 30–45'],
+          ['Packaging Design', 'd 14–30'],
+
+          ['Naming & Slogan', 'd 14–21'],
+          ['Brand Profile & Template', 'd 7–14'],
+
+          ['BX Design', 'd 30–45'],
+          ['Campaign Retouching', 'd 7–14'],
+
+          ['Rebranding', 'd 45–60'],
+          ['E-commerce Retouching', 'd 5–10'],
+
+          ['Spatial Graphic Design', 'd 21–30'],
+          ['Signage Design', 'd 14–21'],
+
+          ['Merchandise Design', 'd 21–30'],
+          ['Promotional Materials', 'd 7–14'],
+
+          ['Feed Design', 'd 3–7']
+
         ]
+
       },
 
 
       /* =====================================
-         02. MARKETING STRATEGY
-      ===================================== */
+         MARKETING
+         ===================================== */
 
       {
-        name: 'Marketing Strategy',
+        name: 'Marketing',
 
         rows: [
-          ['IMC 캠페인 기획', 'D-21~30'],
-          ['시즌 마케팅 플랜', 'D-21~30']
+
+          ['IMC Campaign Planning', 'd 21–30'],
+          ['Influencer Paid Collaboration', 'd 21–30'],
+
+          ['Seasonal Marketing Plan', 'd 21–30'],
+          ['YouTube Branded Content & PPL', 'd 30–45'],
+
+          ['Lookbook Planning', 'd 21–30'],
+          ['Influencer Edition', 'd 45–60'],
+
+          ['Casting & Coordination', 'd 21–30'],
+          ['Seeding & PR Package', 'd 21–30'],
+
+          ['SNS Channel Strategy', 'd 14–21'],
+          ['Ambassador Management', 'd 30–45'],
+
+          ['Regular Content Production', 'd 14–21'],
+          ['Pop-up Concept Planning', 'd 30–45'],
+
+          ['Content Shooting', 'd 14–21'],
+          ['Influencer & Media Invitation', 'd 21–30'],
+
+          ['Reels Production', 'd 7–14'],
+          ['Pop-up SNS Content', 'd 14–21'],
+
+          ['On-site Content', 'd 7–14']
+
         ]
-      },
 
-
-      /* =====================================
-         03. LOOKBOOK
-      ===================================== */
-
-      {
-        name: 'Lookbook',
-
-        rows: [
-          ['기획', 'D-21~30'],
-          ['섭외 및 핸들링', 'D-21~30'],
-          ['캠페인 리터칭', 'D-7~14'],
-          ['이커머스 리터칭', 'D-5~10'],
-          ['현장 콘텐츠', 'D-7~14']
-        ]
-      },
-
-
-      /* =====================================
-         04. CONTENT
-      ===================================== */
-
-      {
-        name: 'Content',
-
-        rows: [
-          ['SNS 채널 전략', 'D-14~21'],
-          ['정기 콘텐츠 제작', 'D-14~21'],
-          ['콘텐츠 촬영', 'D-14~21'],
-          ['릴스 제작', 'D-7~14'],
-          ['피드 제작', 'D-3~7']
-        ]
-      },
-
-
-      /* =====================================
-         05. INFLUENCER MARKETING
-      ===================================== */
-
-      {
-        name: 'Influencer Marketing',
-
-        rows: [
-          ['인플루언서 유가 협업', 'D-21~30'],
-          ['유튜브 브랜디드·PPL', 'D-30~45'],
-          ['인플루언서 에디션', 'D-45~60'],
-          ['시딩 및 PR 패키지', 'D-21~30'],
-          ['앰배서더 운영', 'D-30~45']
-        ]
-      },
-
-
-      /* =====================================
-         06. POP-UP & EXPERIENCE
-      ===================================== */
-
-      {
-        name: 'Pop-up & Experience',
-
-        rows: [
-          ['팝업 콘셉트 기획', 'D-30~45'],
-          ['공간 비주얼 및 그래픽 디자인', 'D-21~30'],
-          ['사이니지 디자인', 'D-14~21'],
-          ['굿즈 디자인', 'D-21~30'],
-          ['프로모션 제작물', 'D-7~14'],
-          ['인플루언서 및 미디어 초청', 'D-21~30'],
-          ['팝업 SNS 컨텐츠 제작', 'D-14~21']
-        ]
       }
 
     ];
 
 
     /* =====================================
-       13. 특수문자 처리
+       14. 특수문자 안전 처리
 
-       HTML 안전 처리
        수정하지 않아도 됩니다.
-    ===================================== */
+       ===================================== */
 
     const esc = s => String(s).replace(
       /[&<>"']/g,
@@ -726,136 +542,61 @@
 
 
     /* =====================================
-       14. 서비스 목록 자동 생성
+       15. 서비스 테이블 자동 생성
 
-       기존:
-       SERVICE / BUDGET / TIMELINE
+       별도 클릭 없이 전체 목록 표시
 
-       변경:
-       SERVICE / TIMELINE
-    ===================================== */
+       항목이 홀수일 경우
+       마지막 오른쪽에 빈칸 자동 추가
+       ===================================== */
 
     document.querySelector('#service-groups').innerHTML =
-      groups.map((g, i) => {
+      groups.map(group => {
 
-        const id = 'service-panel-' + i;
+        const items = group.rows.map(row => `
+
+          <div class="service-item">
+
+            <span class="service-name">
+              ${esc(row[0])}
+            </span>
+
+            <span class="service-duration">
+              ${esc(row[1])}
+            </span>
+
+          </div>
+
+        `).join('');
+
+        const empty = group.rows.length % 2 !== 0
+          ? '<div class="service-item service-empty" aria-hidden="true"></div>'
+          : '';
 
         return `
-          <section class="group">
 
-            <div class="group-heading">
+          <section class="service-group">
 
-              <button
-                class="group-toggle"
-                type="button"
-                aria-expanded="false"
-                aria-controls="${id}"
-              >
+            <h2 class="service-heading">
+              ${esc(group.name)}
+            </h2>
 
-                <h2>
-                  ${String(i + 1).padStart(2, '0')}. ${esc(g.name)}
-                </h2>
-
-                <span class="toggle-right">
-
-                  <span
-                    class="symbol"
-                    aria-hidden="true">+</span>
-
-                </span>
-
-              </button>
-
-            </div>
-
-
-            <div
-              class="group-content"
-              id="${id}"
-              hidden>
-
-              <div class="table-wrap">
-
-                <table class="service-table">
-
-                  <thead>
-                    <tr>
-
-                      <th scope="col">
-                        SERVICE
-                      </th>
-
-                      <th scope="col">
-                        TIMELINE
-                      </th>
-
-                    </tr>
-                  </thead>
-
-
-                  <tbody>
-
-                    ${g.rows.map(r => `
-                      <tr>
-
-                        <td>
-                          ${esc(r[0])}
-                        </td>
-
-                        <td>
-                          ${esc(r[1])}
-                        </td>
-
-                      </tr>
-                    `).join('')}
-
-                  </tbody>
-
-                </table>
-
-              </div>
-
+            <div class="service-grid">
+              ${items}
+              ${empty}
             </div>
 
           </section>
+
         `;
 
       }).join('');
-
-
-    /* =====================================
-       15. 카테고리 클릭 기능
-
-       클릭하면 서비스 목록 펼치기
-       다시 클릭하면 접기
-    ===================================== */
-
-    document.querySelectorAll('.group-toggle').forEach(button => {
-
-      button.addEventListener('click', () => {
-
-        const panel = document.getElementById(
-          button.getAttribute('aria-controls')
-        );
-
-        const expanded =
-          button.getAttribute('aria-expanded') === 'true';
-
-        button.setAttribute(
-          'aria-expanded',
-          String(!expanded)
-        );
-
-        panel.hidden = expanded;
-
-      });
-
-    });
 
   </script>
 
 
   <!-- OHV 공통 네비게이션 -->
+
   <script src="navigation.js"></script>
 
 </body>
