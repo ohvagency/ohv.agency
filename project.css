@@ -1,0 +1,187 @@
+
+/* =====================================
+   OHV AGENCY — 프로젝트 공통 디자인
+
+   모든 프로젝트 상세 화면에 적용됩니다.
+   글씨 크기, 색상, 여백을 변경할 때
+   이 파일을 수정하면 됩니다.
+===================================== */
+
+
+/* =====================================
+   01. 기본 배경 및 글자색
+
+   배경 : WHITE
+   글자 : BLACK
+===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-family: 'Pretendard', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  color-scheme: light;
+}
+
+
+/* =====================================
+   02. 프로젝트 상세 영역
+
+   Experience 오른쪽 영역에 맞춰
+   불필요한 외부 여백을 제거합니다.
+===================================== */
+
+main {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 400;
+}
+
+main h1,
+main h2,
+main h3,
+main p,
+main a,
+main span,
+main button,
+main summary,
+main div {
+  color: #000000 !important;
+}
+
+
+/* =====================================
+   03. 프로젝트 제목 전체
+
+   column-gap : 카테고리와 제목 사이 간격
+   margin : 제목과 설명 사이 간격
+===================================== */
+
+.project-heading {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 4px;
+  margin: 0 0 20px !important;
+  line-height: 1.4 !important;
+  background: transparent !important;
+  word-break: keep-all;
+}
+
+
+/* =====================================
+   04. 프로젝트 카테고리
+
+   글씨 크기 : 14px
+   굵기 : Bold
+===================================== */
+
+.project-heading-category {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.065em !important;
+  color: #000000 !important;
+}
+
+
+/* =====================================
+   05. 프로젝트 이름
+
+   글씨 크기 : 19px
+   굵기 : Regular
+===================================== */
+
+.project-heading-title {
+  font-size: 19px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.035em !important;
+  color: #000000 !important;
+}
+
+
+/* =====================================
+   06. 프로젝트 설명
+
+   font-size : 글씨 크기
+   line-height : 줄 간격
+   margin : 설명과 콘텐츠 사이 간격
+===================================== */
+
+.description {
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.8 !important;
+  letter-spacing: normal !important;
+  margin: 0 0 65px !important;
+  color: #000000 !important;
+  background: transparent !important;
+  word-break: keep-all;
+}
+
+
+/* =====================================
+   07. 이미지 및 영상
+
+   상세 영역의 너비를 넘지 않도록 설정
+   개별 프로젝트의 이미지 배치는 유지
+===================================== */
+
+main img {
+  max-width: 100%;
+}
+
+main video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* =====================================
+   08. 중복 메뉴 및 푸터 숨김
+
+   Experience 페이지에 이미 메뉴가
+   있으므로 상세 영역에서는 숨깁니다.
+===================================== */
+
+#site-navigation,
+footer,
+.back {
+  display: none !important;
+}
+
+
+/* =====================================
+   09. 모바일 화면
+
+   상세 영역 너비 650px 이하일 때 적용
+===================================== */
+
+@media (max-width: 650px) {
+
+  .project-heading-category {
+    font-size: 12px !important;
+  }
+
+  .project-heading-title {
+    font-size: 17px !important;
+  }
+
+  .description {
+    font-size: 12px !important;
+    margin-bottom: 45px !important;
+  }
+
+}
