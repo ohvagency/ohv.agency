@@ -1,4 +1,3 @@
-
 /* ========================================
    OHV — SELECTED EXPERIENCE
    PROJECT LIST
@@ -35,57 +34,65 @@ const projects = [
     title: "곰송이 튜드먼트 공동개발(제작) 에디션",
     link: "projects/edition-01.html"
   },
-   
+
   {
-   id: "pop-up_influencer-01",
+    id: "pop-up_influencer-01",
     category: "Pop-up & Exhibition",
     title: "[INVITATION] Korilakkuma Vacation with YOUHEE",
     link: "projects/pop-up_influencer-Korilakkuma Vacation with YOUHEE.html"
   },
+
   {
-   id: "pop-up_influencer-02",
+    id: "pop-up_influencer-02",
     category: "Pop-up & Exhibition",
     title: "[INVITATION] Rosette of Youhee",
     link: "projects/pop-up_influencer-Rosette of Youhee.html"
   },
+
   {
-   id: "pop-up_influencer-03",
+    id: "pop-up_influencer-03",
     category: "Pop-up & Exhibition",
     title: "[INVITATION] Your Wishlist",
     link: "projects/pop-up_influencer-Your Wishlist.html"
-  }, 
+  },
+
   {
-   id: "pop-up_influencer-04",
+    id: "pop-up_influencer-04",
     category: "Pop-up & Exhibition",
     title: "[INVITATION] Youhee Basic Line POP-UP",
     link: "projects/pop-up_influencer-Youhee Basic Line POP-UP.html"
-  },    
+  },
+
   {
-   id: "pop-up_influencer-05",
+    id: "pop-up_influencer-05",
     category: "Pop-up & Exhibition",
     title: "[INVITATION] TTUDEMENT 25FW POP-UP",
     link: "projects/pop-up_influencer-TTUDEMENT 25FW POP-UP.html"
-  },  
-   {
+  },
+
+  {
     id: "marketing-02",
     category: "Influencer Marketing",
     title: "[TTUDEMENT] 인스타그램 PPL 바이럴",
     link: "projects/marketing-02.html"
-  },  
-      {
+  },
+
+  {
     id: "marketing-03",
     category: "Influencer Marketing",
     title: "[YOUHEE] 인스타그램 PPL 바이럴",
     link: "projects/marketing-03.html"
-  },  
+  },
+
   {
     id: "gifting",
     category: "Influencer Marketing",
     title: "인플루언서 무가 기프팅 오가닉 바이럴",
     link: "projects/gifting.html"
-  },  
-   
-    /* VISUAL — GIO */
+  },
+
+
+  /* VISUAL — GIO */
 
   {
     id: "graphic design youhee-01",
@@ -94,7 +101,6 @@ const projects = [
     link: "projects/cp1-pace-pour-pop-up.html"
   },
 
-  
   {
     id: "graphic design ttudement-02",
     category: "Graphic Design",
@@ -116,12 +122,6 @@ const projects = [
     link: "projects/riize-sunrise-bite.html"
   },
 
-   {
-  id: "youhee-05",
-  category: "Contents",
-  title: "YOUHEE — Seasonal Contents",
-  link: "projects/youhee-seasonal-contents.html"
-}
   {
     id: "youhee-05",
     category: "Contents",
@@ -150,5 +150,4 @@ const projects = [
     link: "projects/youhee-25ss-graphics.html"
   }
 
-];  
-
+];
