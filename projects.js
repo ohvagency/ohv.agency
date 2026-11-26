@@ -152,7 +152,7 @@ const projects = [
      {
     id: "youhee-09",
     category: "Graphic Design",
-    title: "YOUHEE — 25FW Stripe Graphics",
+    title: "YOUHEE — 25FW Apparel Graphics",
     link: "projects/youhee-25fw-stripe-graphics.html"
   }
 
