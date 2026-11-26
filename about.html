@@ -1,143 +1,331 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-      <!-- OHV 파비콘 -->
-  <link rel="icon" type="image/png" href="favicon.png">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link rel="stylesheet" href="navigation.css">
-  <title>ABOUT — OHV AGENCY</title>
-  <style>
-    * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  background: #F1F1F1; /* 배경색 */
-  color: #939393;      /* 글자색 */
-  font-family: 'Pretendard', sans-serif;
-}
+  <!-- 01. OHV 파비콘 -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- 02. OHV 공통 폰트 -->
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+  <!-- 03. OHV 공통 네비게이션 -->
+  <link rel="stylesheet" href="navigation.css">
+
+  <title>ABOUT — OHV AGENCY</title>
+
+  <style>
+
+    /* =====================================
+       04. ABOUT 페이지 기본 디자인
+
+       배경색 : #FFFFFF
+       글자색 : #000000
+       폰트 : Pretendard Bold
+       자간 : -50
+       ===================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      background: #FFFFFF;
+      color: #000000;
+
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+
+      -webkit-font-smoothing: antialiased;
+    }
 
     a {
       color: inherit;
       text-decoration: none;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      padding: 0 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #F1F1F1;
-      border-bottom: 1px solid #eee;
-    }
 
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -2px;
-    }
+    /* =====================================
+       05. ABOUT 전체 레이아웃
 
-    nav {
-      display: flex;
-      gap: 32px;
-    }
+       왼쪽 : 소개 문구
+       오른쪽 : 세로형 그래픽
 
-    nav a {
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
+       padding : 상단 / 좌우 / 하단
+       ===================================== */
 
-    nav a:hover { opacity: 0.45; }
-
-    main {
+    .about-page {
       min-height: 100vh;
-      padding: 180px 10% 100px;
+      min-height: 100svh;
+
+      padding: 120px 4% 40px;
+
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 22%;
+      gap: 40px;
+
+      align-items: start;
     }
 
-    .label {
-      font-size: 12px;
-      letter-spacing: 2px;
-      color: #939393; /* 01 / About us 글자색 */
+
+    /* =====================================
+       06. 왼쪽 소개 문구 영역
+       ===================================== */
+
+    .about-content {
+      min-width: 0;
+    }
+
+
+    /* =====================================
+       07. ABOUT 제목
+
+       font-size : 제목 크기
+       margin-bottom : 본문과의 간격
+       ===================================== */
+
+    .about-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1.2;
+
+      margin: 0 0 18px;
+    }
+
+
+    /* =====================================
+       08. 국문 및 영문 소개 문구
+
+       font-size : 본문 크기
+       line-height : 줄 간격
+       ===================================== */
+
+    .about-description {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1.3;
+
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+    .about-description p {
+      margin: 0;
+    }
+
+
+    /* =====================================
+       09. 영문 소개 문구
+
+       margin-top : 국문과 영문 사이 간격
+
+       추후 영문 폰트를 변경하려면
+       이 부분만 수정하면 됩니다.
+       ===================================== */
+
+    .about-english {
+      margin-top: 28px;
+
+      font-family: 'Pretendard', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1.3;
+    }
+
+
+    /* =====================================
+       10. 오른쪽 세로형 그래픽
+
+       width : 그래픽 너비
+       max-height : 화면 내 최대 높이
+
+       object-fit : 원본 비율 유지
+       ===================================== */
+
+    .about-graphic-wrap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      margin-top: -30px;
+    }
+
+    .about-graphic {
+      display: block;
+
+      width: 100%;
+      height: auto;
+      max-height: calc(100svh - 120px);
+
+      object-fit: contain;
+      object-position: right top;
+
+      border: none;
+      box-shadow: none;
+    }
+
+
+    /* =====================================
+       11. 태블릿 화면
+       ===================================== */
+
+    @media (max-width: 1000px) {
+
+      .about-page {
+        grid-template-columns: minmax(0, 1fr) 25%;
+        gap: 24px;
+      }
+
+      .about-description,
+      .about-english {
+        font-size: 14px;
+      }
 
     }
 
-    h1 {
-      font-size: clamp(60px, 10vw, 140px);
-      font-weight: 400;
-      letter-spacing: -0.07em;
-      margin: 30px 0 70px;
-    }
 
-.description {
-  max-width: 900px;
-  font-size: clamp(15px, 1.5vw, 18px);
-  font-weight: 400;
-  line-height: 2;
-  letter-spacing: -0.02em;
-  word-break: keep-all;
-  color: #939393; /* ABOUT 소개 문구 글자색 */
-}
+    /* =====================================
+       12. 모바일 화면
 
-    .description p { margin-bottom: 32px; }
-
-    footer {
-      padding: 35px 5%;
-      border-top: 1px solid #eee;
-      font-size: 12px;
-    }
+       소개 문구 아래에 그래픽 배치
+       ===================================== */
 
     @media (max-width: 650px) {
-      header {
-        height: 70px;
+
+      .about-page {
+        display: flex;
+        flex-direction: column;
+
+        padding: 85px 16px 30px;
+        gap: 50px;
       }
 
-      .logo { font-size: 24px; }
-
-      nav { gap: 12px; }
-
-      nav a {
-        font-size: 9px;
-        letter-spacing: 0;
+      .about-title {
+        font-size: 22px;
+        margin-bottom: 18px;
       }
 
-      main { padding: 150px 6% 80px; }
+      .about-description,
+      .about-english {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .about-english {
+        margin-top: 24px;
+      }
+
+      .about-graphic-wrap {
+        width: 100%;
+        margin-top: 0;
+      }
+
+      .about-graphic {
+        width: 45%;
+        max-height: none;
+      }
+
     }
-/* 전체 폰트 Pretendard 통일 */
-body, button, input, textarea, select {
-  font-family: 'Pretendard', sans-serif;
-}
+
   </style>
+
 </head>
+
+
 <body>
 
-  <header>
-    <a href="index.html" class="logo">ohv.</a>
-<!-- 공통 네비게이션 -->
-<div id="site-navigation"></div>
-  </header>
+  <!-- =====================================
+       13. OHV 공통 네비게이션
 
-  <main>
-    <div class="label">01 / About us</div>
+       navigation.html에서 자동으로 불러옴
+       ===================================== -->
 
-    <div class="description">
-      <p class="about-description">
-OHV는 감탄사 ‘OH!’에서 시작합니다. <br>
-브랜드만의 매력을 발견하고, 새로운 시선으로 해석하며, 감각적인 비주얼과 마케팅으로 구현합니다.<br>
-브랜딩부터 콘텐츠, 인플루언서 마케팅, 캠페인까지. 브랜드의 아이디어가 사람들의 시선을 사로잡는 순간을 만듭니다.
-      </p>
+  <div id="site-navigation"></div>
+
+
+  <main class="about-page">
+
+
+    <!-- =====================================
+         14. 왼쪽 ABOUT 소개 문구
+
+         문구 수정 시 아래 내용만 변경
+         ===================================== -->
+
+    <div class="about-content">
+
+      <h1 class="about-title">
+        About us...
+      </h1>
+
+
+      <div class="about-description">
+
+        <!-- 국문 소개 -->
+
+        <p lang="ko">
+          OHV는 감탄사 ‘OH!’에서 시작합니다.<br>
+          브랜드만의 매력을 발견하고, 새로운 시선으로 해석하며, 감각적인 비주얼과 마케팅으로 구현합니다.<br>
+          브랜딩부터 콘텐츠, 인플루언서 마케팅, 캠페인까지. 브랜드의 아이디어가 사람들의 시선을 사로잡는 순간을 만듭니다.
+        </p>
+
+
+        <!-- 영문 소개 -->
+
+        <div class="about-english" lang="en">
+
+          <p>
+            OHV begins with the word ‘OH!’ — an expression of admiration and discovery.<br>
+            We discover the charm of brands and reinterpret them through fresh perspectives, bringing ideas to life through sensorial visuals and marketing.<br>
+            From branding and content to influencer marketing and campaigns, we create moments when a brand’s identity captures people’s attention.
+          </p>
+
+        </div>
+
+      </div>
+
     </div>
+
+
+    <!-- =====================================
+         15. 오른쪽 OHV 그래픽
+
+         파일명 : about_graphic.png
+         저장 위치 : about.html과 동일한 폴더
+
+         이미지가 아직 업로드되지 않았다면
+         자동으로 숨김 처리됩니다.
+         ===================================== -->
+
+    <div class="about-graphic-wrap">
+
+      <img
+        src="about_graphic.png"
+        alt=""
+        class="about-graphic"
+        onerror="this.style.display='none'">
+
+    </div>
+
+
   </main>
 
-  <footer>
-    © OHV AGENCY. ALL RIGHTS RESERVED.
-  </footer>
-<script src="navigation.js"></script>
+
+  <!-- 16. OHV 공통 네비게이션 기능 -->
+
+  <script src="navigation.js"></script>
+
 </body>
+
 </html>
