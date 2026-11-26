@@ -6,16 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- =====================================
-       01. OHV 공통 설정
-  ===================================== -->
-
   <link rel="icon" type="image/png" href="favicon.png?v=2">
-
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
   <link rel="stylesheet" href="navigation.css">
 
   <title>SELECTED EXPERIENCE — OHV AGENCY</title>
@@ -23,23 +15,21 @@
   <style>
 
     /* =====================================
-       02. 기본 디자인
-
-       배경 : #F1F1F1
-       글씨 : #939393
+       01. 기본 디자인
     ===================================== */
 
     * {
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       margin: 0;
-      background: #F1F1F1;
-      color: #939393;
+      padding: 0;
+      background: #FFFFFF;
+      color: #000000;
       font-family: 'Pretendard', sans-serif;
       -webkit-font-smoothing: antialiased;
+      color-scheme: light;
     }
 
     a {
@@ -51,43 +41,25 @@
       font-family: inherit;
     }
 
-
     /* =====================================
-       03. 전체 페이지 영역
-
-       기존 공통 네비게이션 아래부터 시작
-
-       ✏️ padding-top
-       → 콘텐츠 시작 높이
-
-       ✏️ padding 좌우 값
-       → 페이지 바깥 여백
+       02. 전체 페이지 여백
     ===================================== */
 
     main {
       width: 100%;
-      max-width: 1800px;
+      max-width: none;
       min-height: 100vh;
       margin: 0 auto;
-      padding: 145px 4% 120px;
-      background: #F1F1F1;
+      padding: 110px 4% 80px;
+      background: #FFFFFF;
     }
 
-
     /* =====================================
-       04. 3단 레이아웃
+       03. 3단 레이아웃
 
        왼쪽 : 카테고리
-       가운데 : 프로젝트 리스트
+       가운데 : 프로젝트 목록
        오른쪽 : 프로젝트 상세
-
-       ✏️ 비율 조정
-
-       18% : 왼쪽
-       31% : 가운데
-       나머지 : 오른쪽
-
-       구분선 / 박스 / 테두리 없음
     ===================================== */
 
     .experience-layout {
@@ -112,85 +84,18 @@
       background: transparent;
     }
 
-
     /* =====================================
-       05. 왼쪽 카테고리
-
-       ALL
-       MARKETING
-       VISUAL
-
-       Pretendard ExtraBold 800
-       자간 최대한 촘촘하게
-
-       ✏️ font-size : 글씨 크기
-       ✏️ line-height : 줄 사이 간격
+       04. 카테고리 및 프로젝트 리스트
     ===================================== */
 
-    .category-list {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 3px;
-    }
-
-    .category-button {
-      display: block;
-      width: auto;
-
-      margin: 0;
-      padding: 0;
-
-      background: transparent;
-      border: none;
-
-      color: #939393;
-
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.065em;
-      line-height: 1.2;
-      text-align: left;
-
-      cursor: pointer;
-      transition: opacity 0.2s ease;
-    }
-
-    .category-button:hover {
-      opacity: 0.55;
-    }
-
-    .category-button.active {
-      color: #939393;
-      opacity: 1;
-    }
-
-    .category-button:not(.active) {
-      opacity: 0.65;
-    }
-
-
-    /* =====================================
-       06. 가운데 프로젝트 리스트
-
-       projects.js에서 자동으로 불러옴
-
-       Pretendard ExtraBold 800
-       자간 -0.065em
-
-       화살표 / 카테고리 표기 없음
-       프로젝트명 텍스트만 표시
-    ===================================== */
-
+    .category-list,
     .project-list {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 3px;
-
+      gap: 2px;
       margin: 0;
       padding: 0;
-
       border: none;
     }
 
@@ -201,167 +106,130 @@
       border: none;
     }
 
+    .category-button,
     .project-button {
       display: block;
-      width: 100%;
-
       margin: 0;
       padding: 0;
-
       border: none;
       background: transparent;
-
-      color: #939393;
-
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: -0.065em;
-      line-height: 1.2;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      line-height: 1.4;
       text-align: left;
       word-break: keep-all;
-
       cursor: pointer;
       transition: opacity 0.2s ease;
     }
 
+    .category-button {
+      width: auto;
+    }
+
+    .project-button {
+      width: 100%;
+    }
+
+    .category-button:hover,
     .project-button:hover {
-      opacity: 0.55;
+      opacity: 0.45;
     }
 
+    .category-button.active,
     .project-button.active {
-      color: #939393;
+      color: #000000;
       opacity: 1;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .project-button:not(.active) {
-      opacity: 0.65;
+    /* 마우스 클릭 시 파란색 테두리 제거 */
+
+    .category-button:focus:not(:focus-visible),
+    .project-button:focus:not(:focus-visible) {
+      outline: none;
     }
 
-    .empty {
-      margin: 0;
-      color: #939393;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: -0.02em;
+    .category-button:focus-visible,
+    .project-button:focus-visible {
+      outline: 1px solid #000000;
+      outline-offset: 2px;
     }
-
 
     /* =====================================
-       07. 오른쪽 프로젝트 상세
-
-       기존 개별 프로젝트 HTML을 표시
-
-       별도 박스 / 테두리 없음
-
-       상세 내용은 Regular 400
+       05. 오른쪽 프로젝트 상세 영역
     ===================================== */
 
     .detail-column {
       width: 100%;
       min-height: 300px;
-      color: #939393;
+      background: #FFFFFF;
+      color: #000000;
       font-weight: 400;
-      letter-spacing: -0.03em;
     }
 
     .detail-frame {
       display: block;
-
       width: 100%;
-      min-height: 300px;
+      min-height: 100px;
       height: 600px;
-
       padding: 0;
       margin: 0;
-
-      background: #F1F1F1;
+      background: #FFFFFF;
       border: 0;
-
       overflow: hidden;
     }
 
+    .empty,
     .detail-empty {
       margin: 0;
-      color: #939393;
+      color: #000000;
       font-size: 13px;
-      line-height: 1.6;
       font-weight: 400;
+      line-height: 1.6;
     }
-
-
-    /* =====================================
-       08. 푸터
-
-       구분선 없음
-    ===================================== */
 
     footer {
-      padding: 35px 5%;
-
-      background: #F1F1F1;
-      color: #939393;
-
-      border: none;
-
-      font-size: 12px;
-      font-weight: 400;
+      display: none;
     }
 
-
     /* =====================================
-       09. 태블릿
-
-       651px ~ 1024px
-
-       3단 구조 유지
-       글씨 크기 조정
+       06. 태블릿
     ===================================== */
 
     @media (max-width: 1024px) {
 
       main {
-        padding: 130px 4% 90px;
+        padding: 110px 4% 80px;
       }
 
       .experience-layout {
-        grid-template-columns:
-          minmax(0, 20%)
-          minmax(0, 30%)
-          minmax(0, 1fr);
-
         column-gap: 18px;
       }
 
       .category-button,
       .project-button {
-        font-size: 15px;
+        font-size: 14px;
       }
 
     }
 
-
     /* =====================================
-       10. 모바일
-
-       화면이 좁을 때만 세로 배치
-
-       카테고리
-       ↓
-       프로젝트 리스트
-       ↓
-       프로젝트 상세
+       07. 모바일
     ===================================== */
 
     @media (max-width: 650px) {
 
       main {
-        padding: 125px 6% 80px;
+        padding: 85px 16px 60px;
       }
 
       .experience-layout {
         display: flex;
         flex-direction: column;
-        gap: 32px;
+        gap: 28px;
       }
 
       .category-column,
@@ -370,386 +238,148 @@
         width: 100%;
       }
 
-      .category-list {
-        gap: 6px;
-      }
-
-      .project-list {
-        gap: 7px;
-      }
-
       .category-button,
       .project-button {
-        font-size: 16px;
-        line-height: 1.25;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .category-list,
+      .project-list {
+        gap: 3px;
       }
 
       .detail-column {
         margin-top: 8px;
       }
 
-      .detail-frame {
-        min-height: 200px;
-      }
-
     }
 
-/* =====================================
-   OHV EXPERIENCE 폰트 크기 축소
-
-   PC : 14px
-   모바일 : 12px
-
-   기존 볼드체와 좁은 자간 유지
-===================================== */
-
-.category-button,
-.project-button {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: -0.05em;
-  line-height: 1.25;
-}
-
-@media (max-width: 650px) {
-  .category-button,
-  .project-button {
-    font-size: 10px;
-    line-height: 1.3;
-  }
-}
-/* =====================================
-   OHV NEW EXPERIENCE DESIGN
-   신규 홈페이지 디자인 통일
-===================================== */
-
-html,
-body {
-  background: #FFFFFF;
-  color: #000000;
-  font-family: 'Pretendard', sans-serif;
-}
-
-/* 전체 페이지 여백 */
-
-main {
-  max-width: none;
-  padding: 110px 4% 80px;
-  background: #FFFFFF;
-}
-
-/* 3단 레이아웃 */
-
-.experience-layout {
-  grid-template-columns:
-    minmax(0, 18%)
-    minmax(0, 31%)
-    minmax(0, 1fr);
-  column-gap: 26px;
-}
-
-/* 카테고리 및 프로젝트 글씨 */
-
-.category-button,
-.project-button {
-  color: #000000;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.05em;
-  line-height: 1.4;
-}
-
-/* 선택하지 않은 항목도 검정색 */
-
-.category-button:not(.active),
-.project-button:not(.active) {
-  opacity: 1;
-}
-
-/* 선택된 항목 */
-
-.category-button.active,
-.project-button.active {
-  color: #000000;
-  opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* 마우스 오버 */
-
-.category-button:hover,
-.project-button:hover {
-  opacity: 0.45;
-}
-
-/* 리스트 줄 간격 */
-
-.category-list,
-.project-list {
-  gap: 2px;
-}
-
-/* 오른쪽 프로젝트 상세 영역 */
-
-.detail-column,
-.detail-frame {
-  background: #FFFFFF;
-  color: #000000;
-}
-
-/* 안내 문구 */
-
-.empty,
-.detail-empty {
-  color: #000000;
-}
-
-/* 기존 푸터 숨기기 */
-
-footer {
-  display: none;
-}
-
-/* 태블릿 */
-
-@media (max-width: 1024px) {
-  main {
-    padding: 110px 4% 80px;
-  }
-
-  .experience-layout {
-    column-gap: 18px;
-  }
-
-  .category-button,
-  .project-button {
-    font-size: 14px;
-  }
-}
-
-/* 모바일 */
-
-@media (max-width: 650px) {
-  main {
-    padding: 85px 16px 60px;
-  }
-
-  .experience-layout {
-    gap: 28px;
-  }
-
-  .category-button,
-  .project-button {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  .category-list,
-  .project-list {
-    gap: 3px;
-  }
-}
   </style>
 
 </head>
 
-
 <body>
 
-  <!-- =====================================
-       11. OHV 공통 네비게이션
-  ===================================== -->
+  <!-- 공통 네비게이션 -->
 
   <div id="site-navigation"></div>
 
-
   <main>
-
-    <!-- =====================================
-         12. 3단 레이아웃 시작
-
-         왼쪽 : 카테고리
-         가운데 : 프로젝트
-         오른쪽 : 프로젝트 상세
-    ===================================== -->
 
     <div class="experience-layout">
 
-
       <!-- =====================================
-           13. 왼쪽 카테고리
-
-           클릭 시 가운데 프로젝트 목록 변경
-
-           ALL       : 전체
-           MARKETING : 마케팅 프로젝트
-           VISUAL    : 비주얼 프로젝트
+           왼쪽 카테고리
       ===================================== -->
 
       <aside class="category-column">
 
-        <div
-          class="category-list"
-          role="group"
-          aria-label="Project category">
+        <div class="category-list"
+             role="group"
+             aria-label="Project category">
 
-          <button
-            type="button"
-            class="category-button active"
-            data-filter="ALL"
-            aria-pressed="true">
+          <button type="button"
+                  class="category-button active"
+                  data-filter="ALL"
+                  aria-pressed="true">
             ALL
           </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Graphic Design"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Graphic Design"
+                  aria-pressed="false">
             Graphic Design
           </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Contents"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Contents"
+                  aria-pressed="false">
             Contents
           </button>
-          
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Pop-up & Exhibition"
-            aria-pressed="false">
-            Pop-up & Exhibition
+
+          <button type="button"
+                  class="category-button"
+                  data-filter="Pop-up &amp; Exhibition"
+                  aria-pressed="false">
+            Pop-up &amp; Exhibition
           </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Lookbook Retouching"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Lookbook Retouching"
+                  aria-pressed="false">
             Lookbook Retouching
           </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Influencer Marketing"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Influencer Marketing"
+                  aria-pressed="false">
             Influencer Marketing
           </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Influencer Collaboration"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Influencer Collaboration"
+                  aria-pressed="false">
             Influencer Collaboration
-          </button> 
+          </button>
 
-          <button
-            type="button"
-            class="category-button"
-            data-filter="Other Works"
-            aria-pressed="false">
+          <button type="button"
+                  class="category-button"
+                  data-filter="Other Works"
+                  aria-pressed="false">
             Other Works
-          </button>    
-          
+          </button>
+
         </div>
 
       </aside>
 
-
       <!-- =====================================
-           14. 가운데 프로젝트 리스트
-
-           projects.js에서 자동 생성
-
-           프로젝트를 추가할 때는
-           projects.js만 수정하면 됩니다.
+           가운데 프로젝트 목록
       ===================================== -->
 
-      <section
-        class="project-column"
-        aria-label="Project list">
+      <section class="project-column"
+               aria-label="Project list">
 
-        <div
-          class="project-list"
-          id="project-list">
+        <div class="project-list"
+             id="project-list">
         </div>
 
       </section>
 
-
       <!-- =====================================
-           15. 오른쪽 프로젝트 상세
-
-           가운데 프로젝트명 클릭 시
-           해당 프로젝트 HTML이 표시됩니다.
-
-           기존 상세 페이지를 그대로 활용합니다.
+           오른쪽 프로젝트 상세
       ===================================== -->
 
-      <section
-        class="detail-column"
-        id="detail-column"
-        aria-label="Project details">
+      <section class="detail-column"
+               id="detail-column"
+               aria-label="Project details">
 
-        <iframe
-          class="detail-frame"
-          id="detail-frame"
-          title="Project details"
-          scrolling="no">
+        <iframe class="detail-frame"
+                id="detail-frame"
+                title="Project details"
+                scrolling="no">
         </iframe>
 
       </section>
-
 
     </div>
 
   </main>
 
+  <!-- 프로젝트 데이터 -->
 
-  <!-- =====================================
-       16. 푸터
-  ===================================== -->
-
-  <footer>
-    © OHV AGENCY. ALL RIGHTS RESERVED.
-  </footer>
-
-
-  <!-- =====================================
-       17. 프로젝트 데이터 불러오기
-
-       기존 projects.js 그대로 사용
-  ===================================== -->
-
-<script src="projects.js?v=2"></script>
-
-
-
-  <!-- =====================================
-       18. 프로젝트 선택 기능
-
-       1. 왼쪽 카테고리 선택
-       2. 가운데 프로젝트 목록 변경
-       3. 프로젝트명 클릭
-       4. 오른쪽에 상세 페이지 표시
-
-       기존 프로젝트 HTML을 재사용합니다.
-
-       새 프로젝트 추가 시
-       이 JavaScript는 수정하지 않아도 됩니다.
-  ===================================== -->
+  <script src="projects.js?v=3"></script>
 
   <script>
 
     /* =====================================
-       기본 요소 가져오기
+       08. 기본 요소
     ===================================== */
 
     const projectList =
@@ -764,38 +394,28 @@ footer {
     const detailColumn =
       document.getElementById('detail-column');
 
-
-    /* 현재 선택한 프로젝트 */
     let selectedProject = null;
-
-    /* 현재 선택한 카테고리 */
     let selectedCategory = 'ALL';
-
-    /* 상세 페이지 높이 감시용 */
     let detailResizeObserver = null;
 
-
     /* =====================================
-       19. 프로젝트 목록 생성
-
-       projects.js의 데이터를 사용합니다.
+       09. 프로젝트 목록 생성
     ===================================== */
 
     function renderProjects(category = 'ALL') {
 
       selectedCategory = category;
 
-      /* 기존 목록 삭제 */
       projectList.replaceChildren();
 
-      /* 선택한 카테고리 프로젝트만 필터링 */
+      detailColumn.querySelectorAll('.detail-empty')
+        .forEach(element => element.remove());
+
       const filtered = projects.filter(project =>
         category === 'ALL' ||
         project.category === category
       );
 
-
-      /* 프로젝트가 하나도 없을 때 */
       if (filtered.length === 0) {
 
         const empty = document.createElement('p');
@@ -806,6 +426,12 @@ footer {
         projectList.appendChild(empty);
 
         selectedProject = null;
+
+        if (detailResizeObserver) {
+          detailResizeObserver.disconnect();
+          detailResizeObserver = null;
+        }
+
         detailFrame.removeAttribute('src');
         detailFrame.style.display = 'none';
 
@@ -813,21 +439,13 @@ footer {
 
       }
 
-
-      /* 선택한 프로젝트가 현재 목록에 있는지 확인 */
       const existingSelection = filtered.find(project =>
         selectedProject &&
         project.id === selectedProject.id
       );
 
-      /* 없으면 첫 번째 프로젝트 자동 선택 */
       const firstSelection =
         existingSelection || filtered[0];
-
-
-      /* =====================================
-         프로젝트 버튼 생성
-      ===================================== */
 
       filtered.forEach(project => {
 
@@ -839,23 +457,20 @@ footer {
         button.type = 'button';
         button.className = 'project-button';
         button.textContent = project.title;
-
         button.dataset.projectId = project.id;
 
         const isActive =
           project.id === firstSelection.id;
 
         button.classList.toggle('active', isActive);
+
         button.setAttribute(
           'aria-pressed',
           String(isActive)
         );
 
-        /* 프로젝트명 클릭 */
         button.addEventListener('click', () => {
-
           selectProject(project);
-
         });
 
         item.appendChild(button);
@@ -863,18 +478,12 @@ footer {
 
       });
 
-
-      /* 첫 번째 프로젝트 자동 표시 */
       selectProject(firstSelection);
 
     }
 
-
     /* =====================================
-       20. 프로젝트 선택 기능
-
-       가운데 프로젝트명 클릭 시
-       오른쪽 상세 페이지 변경
+       10. 프로젝트 선택
     ===================================== */
 
     function selectProject(project) {
@@ -883,7 +492,6 @@ footer {
 
       selectedProject = project;
 
-      /* 선택된 프로젝트 글씨 상태 변경 */
       document.querySelectorAll('.project-button')
         .forEach(button => {
 
@@ -891,6 +499,7 @@ footer {
             button.dataset.projectId === project.id;
 
           button.classList.toggle('active', active);
+
           button.setAttribute(
             'aria-pressed',
             String(active)
@@ -898,17 +507,22 @@ footer {
 
         });
 
+      detailColumn.querySelectorAll('.detail-empty')
+        .forEach(element => element.remove());
 
-      /* 상세 페이지 링크가 없을 때 */
+      if (detailResizeObserver) {
+        detailResizeObserver.disconnect();
+        detailResizeObserver = null;
+      }
+
       if (!project.link) {
 
         detailFrame.style.display = 'none';
 
-        detailColumn.querySelectorAll('.detail-empty')
-          .forEach(element => element.remove());
-
         const message = document.createElement('p');
+
         message.className = 'detail-empty';
+
         message.textContent =
           'Project details will be updated soon.';
 
@@ -918,48 +532,37 @@ footer {
 
       }
 
-
-      /* 이전 안내 문구 제거 */
-      detailColumn.querySelectorAll('.detail-empty')
-        .forEach(element => element.remove());
-
       detailFrame.style.display = 'block';
-
-      /* 프로젝트 상세 HTML 불러오기 */
       detailFrame.src = project.link;
 
     }
 
-
     /* =====================================
-       21. 상세 페이지 디자인 정리
+       11. 모든 상세 페이지 공통 디자인
 
-       기존 프로젝트 상세 HTML에는
-       자체 네비게이션 / 푸터 / 여백이 있습니다.
+       배경 : WHITE
+       텍스트 : BLACK
 
-       오른쪽 영역에서는 중복 표시되지 않도록
-       해당 요소만 숨깁니다.
-
-       이미지 / 유튜브 / 프로젝트 소개는 유지합니다.
+       카테고리 : 14px / Bold
+       프로젝트 제목 : 19px / Regular
+       설명 : 13px / Regular
     ===================================== */
 
     detailFrame.addEventListener('load', () => {
 
       try {
 
-        const doc =
-          detailFrame.contentDocument;
+        const doc = detailFrame.contentDocument;
 
-        if (!doc) return;
+        if (!doc || !doc.body || !doc.head) return;
 
-        /* 기존 상세 높이 감시 중단 */
         if (detailResizeObserver) {
           detailResizeObserver.disconnect();
           detailResizeObserver = null;
         }
 
+        /* 중복 네비게이션 및 푸터 숨김 */
 
-        /* 중복 네비게이션 숨김 */
         const navigation =
           doc.getElementById('site-navigation');
 
@@ -969,8 +572,6 @@ footer {
           );
         }
 
-
-        /* 중복 푸터 숨김 */
         const footer = doc.querySelector('footer');
 
         if (footer) {
@@ -979,10 +580,7 @@ footer {
           );
         }
 
-
-        /* BACK TO EXPERIENCE 숨김 */
-        const back =
-          doc.querySelector('.back');
+        const back = doc.querySelector('.back');
 
         if (back) {
           back.style.setProperty(
@@ -990,84 +588,153 @@ footer {
           );
         }
 
+        const detailMain = doc.querySelector('main');
 
-        /* 상세 HTML의 main 영역 */
-        const detailMain =
-          doc.querySelector('main');
+        /* 상세 페이지 공통 CSS 적용 */
 
-        if (!detailMain) return;
+        const previousStyle =
+          doc.getElementById('ohv-detail-style');
 
+        if (previousStyle) {
+          previousStyle.remove();
+        }
 
-        /* 오른쪽 영역 안에 딱 맞게 배치 */
-        detailMain.style.setProperty(
-          'max-width', 'none', 'important'
-        );
+        const detailStyle = doc.createElement('style');
 
-        detailMain.style.setProperty(
-          'width', '100%', 'important'
-        );
+        detailStyle.id = 'ohv-detail-style';
 
-        detailMain.style.setProperty(
-          'min-height', '0', 'important'
-        );
+        detailStyle.textContent = `
 
-        detailMain.style.setProperty(
-          'margin', '0', 'important'
-        );
+          * {
+            box-sizing: border-box;
+          }
 
-        detailMain.style.setProperty(
-          'padding', '0', 'important'
-        );
+          html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            font-family: 'Pretendard', sans-serif !important;
+            -webkit-font-smoothing: antialiased;
+            color-scheme: light;
+          }
 
+          main {
+            width: 100% !important;
+            max-width: none !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: #FFFFFF !important;
+            color: #000000 !important;
+            font-weight: 400;
+          }
 
-/* 상세 페이지 신규 디자인 적용 */
+          main h1,
+          main h2,
+          main h3,
+          main p,
+          main a,
+          main span,
+          main button,
+          main summary,
+          main div {
+            color: #000000 !important;
+          }
 
-doc.documentElement.style.background = '#FFFFFF';
-doc.body.style.background = '#FFFFFF';
-doc.body.style.margin = '0';
+          /* 프로젝트 제목 */
 
-const detailStyle = doc.createElement('style');
+          .project-heading {
+            display: flex !important;
+            flex-wrap: wrap;
+            align-items: baseline;
+            column-gap: 8px;
+            row-gap: 4px;
+            margin: 0 0 20px !important;
+            line-height: 1.4 !important;
+            background: transparent !important;
+          }
 
-detailStyle.textContent = `
-  html, body, main {
-    background: #FFFFFF !important;
-    color: #000000 !important;
-    font-family: 'Pretendard', sans-serif !important;
-  }
+          /* 프로젝트 카테고리 */
 
-  main h1,
-  main h2,
-  main h3,
-  main p,
-  main a,
-  main span,
-  main button,
-  main summary,
-  main div {
-    color: #000000 !important;
-    letter-spacing: -0.05em;
-  }
-`;
+          .project-heading-category {
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.065em !important;
+            color: #000000 !important;
+          }
 
-doc.head.appendChild(detailStyle);
+          /* 프로젝트 이름 */
 
-        /* 오른쪽 상세 내용은 Regular */
-        detailMain.style.setProperty(
-          'font-weight', '400'
-        );
+          .project-heading-title {
+            font-size: 19px !important;
+            font-weight: 400 !important;
+            letter-spacing: -0.035em !important;
+            color: #000000 !important;
+          }
 
+          /* 프로젝트 설명 */
+
+          .description {
+            font-size: 13px !important;
+            font-weight: 400 !important;
+            line-height: 1.8 !important;
+            letter-spacing: normal !important;
+            margin: 0 0 65px !important;
+            color: #000000 !important;
+            background: transparent !important;
+            word-break: keep-all;
+          }
+
+          /* 이미지 및 영상 */
+
+          main img {
+            max-width: 100%;
+          }
+
+          main video {
+            display: block;
+            max-width: 100%;
+            height: auto;
+          }
+
+          #site-navigation,
+          footer,
+          .back {
+            display: none !important;
+          }
+
+          @media (max-width: 650px) {
+
+            .project-heading-category {
+              font-size: 12px !important;
+            }
+
+            .project-heading-title {
+              font-size: 17px !important;
+            }
+
+            .description {
+              font-size: 12px !important;
+              margin-bottom: 45px !important;
+            }
+
+          }
+
+        `;
+
+        doc.head.appendChild(detailStyle);
 
         /* =====================================
-           상세 높이 자동 조정
-
-           iframe 내부의 스크롤바 없이
-           실제 콘텐츠 길이만큼 높이 변경
+           12. 상세 페이지 높이 자동 조절
         ===================================== */
+
+        const content = detailMain || doc.body;
 
         function updateFrameHeight() {
 
           const height = Math.ceil(
-            detailMain.getBoundingClientRect().height
+            content.getBoundingClientRect().height
           );
 
           detailFrame.style.height =
@@ -1077,20 +744,15 @@ doc.head.appendChild(detailStyle);
 
         updateFrameHeight();
 
-
-        /* 유튜브 펼치기 등으로 높이가 바뀌면
-           자동으로 iframe 높이도 변경 */
         if ('ResizeObserver' in window) {
 
           detailResizeObserver =
             new ResizeObserver(updateFrameHeight);
 
-          detailResizeObserver.observe(detailMain);
+          detailResizeObserver.observe(content);
 
         }
 
-
-        /* 이미지 로딩 후 높이 재계산 */
         doc.querySelectorAll('img').forEach(image => {
 
           image.addEventListener(
@@ -1100,11 +762,20 @@ doc.head.appendChild(detailStyle);
 
         });
 
+        doc.querySelectorAll('video').forEach(video => {
+
+          video.addEventListener(
+            'loadedmetadata',
+            updateFrameHeight
+          );
+
+        });
+
+        if (doc.fonts && doc.fonts.ready) {
+          doc.fonts.ready.then(updateFrameHeight);
+        }
 
       } catch (error) {
-
-        /* 다른 도메인의 상세 페이지인 경우
-           내부 디자인 수정은 제한됩니다. */
 
         console.warn(
           'Project detail could not be customized:',
@@ -1115,59 +786,60 @@ doc.head.appendChild(detailStyle);
 
     });
 
-
     /* =====================================
-       22. 카테고리 변경 기능
+       13. 카테고리 선택
     ===================================== */
+
+    function selectCategory(category) {
+
+      categoryButtons.forEach(button => {
+
+        const active =
+          button.dataset.filter === category;
+
+        button.classList.toggle('active', active);
+
+        button.setAttribute(
+          'aria-pressed',
+          String(active)
+        );
+
+      });
+
+      renderProjects(category);
+
+    }
 
     categoryButtons.forEach(button => {
 
       button.addEventListener('click', () => {
 
-        const category =
-          button.dataset.filter;
-
-        /* 선택된 카테고리 디자인 변경 */
-        categoryButtons.forEach(btn => {
-
-          const active = btn === button;
-
-          btn.classList.toggle('active', active);
-
-          btn.setAttribute(
-            'aria-pressed',
-            String(active)
-          );
-
-        });
-
-
-        /* 가운데 프로젝트 목록 다시 표시 */
-        renderProjects(category);
+        selectCategory(button.dataset.filter);
 
       });
 
     });
 
-
     /* =====================================
-       23. 초기 화면
-
-       처음 들어오면 ALL 선택
-
-       가운데 전체 프로젝트 표시
-
-       오른쪽에는 첫 번째 프로젝트 자동 표시
+       14. 초기 화면
     ===================================== */
 
-    renderProjects('ALL');
+    const params = new URLSearchParams(
+      window.location.search
+    );
+
+    const initialCategory = params.get('category');
+
+    const validCategory = Array.from(categoryButtons)
+      .some(button =>
+        button.dataset.filter === initialCategory
+      );
+
+    selectCategory(
+      validCategory ? initialCategory : 'ALL'
+    );
 
   </script>
-
-
-  <!-- =====================================
-       24. OHV 공통 네비게이션
-  ===================================== -->
 
   <script src="navigation.js"></script>
 
