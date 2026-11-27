@@ -31,7 +31,7 @@ const projects = [
   {
     id: "edition-01",
     category: "Influencer Collaboration",
-    title: "TTUDEMENT — Gomsongi Edition",
+    title: "TTUDEMENT — 26SS 29CM Edition",
     link: "projects/edition-01.html"
   },
 
